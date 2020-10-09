@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>Hello World - 马铭泽的个人博客</title>
+  <title>操作系统的发展 （三） - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-06 15:05" pubdate>
-        2020年10月6日 下午
+      <time datetime="2020-10-08 23:02" pubdate>
+        2020年10月8日 晚上
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      39 字
+      753 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      7
        分钟
     </span>
   
@@ -246,27 +246,31 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">操作系统的发展 （三）</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="hljs bash">$ hexo server</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="hljs bash">$ hexo generate</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="hljs bash">$ hexo deploy</code></pre>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201008230507825.png" srcset="/img/loading.gif"></p>
+<h1 id="手工操作阶段"><a href="#手工操作阶段" class="headerlink" title="手工操作阶段"></a>手工操作阶段</h1><p>计算机能识别二进制数（01），把数写在纸带机上，让计算机进行读取，处理之后，再输出纸带机上，最后输出。计算机的处理速度快，但是纸带机速度很慢，这样cpu空闲时间很多。另外，程序用纸袋机，这样不太方便。人机速度矛盾导致资源利用率低。</p>
+<h1 id="单道批处理阶段"><a href="#单道批处理阶段" class="headerlink" title="单道批处理阶段"></a>单道批处理阶段</h1><p>引入脱机输入/输出技术（用磁带完成）并监督程序负责控制作业的输入/输出，速度比纸带机快很多。</p>
+<p>单道批处理系统的优点：缓解了一定程度的人机矛盾，资源利用率有所提升。</p>
+<p>缺点：内存中仅仅能有一道程序运行，只是该程序运行之后才能调入下一道程序。cpu还是有大量的时间空闲，资源利用虽然提高但是还是很低。</p>
+<h1 id="多道批处理阶段"><a href="#多道批处理阶段" class="headerlink" title="多道批处理阶段"></a>多道批处理阶段</h1><p>还是利用磁带完成，但是是多道程序。操作系统正式诞生，并引入了中断技术，由操作系统负责管理这些程序的运行，各个程序并发执行。</p>
+<p>优点：多道程序并发执行，共享计算机资源。资源利用率大幅度提升，cpu和其他资源保持忙碌状态，系统吞吐量增大。</p>
+<p>缺点：没有人机交互，用户响应时间长（用户提交作业之后只能等待计算机处理完成，中间不能控制自己的作业执行）</p>
+<h1 id="分时操作系统"><a href="#分时操作系统" class="headerlink" title="分时操作系统"></a>分时操作系统</h1><p>计算机以时间片为单位轮流的为各个用户/作业服务，各个用户可以通过终端与计算机进行交互。</p>
+<p>缺点：不能优先处理一些紧急任务，操作系统对所有的用户和作业都是公平的，循环的为每个用户/作业服务一个时间片，不区分任务的紧急性。</p>
+<h1 id="实时操作系统"><a href="#实时操作系统" class="headerlink" title="实时操作系统"></a>实时操作系统</h1><p>优先响应一些紧急任务，某些紧急任务不需要时间排队。</p>
+<p>在实时操作系统的控制下，计算机接收到外部信号后及时进行处理，并且要在严格的时限内处理完事件。实时操作系统的主要特点是及时性和可靠性。</p>
+<h1 id="其他操作系统"><a href="#其他操作系统" class="headerlink" title="其他操作系统"></a>其他操作系统</h1><h2 id="网络操作系统"><a href="#网络操作系统" class="headerlink" title="网络操作系统"></a>网络操作系统</h2><p>是伴随着计算机网络的发展而诞生的，能把网络中各个计算机结合起来，实现数据传送等功能，实现网络中各种资源的共享（文件的共享）和各台计算机之间的通信。</p>
+<h2 id="分布式操作系统"><a href="#分布式操作系统" class="headerlink" title="分布式操作系统"></a>分布式操作系统</h2><p>主要特点是分布性和并行性，系统中的各台计算机地位相同，任何工作都可以分布在这些计算机上，由它们并行/协同完成这个任务。</p>
+<h2 id="个人计算机操作系统"><a href="#个人计算机操作系统" class="headerlink" title="个人计算机操作系统"></a>个人计算机操作系统</h2><p>windows xp / MacOs 方便个人使用</p>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201009113711074.png" srcset="/img/loading.gif"></p>
 
             </div>
             <hr>
@@ -276,7 +280,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">程序人生</a>
+                      <a class="hover-with-bg" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
                     
                   </div>
                 
@@ -284,7 +288,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/">程序人生</a>
+                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
                     
                   </div>
                 
@@ -297,15 +301,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%AE%9A%E4%B9%89%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%8A%9F%E8%83%BD/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统的概念（定义）目标与功能 （一）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/">
+                        <span class="hidden-mobile">操作系统的四个特征 （二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -491,7 +495,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Hello World&nbsp;",
+        "操作系统的发展 （三）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
