@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>操作系统的运行机制与体系结构 （四） - 马铭泽的个人博客</title>
+  <title>阿里规约禁止使用java内置Executors创建线程池 - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-09 11:39" pubdate>
-        2020年10月9日 中午
+      <time datetime="2020-10-09 21:53" pubdate>
+        2020年10月9日 晚上
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      569 字
+      1k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      11
        分钟
     </span>
   
@@ -246,42 +246,85 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">操作系统的运行机制与体系结构 （四）</h1>
+            <h1 style="display: none">阿里规约禁止使用java内置Executors创建线程池</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 小时前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201009114046283.png" srcset="/img/loading.gif"></p>
-<h1 id="预备知识：指令"><a href="#预备知识：指令" class="headerlink" title="预备知识：指令"></a>预备知识：指令</h1><p>高级语言代码会被编译/解释之后变成机器语言指令（二进制）</p>
-<p>一条高级语言的代码翻译过来可能会对应多条指令。</p>
-<p><img src="image-20201009114232710.png" srcset="/img/loading.gif"></p>
-<p>上图可以看到，简单的一个让x加1的代码，对应了三条指令。</p>
-<p>所以，指令也就是cpu能识别，执行的最基本的命令。</p>
-<h2 id="两种指令"><a href="#两种指令" class="headerlink" title="两种指令"></a>两种指令</h2><p><img src="image-20201009114400229.png" srcset="/img/loading.gif"></p>
-<p>根据指令的优先级，我们可以把指令分成如上图的两种，特权指令（加法）与非特权指令（开辟空间）。</p>
-<p>特权指令不允许普通用户执行，cpu执行的时候需要判断一下，当前的用户是否可以执行这条指令。</p>
-<h2 id="两种处理器状态"><a href="#两种处理器状态" class="headerlink" title="两种处理器状态"></a>两种处理器状态</h2><p><img src="image-20201009114522933.png" srcset="/img/loading.gif"></p>
-<p>用户态，就是普通用户，无法执行特权指令。核心态，指令都可以执行。</p>
-<p>那么这个状态是用程序状态寄存器（psw）中的某标志位来标识当前处理器应该处于什么状态，如0是用户态，1是内核态。</p>
-<h2 id="两种程序"><a href="#两种程序" class="headerlink" title="两种程序"></a>两种程序</h2><p>内核程序：操作系统的内核程序是系统的管理者，既可以执行特权指令，也可以执行非特权指令，运行在核心态。</p>
-<p>应用程序：为了保证系统安全的运行，普通应用程序只能执行非特权指令，运行在用户态。</p>
-<h2 id="总结回顾指令"><a href="#总结回顾指令" class="headerlink" title="总结回顾指令"></a>总结回顾指令</h2><p><img src="image-20201009114855863.png" srcset="/img/loading.gif"></p>
-<h1 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h1><p><img src="image-20201009143510101.png" srcset="/img/loading.gif"></p>
-<p>时钟管理：实现计时功能</p>
-<p>原语：是一种特殊的程序，是最接近硬件的部分，这种程序的运行具有原子性。</p>
-<p>内核是计算机上的底层软件，是操作系统最基本、最核心的部分。</p>
-<p>实现操作系统内核功能的那些程序就是内核程序。</p>
-<p><img src="image-20201009143659151.png" srcset="/img/loading.gif"></p>
-<h1 id="操作系统的体系结构"><a href="#操作系统的体系结构" class="headerlink" title="操作系统的体系结构"></a>操作系统的体系结构</h1><p><img src="image-20201009143758466.png" srcset="/img/loading.gif"></p>
-<p>分为大内核与微内核。</p>
-<p>大内核：高性能，但是内核代码庞大</p>
-<p>微内核：内核功能少，结构清晰，但是如果需要一些调度，内核态和用户态之间需要频繁的进行切换，性能低。</p>
-<p>这地方的理解就跟公司的管理层一样，大公司组织架构清晰，而小公司的leader可能要处理很多事情。</p>
-<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009144239267.png" srcset="/img/loading.gif"></p>
+              <h1 id="提出几个问题"><a href="#提出几个问题" class="headerlink" title="提出几个问题"></a>提出几个问题</h1><p>1）线程池存在的意义</p>
+<p>2）Executors创建线程池一共几种方式</p>
+<p>3）ThreadPoolExecutor对象</p>
+<p>4）线程池执行的逻辑和线程池参数关系</p>
+<p>5）OOM会发生么</p>
+<p>6）如何定义线程池参数</p>
+<h1 id="线程池的意义"><a href="#线程池的意义" class="headerlink" title="线程池的意义"></a>线程池的意义</h1><p>线程池可以复用线程，每个线程的创建与销毁其实都会耗费资源的，所以有了池的概念，可以节省一些资源。</p>
+<p>1）减少资源创建，减少内存开销</p>
+<p>2）降低系统开销，创建线程需要时间，会延迟处理请求的速度</p>
+<p>3）提高稳定性，避免无限创建线程引起的OOM（outofmemory）</p>
+<h1 id="使用Exectors静态函数创建线程池"><a href="#使用Exectors静态函数创建线程池" class="headerlink" title="使用Exectors静态函数创建线程池"></a>使用Exectors静态函数创建线程池</h1><ul>
+<li><strong>newCachedThreadPool</strong>创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。</li>
+<li><strong>newFixedThreadPool</strong> 创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。</li>
+<li><strong>newScheduledThreadPool</strong> 创建一个定长线程池，支持定时及周期性任务执行。</li>
+<li><strong>newSingleThreadExecutor</strong> 创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。</li>
+</ul>
+<h1 id="Java的线程池"><a href="#Java的线程池" class="headerlink" title="Java的线程池"></a>Java的线程池</h1><p>在探究之前，我们需要明确一下，线程池的创建以及比较核心的七大参数。</p>
+<pre><code class="hljs aspectj"><span class="hljs-keyword">public</span> ThreadPoolExecutor(<span class="hljs-keyword">int</span> corePoolSize,
+                              <span class="hljs-keyword">int</span> maximumPoolSize,
+                              <span class="hljs-keyword">long</span> keepAliveTime,
+                              TimeUnit unit,
+                              BlockingQueue&lt;Runnable&gt; workQueue,
+                              ThreadFactory threadFactory,
+                              RejectedExecutionHandler <span class="hljs-keyword">handler</span>) &#123;
+        <span class="hljs-keyword">if</span> (corePoolSize &lt; <span class="hljs-number">0</span> ||
+            maximumPoolSize &lt;= <span class="hljs-number">0</span> ||
+            maximumPoolSize &lt; corePoolSize ||
+            keepAliveTime &lt; <span class="hljs-number">0</span>)
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException();
+        <span class="hljs-keyword">if</span> (workQueue == <span class="hljs-keyword">null</span> || threadFactory == <span class="hljs-keyword">null</span> || <span class="hljs-keyword">handler</span> == <span class="hljs-keyword">null</span>)
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();
+        <span class="hljs-keyword">this</span>.acc = System.getSecurityManager() == <span class="hljs-keyword">null</span> ?
+                <span class="hljs-keyword">null</span> :
+                AccessController.getContext();
+        <span class="hljs-keyword">this</span>.corePoolSize = corePoolSize;
+        <span class="hljs-keyword">this</span>.maximumPoolSize = maximumPoolSize;
+        <span class="hljs-keyword">this</span>.workQueue = workQueue;
+        <span class="hljs-keyword">this</span>.keepAliveTime = unit.toNanos(keepAliveTime);
+        <span class="hljs-keyword">this</span>.threadFactory = threadFactory;
+        <span class="hljs-keyword">this</span>.<span class="hljs-keyword">handler</span> = <span class="hljs-keyword">handler</span>;
+    &#125;<span class="hljs-keyword">public</span> ThreadPoolExecutor(<span class="hljs-keyword">int</span> corePoolSize,
+                          <span class="hljs-keyword">int</span> maximumPoolSize,
+                          <span class="hljs-keyword">long</span> keepAliveTime,
+                          TimeUnit unit,
+                          BlockingQueue&lt;Runnable&gt; workQueue,
+                          RejectedExecutionHandler <span class="hljs-keyword">handler</span>) &#123;
+    <span class="hljs-keyword">this</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,
+         Executors.defaultThreadFactory(), <span class="hljs-keyword">handler</span>);
+&#125;</code></pre>
+
+<p>corePoolSize: 核心线程数</p>
+<p>maximumPoolSize： 最大线程数</p>
+<p>keepAliveTime： 非核心线程数，多长时间会被销毁</p>
+<p>unit： 时间单位</p>
+<p>workQueue： 任务队列，阻塞队列，用于存放已经提交但是未被执行的任务</p>
+<p>threadFactory：线程工厂，用于创建线程</p>
+<p>handler： 拒绝策略，任务想要添加进入线程池，线程池拒绝该任务所采取的相应策略</p>
+<h1 id="workingQueue任务队列"><a href="#workingQueue任务队列" class="headerlink" title="workingQueue任务队列"></a>workingQueue任务队列</h1><p>1.ArrayBlockingQueue：基于数组结构的有界阻塞队列，FIFO。</p>
+<p>2.LinkedBlockingQueue：基于链表结构的有界阻塞队列，FIFO。</p>
+<p>3.SynchronousQueue：不存储元素的阻塞队列，每个插入操作都必须等待一个移出操作，反之亦然。</p>
+<p>4.PriorityBlockingQueue：具有优先级别的阻塞队列。</p>
+<p>5.DelayedWorkQueue：延迟的阻塞队列。</p>
+<h1 id="handler拒绝策略"><a href="#handler拒绝策略" class="headerlink" title="handler拒绝策略"></a>handler拒绝策略</h1><p>1.AbortPolicy：直接抛出异常，<strong>默认策略</strong></p>
+<p>2.CallerRunsPolicy：用调用者所在的线程来执行任务</p>
+<p>3.DiscardOldestPolicy：丢弃阻塞队列中靠最前的任务，并执行当前任务</p>
+<p>4.DiscardPolicy：直接丢弃任务</p>
+<h1 id="为什么阿里规约要求手动创建线程池"><a href="#为什么阿里规约要求手动创建线程池" class="headerlink" title="为什么阿里规约要求手动创建线程池"></a>为什么阿里规约要求手动创建线程池</h1><p>Executors各个方法的弊端：<br>1）newFixedThreadPool和newSingleThreadExecutor:<br>  主要问题是堆积的请求处理队列可能会耗费非常大的内存，甚至OOM。<br>2）newCachedThreadPool和newScheduledThreadPool:<br>  主要问题是线程数最大数是Integer.MAX_VALUE，可能会创建数量非常多的线程，甚至OOM。</p>
+<p>第一种newFixedThreadPool和newSingleThreadExecutor用的workingQueue都是LinkedBlockingQueue都是无界的阻塞队列，所以如果生产者一直大于消费者，队列不断膨胀，可能会导致内存溢出。</p>
+<p>第二种newCachedThreadPool使用的是SynchronousQueue和newScheduledThreadPool使用的是DelayedWorkQueue。其中maximumPoolSize参数都为Integer.MAX_VALUE，所以空闲线程存活时间为0，当添加任务的速度大于线程池处理任务的速度，可能会创建大量的线程，消耗资源，甚至导致OOM。</p>
+<h1 id="线程池执行任务逻辑"><a href="#线程池执行任务逻辑" class="headerlink" title="线程池执行任务逻辑"></a>线程池执行任务逻辑</h1><p>提交任务，如果当前核心线程没满，创建核心线程执行任务。若满了，看任务队列是否满，若无，添加队列。若已满，创建非核心线程执行任务，如果当前非核心线程也已经满了，那么进入到拒绝策略。</p>
 
             </div>
             <hr>
@@ -291,7 +334,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                      <a class="hover-with-bg" href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
                     
                   </div>
                 
@@ -299,7 +342,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                      <a class="hover-with-bg" href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
                     
                   </div>
                 
@@ -312,18 +355,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/09/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">中断和异常 （五）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95/">
-                        <span class="hidden-mobile">操作系统的发展 （三）</span>
+                      <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
+                        <span class="hidden-mobile">系统调用 （六）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -512,7 +549,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "操作系统的运行机制与体系结构 （四）&nbsp;",
+        "阿里规约禁止使用java内置Executors创建线程池&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
