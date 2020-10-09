@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>操作系统的概念（定义）目标与功能 （一） - 马铭泽的个人博客</title>
+  <title>操作系统的运行机制与体系结构 （四） - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-08 11:02" pubdate>
-        2020年10月8日 上午
+      <time datetime="2020-10-09 11:39" pubdate>
+        2020年10月9日 中午
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      685 字
+      569 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      5
        分钟
     </span>
   
@@ -246,44 +246,42 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">操作系统的概念（定义）目标与功能 （一）</h1>
+            <h1 style="display: none">操作系统的运行机制与体系结构 （四）</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="大家都熟悉的操作系统"><a href="#大家都熟悉的操作系统" class="headerlink" title="大家都熟悉的操作系统"></a>大家都熟悉的操作系统</h1><p>如下图，我们可以看到常用的操作系统。不管是pc端还是移动端。</p>
-<p><img src="image-20201008110624343.png" srcset="/img/loading.gif"></p>
-<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201008110710543.png" srcset="/img/loading.gif"></p>
-<h1 id="操作系统的概念和定义"><a href="#操作系统的概念和定义" class="headerlink" title="操作系统的概念和定义"></a>操作系统的概念和定义</h1><p>一台电脑的诞生：一台裸机  ——》 安装windows操作系统 ——》安装游戏 ——》启动游戏进行游戏</p>
-<p>硬件有我们的cpu/内存/硬盘</p>
-<p>应用程序有我们常用的微信QQ百度云</p>
-<p>那么操作系统的概念与定义我们可想而知。</p>
-<p>1）负责管理协同硬件/软件等计算机资源的工作</p>
-<p>2）为上层的应用程序，用户提高简单易用的服务</p>
-<p>3）操作系统是系统软件，不是硬件</p>
-<p>结合以上三条就是：</p>
-<p><strong>操作系统是指控制和管理整个计算机系统的硬件和软件资源，并合理组织调度计算机的工作和资源的分配，以提供给用户和其他软件方便的接口和环境，它是计算机中最基本的系统软件。</strong></p>
-<p><img src="image-20201008110858123.png" srcset="/img/loading.gif"></p>
-<h1 id="操作系统的功能和目标"><a href="#操作系统的功能和目标" class="headerlink" title="操作系统的功能和目标"></a>操作系统的功能和目标</h1><h2 id="作为系统资源的管理者"><a href="#作为系统资源的管理者" class="headerlink" title="作为系统资源的管理者"></a>作为系统资源的管理者</h2><p>补充一个小知识，如果我们使用QQ与朋友进行聊天。</p>
-<p>第一步：找到QQ文件的位置（路径） <strong>文件管理</strong> 打开找到QQ.exe这个程序的存放位置</p>
-<p>第二步：双击打开exe文件  <strong>存储器管理</strong> 需要把相应的程序加载到内存中</p>
-<p>第三步：QQ程序开始运行 <strong>处理器管理</strong> 对应的进程被处理器管理</p>
-<p>第四步：开始使用QQ聊天 <strong>设备管理</strong> 分配给QQ聊天（就比如我们使用牛客网进行面试的时候，只能一个网页开启视频）</p>
-<h2 id="作为用户和计算机硬件之间的接口"><a href="#作为用户和计算机硬件之间的接口" class="headerlink" title="作为用户和计算机硬件之间的接口"></a>作为用户和计算机硬件之间的接口</h2><p>命令接口： 允许用户使用</p>
-<p>程序接口： 允许用户通过程序间接调用</p>
-<p>gui： 图像化界面</p>
-<h3 id="命令接口"><a href="#命令接口" class="headerlink" title="命令接口"></a>命令接口</h3><p>联机命令接口：用户说一句，系统做一句。cmd</p>
-<p>脱机命令接口：用户说一堆，系统做一堆。shell脚本</p>
-<h3 id="程序接口"><a href="#程序接口" class="headerlink" title="程序接口"></a>程序接口</h3><p>允许用户通过程序间接调用，由一组系统调用组成（程序接口=系统调用）</p>
-<p>程序中调用user32.dll（该调用过程为系统调用，系统调用又称为广义指令）</p>
-<h3 id="gui图形用户界面"><a href="#gui图形用户界面" class="headerlink" title="gui图形用户界面"></a>gui图形用户界面</h3><p>不需要参数，只需要鼠标与键盘的配合即可</p>
-<h2 id="作为最接近硬件的层次"><a href="#作为最接近硬件的层次" class="headerlink" title="作为最接近硬件的层次"></a>作为最接近硬件的层次</h2><p>通常把覆盖软件的机器成为扩充机器，又称之为虚拟机。</p>
-<p>硬件都是一些零零散散的，而操作系统就可以利用这些硬件工具做想做的事情，封装思想。</p>
-<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201008140933785.png" srcset="/img/loading.gif"></p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201009114046283.png" srcset="/img/loading.gif"></p>
+<h1 id="预备知识：指令"><a href="#预备知识：指令" class="headerlink" title="预备知识：指令"></a>预备知识：指令</h1><p>高级语言代码会被编译/解释之后变成机器语言指令（二进制）</p>
+<p>一条高级语言的代码翻译过来可能会对应多条指令。</p>
+<p><img src="image-20201009114232710.png" srcset="/img/loading.gif"></p>
+<p>上图可以看到，简单的一个让x加1的代码，对应了三条指令。</p>
+<p>所以，指令也就是cpu能识别，执行的最基本的命令。</p>
+<h2 id="两种指令"><a href="#两种指令" class="headerlink" title="两种指令"></a>两种指令</h2><p><img src="image-20201009114400229.png" srcset="/img/loading.gif"></p>
+<p>根据指令的优先级，我们可以把指令分成如上图的两种，特权指令（加法）与非特权指令（开辟空间）。</p>
+<p>特权指令不允许普通用户执行，cpu执行的时候需要判断一下，当前的用户是否可以执行这条指令。</p>
+<h2 id="两种处理器状态"><a href="#两种处理器状态" class="headerlink" title="两种处理器状态"></a>两种处理器状态</h2><p><img src="image-20201009114522933.png" srcset="/img/loading.gif"></p>
+<p>用户态，就是普通用户，无法执行特权指令。核心态，指令都可以执行。</p>
+<p>那么这个状态是用程序状态寄存器（psw）中的某标志位来标识当前处理器应该处于什么状态，如0是用户态，1是内核态。</p>
+<h2 id="两种程序"><a href="#两种程序" class="headerlink" title="两种程序"></a>两种程序</h2><p>内核程序：操作系统的内核程序是系统的管理者，既可以执行特权指令，也可以执行非特权指令，运行在核心态。</p>
+<p>应用程序：为了保证系统安全的运行，普通应用程序只能执行非特权指令，运行在用户态。</p>
+<h2 id="总结回顾指令"><a href="#总结回顾指令" class="headerlink" title="总结回顾指令"></a>总结回顾指令</h2><p><img src="image-20201009114855863.png" srcset="/img/loading.gif"></p>
+<h1 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h1><p><img src="image-20201009143510101.png" srcset="/img/loading.gif"></p>
+<p>时钟管理：实现计时功能</p>
+<p>原语：是一种特殊的程序，是最接近硬件的部分，这种程序的运行具有原子性。</p>
+<p>内核是计算机上的底层软件，是操作系统最基本、最核心的部分。</p>
+<p>实现操作系统内核功能的那些程序就是内核程序。</p>
+<p><img src="image-20201009143659151.png" srcset="/img/loading.gif"></p>
+<h1 id="操作系统的体系结构"><a href="#操作系统的体系结构" class="headerlink" title="操作系统的体系结构"></a>操作系统的体系结构</h1><p><img src="image-20201009143758466.png" srcset="/img/loading.gif"></p>
+<p>分为大内核与微内核。</p>
+<p>大内核：高性能，但是内核代码庞大</p>
+<p>微内核：内核功能少，结构清晰，但是如果需要一些调度，内核态和用户态之间需要频繁的进行切换，性能低。</p>
+<p>这地方的理解就跟公司的管理层一样，大公司组织架构清晰，而小公司的leader可能要处理很多事情。</p>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009144239267.png" srcset="/img/loading.gif"></p>
 
             </div>
             <hr>
@@ -314,18 +312,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">操作系统的四个特征 （二）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/06/hello-world/">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95/">
+                        <span class="hidden-mobile">操作系统的发展 （三）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -514,7 +506,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "操作系统的概念（定义）目标与功能 （一）&nbsp;",
+        "操作系统的运行机制与体系结构 （四）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
