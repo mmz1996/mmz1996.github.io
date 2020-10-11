@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>中断和异常 （五） - 马铭泽的个人博客</title>
+  <title>进程的定义，组成，组织方式，特征 - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-09 14:52" pubdate>
-        2020年10月9日 下午
+      <time datetime="2020-10-11 16:01" pubdate>
+        2020年10月11日 下午
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      602 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      6
        分钟
     </span>
   
@@ -246,34 +246,40 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">中断和异常 （五）</h1>
+            <h1 style="display: none">进程的定义，组成，组织方式，特征</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201009145255238.png" srcset="/img/loading.gif" alt="image-20201009145255238"></p>
-<h1 id="中断机制的诞生"><a href="#中断机制的诞生" class="headerlink" title="中断机制的诞生"></a>中断机制的诞生</h1><p>早起的计算机，比如博文操作系统的发展讲解的，单道处理系统，一次只能处理一个程序。所以各个程序只能串行的执行，系统资源利用率比较低。</p>
-<p>为了解决上述问题，人们发明了操作系统（作为计算机的管理者），引入中断机制，实现了多道程序并发执行。</p>
-<p>本质：发生中断就意味着需要操作系统介入，开展管理工作。</p>
-<p>举个例子，如果有多道程序运行，会有一个计时器，记录运行的时间。cpu收到计时部件发出的中断信号，切换为核心态为中断信号进行处理。操作系统内核会对中断信号进行处理，接受之后发现进程一的时间片时间到了，轮到进程二执行。进程二运行之后，发出系统调用（内中断信号），请求输出。cpu切换到内核态，对中断进行处理。进程二暂停等到打印机IO，换到进程三运行。等到打印机IO完成，设备向cpu发送外中断信号，cpu接收到io设备发来的中断信号，切换为核心态对中断进行处理。</p>
-<h1 id="中断的概念和应用"><a href="#中断的概念和应用" class="headerlink" title="中断的概念和应用"></a>中断的概念和应用</h1><p>中断发生后，cpu会从用户态进入到内核态</p>
-<p>中断发生后，当前运行的进程暂停运行，并由操作系统内核对中断进行处理</p>
-<p>对于不同的中断信号，会进行不同的处理</p>
-<p>发生了中断，就意味着操作系统介入，开展管理工作，由于操作系统的管理工作（比如进程切换、分配io设备等）需要使用特权指令，因此cpu要从用户态转换为内核态，中断可以使cpu从用户态切换为核心态，使操作系统或得计算机的控制权。有了中断，才能实现多道程序并发执行。</p>
-<p>用户态到核心态的切换，只能通过中断实现的，并且是唯一的方式。</p>
-<p>核心态到用户态的转换，通过程序状态字psw标志位标识的。</p>
-<h1 id="中断的分类"><a href="#中断的分类" class="headerlink" title="中断的分类"></a>中断的分类</h1><p><img src="image-20201009170728978.png" srcset="/img/loading.gif" alt="image-20201009170728978"></p>
-<h2 id="外中断处理过程"><a href="#外中断处理过程" class="headerlink" title="外中断处理过程"></a>外中断处理过程</h2><p><img src="image-20201009171311786.png" srcset="/img/loading.gif" alt="image-20201009171311786"></p>
-<p>执行完每一个指令的时候，cpu都要检查当前是否有外部中断信号。</p>
-<p>如果检测到了外部中断信号，则需要保护被中断进程的cpu环境（程序状态字psw，程序计数器pc，各种寄存器状态）</p>
-<p>根据中断信号类型转入相应的中断处理程序</p>
-<p>恢复原进程的cpu环境并退出中断，返回原进程继续往下执行</p>
-<h1 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h1><p>内核态与用户态是操作系统的两种运行级别,跟intel cpu没有必然的联系, intel cpu提供Ring0-Ring3三种级别的运行模式，Ring0级别最高，Ring3最低。Linux使用了Ring3级别运行用户态，Ring0作为 内核态，没有使用Ring1和Ring2。Ring3状态不能访问Ring0的地址空间，包括代码和数据。Linux进程的4GB地址空间，3G-4G部 分大家是共享的，是内核态的地址空间，这里存放在整个内核的代码和所有的内核模块，以及内核所维护的数据。用户运行一个程序，该程序所创建的进程开始是运 行在用户态的，如果要执行文件操作，网络数据发送等操作，必须通过write，send等系统调用，这些系统调用会调用内核中的代码来完成操作，这时，必 须切换到Ring0，然后进入3GB-4GB中的内核地址空间去执行这些代码完成操作，完成后，切换回Ring3，回到用户态。这样，用户态的程序就不能 随意操作内核地址空间，具有一定的安全保护作用。</p>
-<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009171956319.png" srcset="/img/loading.gif" alt="image-20201009171956319"></p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201011160211832.png" srcset="/img/loading.gif"></p>
+<h1 id="进程的定义"><a href="#进程的定义" class="headerlink" title="进程的定义"></a>进程的定义</h1><p>程序：就是一个指令序列</p>
+<p>早起计算机的时候，只支持单道程序，内存里面只有一个程序在跑，分为程序段（程序代码）和数据段（变量）。</p>
+<p>引入多道程序之后，内存可以有多道程序运行，各个程序的代码、运算数据存放的位置不同，操作系统需要怎么才能找到程序的存放位置呢。</p>
+<p>操作系统在每一个进程执行之前，都会创建一个叫PCB（进程控制块）的这样的一个东西，用来描述进程当前的信息。</p>
+<p>程序段，数据段，pcb三部分组成了进程实体（进程映像）。一般情况下，我们把进程实体就简称为进程，例如：所谓创建进程，实质上创建进程实体中的pcb，而撤销进程，实质上也是撤销进程实体中的pcb</p>
+<p>注意：<strong>pcb是进程存在的唯一标志</strong></p>
+<p>进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位。</p>
+<h1 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h1><h2 id="程序段"><a href="#程序段" class="headerlink" title="程序段"></a>程序段</h2><p>代码本身，指令序列</p>
+<h2 id="数据段"><a href="#数据段" class="headerlink" title="数据段"></a>数据段</h2><p>程序运行时使用、产生的运算数据。如全局变量，局部变量，宏定义的常量都存放在数据段内。</p>
+<h2 id="PCB"><a href="#PCB" class="headerlink" title="PCB"></a>PCB</h2><p>操作系统通过pcb来管理进程，因此pcb中应该包含操作系统对其进程管理所需的各种信息（相当于进程运行的元信息）。</p>
+<p><img src="image-20201011161046798.png" srcset="/img/loading.gif"></p>
+<h1 id="进程的组织"><a href="#进程的组织" class="headerlink" title="进程的组织"></a>进程的组织</h1><p>在一个系统中，通常有十级到千级的pcb，为了能对他们加以有效的管理，应该用适当的方式把这些pcb组织起来。</p>
+<p>上面讲到的，进程的组成是哪几个部分组成了进程，进程的组织，是讲多进程之间的组织方式</p>
+<p>一共分为两种：链接方式和索引方式</p>
+<p><img src="image-20201011161413822.png" srcset="/img/loading.gif"></p>
+<h2 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h2><p><img src="image-20201011161508401.png" srcset="/img/loading.gif"></p>
+<p>一共有三种指针，</p>
+<p>执行指针：指向当前处于就绪态的进程</p>
+<p>就绪队列指针：当前排队的进程，会根据优先级高低进行排列</p>
+<p>阻塞队列指针：指向当前处阻塞态的进程</p>
+<h2 id="索引方式"><a href="#索引方式" class="headerlink" title="索引方式"></a>索引方式</h2><p>同样也有三个指针，只不过指向的是一个表，而表中还会指向相应的pcb</p>
+<p><img src="image-20201011162142337.png" srcset="/img/loading.gif"></p>
+<h1 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h1><p><img src="image-20201011162208795.png" srcset="/img/loading.gif"></p>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201011162418120.png" srcset="/img/loading.gif"></p>
 
             </div>
             <hr>
@@ -304,18 +310,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">系统调用 （六）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
-                        <span class="hidden-mobile">操作系统的运行机制与体系结构 （四）</span>
+                      <a href="/2020/10/09/%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8java%E5%86%85%E7%BD%AEExecutors%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                        <span class="hidden-mobile">阿里规约禁止使用java内置Executors创建线程池</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -504,7 +504,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "中断和异常 （五）&nbsp;",
+        "进程的定义，组成，组织方式，特征&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
