@@ -4,6 +4,46 @@
   
   
   <entry>
+    <title>1.两数之和</title>
+    <link href="/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <url>/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>`class Solution {</p><p>  public int[] twoSum(int[] nums, int target) {</p><p>​    if(nums == null || nums.length&lt;=0){</p><p>​      return new int[2];</p><p>​    }</p><p>​    HashMap&lt;Integer,Integer&gt; hashmap = new HashMap&lt;&gt;();</p><p>​    for(int i = 0;i&lt;nums.length;++i){</p><p>​      if(hashmap.containsKey(target-nums[i])){</p><p>​        return new int[]{i,hashmap.get(target-nums[i])};</p><p>​      }else{</p><p>​        hashmap.put(nums[i],i);</p><p>​      }</p><p>​    }</p><p>​    return new int[2];</p><p>  }</p><p>}`</p><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>就是用hashmap记录一下值，如果target-当前值存在于hashmap中，那么直接返回包括这两个数的索引。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>进程的状态与转换</title>
+    <link href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2/"/>
+    <url>/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>进程的定义，组成，组织方式，特征</title>
     <link href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/"/>
     <url>/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/</url>
