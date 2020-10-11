@@ -17,10 +17,23 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>分类 - 马铭泽的个人博客</title>
+  <title>5.最长回文子串 - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -149,7 +162,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('/img/bg/4.png') no-repeat center center;
+         style="background: url('/img/bg/8.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -157,6 +170,56 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-11 22:35" pubdate>
+        2020年10月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      156 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -173,240 +236,125 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">5.最长回文子串</h1>
+            
+              <p class="note note-info">
                 
+                  本文最后更新于：7 分钟前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>`class Solution {</p>
+<p>  public String longestPalindrome(String s) {</p>
+<p>​    if(s == null || s.length()&lt;=0){</p>
+<p>​      return “”;</p>
+<p>​    }</p>
+<p>​    int length = 0;</p>
+<p>​    String result = “”;</p>
+<p>​    for(int i = 0;i&lt;s.length();++i){</p>
+<p>​      String a = core(i,i,s);</p>
+<p>​      String b = core(i,i+1,s);</p>
+<p>​      String temp = a.length()&gt;b.length()?a:b;</p>
+<p>​      if(temp.length() &gt; length){</p>
+<p>​        result = temp;</p>
+<p>​        length = temp.length();</p>
+<p>​      }</p>
+<p>​    }</p>
+<p>​    return result;</p>
+<p>  }</p>
+<p>  public String core(int left,int right,String s){</p>
+<p>​    while(left&gt;=0 &amp;&amp; right&lt;s.length() &amp;&amp; s.charAt(left) == s.charAt(right)){</p>
+<p>​      left–;</p>
+<p>​      right++;</p>
+<p>​    }</p>
+<p>​    return s.substring(left+1,right);</p>
+<p>  }</p>
+<p>}`</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>在于substring的这个函数你需要的left+1这个参数，包括开始索引，到结束索引的前一个（所以就是不包含最后的索引），其他没有什么想要说的。</p>
 
-
-
-
-
-
-
-<div class="category-list">
-  
-  
-  
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckg58ahv2000q8kum3gzb0atu" role="tab" data-toggle="collapse" href="#collapse-ckg58ahv2000q8kum3gzb0atu"
-        aria-expanded="false"
-      >
-        操作系统
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>7</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckg58ahv2000q8kum3gzb0atu" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckg58ahv2000q8kum3gzb0atu">
-    
-    
-    
-      
-      
-        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/" class="list-group-item list-group-item-action">
-          <span class="category-post">进程的定义，组成，组织方式，特征</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="list-group-item list-group-item-action">
-          <span class="category-post">系统调用 （六）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/09/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/" class="list-group-item list-group-item-action">
-          <span class="category-post">中断和异常 （五）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="list-group-item list-group-item-action">
-          <span class="category-post">操作系统的运行机制与体系结构 （四）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95/" class="list-group-item list-group-item-action">
-          <span class="category-post">操作系统的发展 （三）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/" class="list-group-item list-group-item-action">
-          <span class="category-post">操作系统的四个特征 （二）</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%AE%9A%E4%B9%89%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%8A%9F%E8%83%BD/" class="list-group-item list-group-item-action">
-          <span class="category-post">操作系统的概念（定义）目标与功能 （一）</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckg58ahun00038kumdj9l2so5" role="tab" data-toggle="collapse" href="#collapse-ckg58ahun00038kumdj9l2so5"
-        aria-expanded="false"
-      >
-        力扣
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E5%8A%9B%E6%89%A3/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>4</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckg58ahun00038kumdj9l2so5" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckg58ahun00038kumdj9l2so5">
-    
-    
-    
-      
-      
-        <a href="/2020/10/11/5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" class="list-group-item list-group-item-action">
-          <span class="category-post">5.最长回文子串</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/11/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/" class="list-group-item list-group-item-action">
-          <span class="category-post">3.无重复字符的最长子串</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/11/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" class="list-group-item list-group-item-action">
-          <span class="category-post">2.两数相加</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="list-group-item list-group-item-action">
-          <span class="category-post">1.两数之和</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckg58ahuz000j8kumcxnx7qrx" role="tab" data-toggle="collapse" href="#collapse-ckg58ahuz000j8kumcxnx7qrx"
-        aria-expanded="false"
-      >
-        程序人生
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckg58ahuz000j8kumcxnx7qrx" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckg58ahuz000j8kumcxnx7qrx">
-    
-    
-    
-      
-      
-        <a href="/2020/10/06/hello-world/" class="list-group-item list-group-item-action">
-          <span class="category-post">Hello World</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-ckg58ahvd001g8kumcvow8i9y" role="tab" data-toggle="collapse" href="#collapse-ckg58ahvd001g8kumcvow8i9y"
-        aria-expanded="false"
-      >
-        线程池
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse">
-        
-          
-  <div id="collapse-ckg58ahvd001g8kumcvow8i9y" class="collapse in" role="tabpanel"
-       aria-labelledby="heading-ckg58ahvd001g8kumcvow8i9y">
-    
-    
-    
-      
-      
-        <a href="/2020/10/09/%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8java%E5%86%85%E7%BD%AEExecutors%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0/" class="list-group-item list-group-item-action">
-          <span class="category-post">阿里规约禁止使用java内置Executors创建线程池</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-</div>
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+                    
+                      <a class="hover-with-bg" href="/tags/mid/">mid</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/11/7-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">7.整数反转</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/11/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">
+                        <span class="hidden-mobile">3.无重复字符的最长子串</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -534,6 +482,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -541,7 +514,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "寄蜉蝣于天地，渺沧海之一粟。&nbsp;",
+        "5.最长回文子串&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
@@ -556,6 +529,21 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -569,6 +557,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 

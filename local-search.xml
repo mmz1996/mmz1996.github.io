@@ -4,6 +4,100 @@
   
   
   <entry>
+    <title>7.整数反转</title>
+    <link href="/2020/10/11/7-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/"/>
+    <url>/2020/10/11/7-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>5.最长回文子串</title>
+    <link href="/2020/10/11/5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"/>
+    <url>/2020/10/11/5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>`class Solution {</p><p>  public String longestPalindrome(String s) {</p><p>​    if(s == null || s.length()&lt;=0){</p><p>​      return “”;</p><p>​    }</p><p>​    int length = 0;</p><p>​    String result = “”;</p><p>​    for(int i = 0;i&lt;s.length();++i){</p><p>​      String a = core(i,i,s);</p><p>​      String b = core(i,i+1,s);</p><p>​      String temp = a.length()&gt;b.length()?a:b;</p><p>​      if(temp.length() &gt; length){</p><p>​        result = temp;</p><p>​        length = temp.length();</p><p>​      }</p><p>​    }</p><p>​    return result;</p><p>  }</p><p>  public String core(int left,int right,String s){</p><p>​    while(left&gt;=0 &amp;&amp; right&lt;s.length() &amp;&amp; s.charAt(left) == s.charAt(right)){</p><p>​      left–;</p><p>​      right++;</p><p>​    }</p><p>​    return s.substring(left+1,right);</p><p>  }</p><p>}`</p><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>在于substring的这个函数你需要的left+1这个参数，包括开始索引，到结束索引的前一个（所以就是不包含最后的索引），其他没有什么想要说的。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>3.无重复字符的最长子串</title>
+    <link href="/2020/10/11/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/"/>
+    <url>/2020/10/11/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>`class Solution {</p><p>  public int lengthOfLongestSubstring(String s) {</p><p>​    if(s == null || s.length()&lt;=0){</p><p>​      return 0;</p><p>​    }</p><p>​    HashMap&lt;Character,Integer&gt; hashmap = new HashMap&lt;&gt;();</p><p>​    int max = 0;</p><p>​    int tmp = 0;</p><p>​    for(int i = 0;i&lt;s.length();++i){</p><p>​      int temp = hashmap.getOrDefault(s.charAt(i),-1);</p><p>​      tmp = i-temp&gt;tmp?tmp+1:i-temp;</p><p>​      max = Math.max(max,tmp);</p><p>​      hashmap.put(s.charAt(i),i);</p><p>​    }</p><p>​    return max;</p><p>  }</p><p>}`</p><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>其实这是一道动态规划的题，只不过加入了hashmap每次记录上一次单词出现的位置。</p><p>当前位置-上一次单词出现的位置与tmp中间量作为比较。如果大于，说明上一个单词不在当前的tmp中了，所以tmp+1；如果小于，说明上一个单词在tmp中，那么相当于进行了一次替换。</p><p>最后max是中间变量，从头到尾贯彻，作为最大值。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>2.两数相加</title>
+    <link href="/2020/10/11/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/"/>
+    <url>/2020/10/11/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>`/**</p><p> * Definition for singly-linked list.</p><p> * public class ListNode {</p><p> *   int val;</p><p> *   ListNode next;</p><p> *   ListNode() {}</p><p> *   ListNode(int val) { this.val = val; }</p><p> *   ListNode(int val, ListNode next) { this.val = val; this.next = next; }</p><p> * }</p><p> */</p><p>class Solution {</p><p>  public ListNode addTwoNumbers(ListNode l1, ListNode l2) {</p><p>​    if(l1 == null &amp;&amp; l2 == null){</p><p>​      return null;</p><p>​    }</p><p>​    ListNode result = new ListNode(-1);</p><p>​    ListNode pre = result;</p><p>​    int flag = 0;</p><p>​    while(l1 != null || l2 != null){</p><p>​      int val1 = l1 == null ?0:l1.val;</p><p>​      int val2 = l2 == null ?0:l2.val;</p><p>​      int temp = val1+val2+flag;</p><p>​      ListNode newnode = new ListNode(temp%10);</p><p>​      flag = temp / 10;</p><p>​      pre.next = newnode;</p><p>​      pre = pre.next;</p><p>​      if(l1 != null){</p><p>​        l1 = l1.next;</p><p>​      }</p><p>​      if(l2 != null){</p><p>​        l2 = l2.next;</p><p>​      }</p><p>​    }</p><p>​    if(flag == 1){</p><p>​      ListNode newnode = new ListNode(1);</p><p>​      pre.next =newnode;</p><p>​    }</p><p>​    return result.next;</p><p>  }</p><p>}`</p><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>没什么好说的，就是一开始用result作为最后输出的结尾，然后while的判断逻辑是l1,l2是否为空，最后判断一下当前的flag</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>1.两数之和</title>
     <link href="/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
     <url>/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/</url>

@@ -188,6 +188,218 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">操作系统的运行机制与体系结构 （四）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6%E4%B8%8E%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">
+          
+          
+            
+          
+          知识总览
+预备知识：指令高级语言代码会被编译/解释之后变成机器语言指令（二进制）
+一条高级语言的代码翻译过来可能会对应多条指令。
+
+上图可以看到，简单的一个让x加1的代码，对应了三条指令。
+所以，指令也就是cpu能识别，执行的最基本的命令。
+两种指令
+根据指令的优先级，我们可以把指令分成如上图的两种，特权指令（加法）与非特权指令（开辟空间）。
+特权指令不允许普通用户执行，cpu执行的时候需要判断一
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-09 11:39" pubdate>
+              2020-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95/">操作系统的发展 （三）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8F%91%E5%B1%95/">
+          
+          
+            
+          
+          知识总览
+手工操作阶段计算机能识别二进制数（01），把数写在纸带机上，让计算机进行读取，处理之后，再输出纸带机上，最后输出。计算机的处理速度快，但是纸带机速度很慢，这样cpu空闲时间很多。另外，程序用纸袋机，这样不太方便。人机速度矛盾导致资源利用率低。
+单道批处理阶段引入脱机输入/输出技术（用磁带完成）并监督程序负责控制作业的输入/输出，速度比纸带机快很多。
+单道批处理系统的优点：缓解了一定程度的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-08 23:02" pubdate>
+              2020-10-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/">操作系统的四个特征 （二）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9B%9B%E4%B8%AA%E7%89%B9%E5%BE%81/">
+          
+          
+            
+          
+          知识总览
+并发和共享是最基本的两个特征，二者互为存在条件。
+并发并发是指两个或者多个事件在同一个时间间隔内发生，这些事件宏观上是同时发生的，但是在微观上其实是互相交替发生的（一个cpu运行两个进程）。
+特别注意的是并行，指两个或者多个事件在同一时刻同时发生（双核cpu执行两个进程）。
+操作系统的并发性，是指计算机系统中同时存在着多个运行着的程序。
+一个单核处理机（cpu）同一时刻只能执行一个程序，
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-08 22:31" pubdate>
+              2020-10-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%AE%9A%E4%B9%89%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%8A%9F%E8%83%BD/">操作系统的概念（定义）目标与功能 （一）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%AE%9A%E4%B9%89%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%8A%9F%E8%83%BD/">
+          
+          
+            
+          
+          大家都熟悉的操作系统如下图，我们可以看到常用的操作系统。不管是pc端还是移动端。
+
+知识总览
+操作系统的概念和定义一台电脑的诞生：一台裸机  ——》 安装windows操作系统 ——》安装游戏 ——》启动游戏进行游戏
+硬件有我们的cpu/内存/硬盘
+应用程序有我们常用的微信QQ百度云
+那么操作系统的概念与定义我们可想而知。
+1）负责管理协同硬件/软件等计算机资源的工作
+2）为上层的应用程序，用户提
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-08 11:02" pubdate>
+              2020-10-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/10/06/hello-world/">Hello World</a>
       </h1>
 
