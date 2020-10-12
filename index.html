@@ -188,61 +188,22 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/11/7-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/">7.整数反转</a>
+        <a href="/2020/10/12/33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/">33.搜索旋转排序数组</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/11/7-%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/">
-          
-          
-            
-          
-          
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 22:48" pubdate>
-              2020-10-11
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/11/5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">5.最长回文子串</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/11/5-%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/">
+        <a href="/2020/10/12/33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/">
           
           
             
           
           题解class Solution &#123;
-
-  public String longestPalindrome(String s) &#123;
-
-​    if(s == null || s.length()&lt;=0)&#123;
-
-​      return &quot;&quot;;
-
-​    &#125;
-
-​    int length = 0;
-
-​    String r
+    public int search(int[] nums, int target) &#123;
+        if(nums == null || nums.length &lt;=0)&#123;
+            return -1;
+        &#125;
+        int left = 0;
+        in
         </a>
       </p>
 
@@ -250,8 +211,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 22:35" pubdate>
-              2020-10-11
+            <time datetime="2020-10-12 18:33" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -282,26 +243,22 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/11/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">3.无重复字符的最长子串</a>
+        <a href="/2020/10/12/31-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/">31.下一个排列</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/11/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/">
+        <a href="/2020/10/12/31-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/">
           
           
             
           
           题解class Solution &#123;
-
-  public int lengthOfLongestSubstring(String s) &#123;
-
-​    if(s == null || s.length()&lt;=0)&#123;
-
-​      return 0;
-
-​    &#125;
-
-​    HashMap&lt;Character,Integer&gt; hash
+    public void nextPermutation(int[] nums) &#123;
+        if(nums == null || nums.length&lt;=0)&#123;
+            return;
+        &#125;
+        int index = -1;
+        for(in
         </a>
       </p>
 
@@ -309,8 +266,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 22:27" pubdate>
-              2020-10-11
+            <time datetime="2020-10-12 18:14" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -341,87 +298,22 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/11/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/">2.两数相加</a>
+        <a href="/2020/10/12/26-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">26.删除排序数组中的重复项</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/11/2-%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/">
-          
-          
-            
-          
-          题解/**
-
- \* Definition for singly-linked list.
-
- \* public class ListNode &#123;
-
- \*   int val;
-
- \*   ListNode next;
-
- \*   ListNode() &#123;&#125;
-
- \*   ListNode(int val) &#123; this.val = val; &#1
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 22:19" pubdate>
-              2020-10-11
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-              <a href="/tags/mid/">mid</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">1.两数之和</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/11/1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/">
+        <a href="/2020/10/12/26-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">
           
           
             
           
           题解class Solution &#123;
-
-  public int[] twoSum(int[] nums, int target) &#123;
-
-​    if(nums == null || nums.length&lt;=0)&#123;
-
-​      return new int[2];
-
-​    &#125;
-
-​    HashMap&lt;Integer,Integer
+    public int removeDuplicates(int[] nums) &#123;
+        if(nums == null || nums.length &lt;=0)&#123;
+            return 0;
+        &#125;
+        int j = 0;
+        for(int 
         </a>
       </p>
 
@@ -429,8 +321,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 22:10" pubdate>
-              2020-10-11
+            <time datetime="2020-10-12 18:08" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -461,16 +353,23 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2/">进程的状态与转换</a>
+        <a href="/2020/10/12/24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">24.两两交换链表中的节点</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2/">
+        <a href="/2020/10/12/24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">
           
           
             
           
-          
+          题解/**
+ * Definition for singly-linked list.
+ * public class ListNode &#123;
+ *     int val;
+ *     ListNode next;
+ *     ListNode() &#123;&#125;
+ *     ListNode(int val) &#123; this.val = val; &#125;
+
         </a>
       </p>
 
@@ -478,46 +377,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 16:28" pubdate>
-              2020-10-11
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/">进程的定义，组成，组织方式，特征</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/">
-          
-          
-            
-          
-          知识总览
-进程的定义程序：就是一个指令序列
-早起计算机的时候，只支持单道程序，内存里面只有一个程序在跑，分为程序段（程序代码）和数据段（变量）。
-引入多道程序之后，内存可以有多道程序运行，各个程序的代码、运算数据存放的位置不同，操作系统需要怎么才能找到程序的存放位置呢。
-操作系统在每一个进程执行之前，都会创建一个叫PCB（进程控制块）的这样的一个东西，用来描述进程当前的信息。
-程序段，数据段，pc
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-11 16:01" pubdate>
-              2020-10-11
+            <time datetime="2020-10-12 18:07" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -525,7 +386,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
             
           </div>
         
@@ -533,7 +394,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/mid/">mid</a>
             
           </div>
         
@@ -546,24 +409,23 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/09/%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8java%E5%86%85%E7%BD%AEExecutors%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">阿里规约禁止使用java内置Executors创建线程池</a>
+        <a href="/2020/10/12/23-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8/">23.合并k个升序链表</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/09/%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8java%E5%86%85%E7%BD%AEExecutors%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+        <a href="/2020/10/12/23-%E5%90%88%E5%B9%B6k%E4%B8%AA%E5%8D%87%E5%BA%8F%E9%93%BE%E8%A1%A8/">
           
           
             
           
-          提出几个问题1）线程池存在的意义
-2）Executors创建线程池一共几种方式
-3）ThreadPoolExecutor对象
-4）线程池执行的逻辑和线程池参数关系
-5）OOM会发生么
-6）如何定义线程池参数
-线程池的意义线程池可以复用线程，每个线程的创建与销毁其实都会耗费资源的，所以有了池的概念，可以节省一些资源。
-1）减少资源创建，减少内存开销
-2）降低系统开销，创建线程需要时间，会延迟处理请求
+          题解/**
+ * Definition for singly-linked list.
+ * public class ListNode &#123;
+ *     int val;
+ *     ListNode next;
+ *     ListNode() &#123;&#125;
+ *     ListNode(int val) &#123; this.val = val; &#125;
+
         </a>
       </p>
 
@@ -571,8 +433,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-09 21:53" pubdate>
-              2020-10-09
+            <time datetime="2020-10-12 17:53" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -580,7 +442,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
             
           </div>
         
@@ -588,7 +450,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/hard/">hard</a>
             
           </div>
         
@@ -601,19 +465,22 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">系统调用 （六）</a>
+        <a href="/2020/10/12/20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">20.有效的括号</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
+        <a href="/2020/10/12/20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/">
           
           
             
           
-          知识总览
-系统调用的作用操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，主要包括命令接口和程序接口，其中，程序接口由一组系统调用组成。
-供给应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。
-应用程序通过系统调用请求操作系统的服务，系统中各种共享资源都由操作系统统一掌管，因此在用户程序中，凡是与资源有关的操作（如存储分配，IO操作，文件管理等），都必
+          题解class Solution &#123;
+    public boolean isValid(String s) &#123;
+        if(s == null || s.length() &lt;=0)&#123;
+            return false;
+        &#125;
+
+        Stack&lt;Character&gt; stack = ne
         </a>
       </p>
 
@@ -621,8 +488,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-09 20:54" pubdate>
-              2020-10-09
+            <time datetime="2020-10-12 17:51" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -630,7 +497,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
             
           </div>
         
@@ -638,7 +505,9 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+              <a href="/tags/easy/">easy</a>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
             
           </div>
         
@@ -651,20 +520,23 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/09/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">中断和异常 （五）</a>
+        <a href="/2020/10/12/19-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">19.删除链表的倒数第N个节点</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/09/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">
+        <a href="/2020/10/12/19-%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/">
           
           
             
           
-          知识总览
-中断机制的诞生早起的计算机，比如博文操作系统的发展讲解的，单道处理系统，一次只能处理一个程序。所以各个程序只能串行的执行，系统资源利用率比较低。
-为了解决上述问题，人们发明了操作系统（作为计算机的管理者），引入中断机制，实现了多道程序并发执行。
-本质：发生中断就意味着需要操作系统介入，开展管理工作。
-举个例子，如果有多道程序运行，会有一个计时器，记录运行的时间。cpu收到计时部件发出的中
+          题解/**
+ * Definition for singly-linked list.
+ * public class ListNode &#123;
+ *     int val;
+ *     ListNode next;
+ *     ListNode() &#123;&#125;
+ *     ListNode(int val) &#123; this.val = val; &#125;
+
         </a>
       </p>
 
@@ -672,8 +544,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-09 14:52" pubdate>
-              2020-10-09
+            <time datetime="2020-10-12 13:39" pubdate>
+              2020-10-12
             </time>
           </div>
         
@@ -681,7 +553,7 @@
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
             
           </div>
         
@@ -689,7 +561,172 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/12/17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">17.电话号码的字母组合</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/12/17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/">
+          
+          
+            
+          
+          题解class Solution &#123;
+    HashMap&lt;String,String&gt; hashmap = new HashMap&lt;&gt;();
+    
+
+    List&lt;String&gt; list = new ArrayList&lt;&gt;();
+    public List&lt;String&gt; letterCombinations(
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-12 13:06" pubdate>
+              2020-10-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/12/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">15.三数之和</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/12/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+          
+          
+            
+          
+          题解class Solution &#123;
+    public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) &#123;
+        
+        List&lt;List&lt;Integer&gt;&gt; lists = new ArrayList&lt;&gt;();
+
+        Arrays.sort(nu
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-12 12:51" pubdate>
+              2020-10-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/12/14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">14.最长公共前缀</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/12/14-%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/">
+          
+          
+            
+          
+          题解class Solution &#123;
+    public String longestCommonPrefix(String[] strs) &#123;
+        if(strs == null || strs.length&lt;=0)&#123;
+            return &quot;&quot;;
+        &#125;
+
+        StringB
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-12 12:40" pubdate>
+              2020-10-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/easy/">easy</a>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
             
           </div>
         
@@ -701,7 +738,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   

@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      104 字
     </span>
   
 
@@ -250,17 +250,54 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：14 分钟前
+                  本文最后更新于：6 小时前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              
+              <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> temp = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(x != <span class="hljs-number">0</span>)&#123;
+            <span class="hljs-keyword">int</span> tmp = x%<span class="hljs-number">10</span>;
+            <span class="hljs-keyword">if</span>(temp &gt; Integer.MAX_VALUE/<span class="hljs-number">10</span> || (temp == Integer.MAX_VALUE &amp;&amp; tmp &gt;=Integer.MAX_VALUE%<span class="hljs-number">10</span>))&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+            &#125;
+            <span class="hljs-keyword">if</span>(temp &lt; Integer.MIN_VALUE/<span class="hljs-number">10</span> || (temp == Integer.MIN_VALUE/<span class="hljs-number">10</span> &amp;&amp;  tmp &lt;= Integer.MIN_VALUE%<span class="hljs-number">10</span>))&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+            &#125;
+            temp = temp*<span class="hljs-number">10</span>+tmp;
+            x = x/<span class="hljs-number">10</span>;
+        &#125;
+        <span class="hljs-keyword">return</span> temp;
+    &#125;
+&#125;</code></pre>
+
+
+
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>就是需要考虑一下整数溢出的情况，其他的就是一个翻转的过程。</p>
+
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/easy/">easy</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+                    
+                  </div>
                 
               </div>
               
@@ -270,6 +307,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/10/12/9-%E5%9B%9E%E6%96%87%E6%95%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">9.回文数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
