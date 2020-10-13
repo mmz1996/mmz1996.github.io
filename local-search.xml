@@ -4,6 +4,168 @@
   
   
   <entry>
+    <title>75.颜色分类</title>
+    <link href="/2020/10/13/75-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/"/>
+    <url>/2020/10/13/75-%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sortColors</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">int</span> first = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> last = nums.length-<span class="hljs-number">1</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;=last;++i)&#123;            <span class="hljs-keyword">while</span>(i&lt;=last &amp;&amp; nums[i] == <span class="hljs-number">2</span>)&#123;                <span class="hljs-keyword">int</span> temp = nums[i];                nums[i] = nums[last];                nums[last] = temp;                --last;            &#125;            <span class="hljs-keyword">if</span>(nums[i] == <span class="hljs-number">0</span>)&#123;                <span class="hljs-keyword">int</span> temp = nums[i];                nums[i] = nums[first];                nums[first] = temp;                first++;             &#125;        &#125;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>采用的是双指针的思想，因为后面的指针后面一直就是2，前面的指针就是1，所以while判断是为了如果超过last指针的，直接跳出循环即可。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mid</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>70.爬楼梯</title>
+    <link href="/2020/10/13/70-%E7%88%AC%E6%A5%BC%E6%A2%AF/"/>
+    <url>/2020/10/13/70-%E7%88%AC%E6%A5%BC%E6%A2%AF/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">climbStairs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;        <span class="hljs-keyword">if</span>(n &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;        &#125;        <span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;        &#125;        <span class="hljs-keyword">if</span>(n == <span class="hljs-number">2</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;        &#125;        <span class="hljs-keyword">int</span> f1 = <span class="hljs-number">1</span>;        <span class="hljs-keyword">int</span> f2 = <span class="hljs-number">2</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>;i&lt;=n;++i)&#123;            <span class="hljs-keyword">int</span> temp = f1+f2;            f1 = f2;            f2= temp;        &#125;        <span class="hljs-keyword">return</span> f2;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这个需要考虑用中间变量去存，如果用数组的话，太占用空间复杂度。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>easy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>69.x的平方根</title>
+    <link href="/2020/10/13/69-x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/"/>
+    <url>/2020/10/13/69-x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">mySqrt</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> right = x;        <span class="hljs-keyword">int</span> ans = -<span class="hljs-number">1</span>;        <span class="hljs-keyword">while</span>(left&lt;=right)&#123;            <span class="hljs-keyword">int</span> mid = (left+right)/<span class="hljs-number">2</span>;            <span class="hljs-keyword">if</span>((<span class="hljs-keyword">long</span>)mid*mid &lt;=x)&#123;                ans = mid;                left = mid+<span class="hljs-number">1</span>;            &#125;<span class="hljs-keyword">else</span>&#123;                right = mid-<span class="hljs-number">1</span>;            &#125;        &#125;        <span class="hljs-keyword">return</span> ans;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>第一：一定记住比较的使用用long在外面扩上，防止溢出。</p><p>第二：比较的时候，如果当前值已经小于等于，把left要置位mid+1;如果大于把right置位mid-1。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>easy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>64.最小路径和</title>
+    <link href="/2020/10/13/64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/"/>
+    <url>/2020/10/13/64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">minPathSum</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid)</span> </span>&#123;        <span class="hljs-keyword">if</span>(grid == <span class="hljs-keyword">null</span> || grid.length &lt;=<span class="hljs-number">0</span> || grid[<span class="hljs-number">0</span>].length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;        &#125;        <span class="hljs-keyword">int</span> length = grid[<span class="hljs-number">0</span>].length;        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length];        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;grid.length;++i)&#123;            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j&lt;grid[<span class="hljs-number">0</span>].length;++j)&#123;                <span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span> &amp;&amp; j == <span class="hljs-number">0</span>)&#123;                    dp[j] = grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>];                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>)&#123;                    dp[j] = dp[j-<span class="hljs-number">1</span>]+grid[i][j];                &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(j == <span class="hljs-number">0</span>)&#123;                    dp[j] +=grid[i][j];                &#125;<span class="hljs-keyword">else</span>&#123;                    dp[j] = Math.min(dp[j],dp[j-<span class="hljs-number">1</span>])+grid[i][j];                &#125;            &#125;        &#125;        <span class="hljs-keyword">return</span> dp[dp.length-<span class="hljs-number">1</span>];    &#125;&#125;</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>dp，要求是最小路径</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mid</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>62.不同路径</title>
+    <link href="/2020/10/13/62-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/"/>
+    <url>/2020/10/13/62-%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">uniquePaths</span><span class="hljs-params">(<span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>&#123;        <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;m;++i)&#123;            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j&lt;n;++j)&#123;                <span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span> || j == <span class="hljs-number">0</span>)&#123;                    dp[j] = <span class="hljs-number">1</span>;                &#125;<span class="hljs-keyword">else</span>&#123;                    dp[j] += dp[j-<span class="hljs-number">1</span>];                &#125;            &#125;        &#125;        <span class="hljs-keyword">return</span> dp[dp.length-<span class="hljs-number">1</span>];    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>一位数组的dp即可。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mid</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>61.旋转链表</title>
+    <link href="/2020/10/13/61-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
+    <url>/2020/10/13/61-%E6%97%8B%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-comment">/**</span><span class="hljs-comment"> * Definition for singly-linked list.</span><span class="hljs-comment"> * public class ListNode &#123;</span><span class="hljs-comment"> *     int val;</span><span class="hljs-comment"> *     ListNode next;</span><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span><span class="hljs-comment"> * &#125;</span><span class="hljs-comment"> */</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">rotateRight</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-keyword">if</span>(head == <span class="hljs-keyword">null</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;        &#125;        <span class="hljs-keyword">if</span>(head.next ==<span class="hljs-keyword">null</span>)&#123;            <span class="hljs-keyword">return</span> head;        &#125;        <span class="hljs-keyword">int</span> n;        ListNode oldnode = head;        <span class="hljs-keyword">for</span>(n=<span class="hljs-number">1</span>;oldnode.next != <span class="hljs-keyword">null</span> ;++n)&#123;            oldnode = oldnode.next;        &#125;        oldnode.next = head;        ListNode newnode = head;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i= <span class="hljs-number">0</span>;i  &lt; n-k % n-<span class="hljs-number">1</span>;++i)&#123;            newnode = newnode.next;        &#125;        ListNode result = newnode.next;        newnode.next = <span class="hljs-keyword">null</span>;        <span class="hljs-keyword">return</span> result;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>其实我一直百思不得其解这个，n-k%n-1是怎么来的。</p><p>因为是向右移动，自己画个图就能画出来。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>mid</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>56.合并区间</title>
     <link href="/2020/10/13/56-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/"/>
     <url>/2020/10/13/56-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/</url>
@@ -20,9 +182,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -47,9 +209,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -68,9 +230,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -95,9 +257,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -122,9 +284,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -149,9 +311,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -176,9 +338,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -203,9 +365,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -230,9 +392,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -257,9 +419,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -284,9 +446,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -311,9 +473,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -338,9 +500,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -365,9 +527,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -392,9 +554,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -419,9 +581,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -446,9 +608,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -500,9 +662,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -527,9 +689,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -554,9 +716,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -581,9 +743,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -608,9 +770,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -635,9 +797,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -662,9 +824,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -689,9 +851,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
@@ -716,9 +878,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -743,9 +905,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -770,9 +932,9 @@
     
     <tags>
       
-      <tag>力扣</tag>
-      
       <tag>mid</tag>
+      
+      <tag>力扣</tag>
       
     </tags>
     
@@ -797,9 +959,9 @@
     
     <tags>
       
-      <tag>easy</tag>
-      
       <tag>力扣</tag>
+      
+      <tag>easy</tag>
       
     </tags>
     
