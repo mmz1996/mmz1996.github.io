@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>26.删除排序数组中的重复项 - 马铭泽的个人博客</title>
+  <title>55.跳跃游戏 - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-12 18:08" pubdate>
-        2020年10月12日 晚上
+      <time datetime="2020-10-13 13:53" pubdate>
+        2020年10月13日 下午
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      136 字
+      196 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -246,35 +246,58 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">26.删除排序数组中的重复项</h1>
+            <h1 style="display: none">55.跳跃游戏</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：20 小时前
+                  本文最后更新于：18 分钟前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;=<span class="hljs-number">0</span>)&#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canJump</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length&lt;=<span class="hljs-number">0</span>)&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
         &#125;
-        <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">boolean</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[nums.length];
+        dp[<span class="hljs-number">0</span>] = <span class="hljs-keyword">true</span>;
         <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;nums.length;++i)&#123;
-            <span class="hljs-keyword">if</span>(nums[i] != nums[j])&#123;
-                j++;
-                nums[j] = nums[i];
+            <span class="hljs-keyword">if</span>(dp[i])&#123;
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>;j&lt;=nums[i];++j)&#123;
+                    <span class="hljs-keyword">if</span>((i+j) &gt;= nums.length-<span class="hljs-number">1</span>)&#123;
+                        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+                    &#125;
+                    dp[i+j] = <span class="hljs-keyword">true</span>;
             &#125;
+            &#125;
+            
         &#125;
-
-        <span class="hljs-keyword">return</span> j+<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> dp[dp.length-<span class="hljs-number">1</span>] == <span class="hljs-keyword">true</span>;
     &#125;
 &#125;</code></pre>
 
 
 
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>双指针问题，如果当前位置i,j的值都一样，i继续，j不动，什么时候值不同，让j移到下一个位置，然后把当前位置j的值换成i，最后返回j+1，因为返回的是新的长度，所以j是从开始的，所以为j+1</p>
+<pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canJump</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;
+        <span class="hljs-keyword">int</span> target = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;nums.length;++i)&#123;
+            <span class="hljs-keyword">if</span>(i&lt;=target)&#123;
+                target = Math.max(target,i+nums[i]);
+                <span class="hljs-keyword">if</span>(target &gt;= nums.length-<span class="hljs-number">1</span>)&#123;
+                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+                &#125;
+            &#125;
+        &#125;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    &#125;
+&#125;</code></pre>
+
+
+
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>第一种是我自己用dp做出来的，时间复杂度和空间复杂度都特别高。</p>
+<p>第二种是参考别人的方法做出来的，判断能达到的最大值是否到达数组的最后一个。</p>
 
             </div>
             <hr>
@@ -292,9 +315,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/easy/">easy</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+                    
+                      <a class="hover-with-bg" href="/tags/mid/">mid</a>
                     
                   </div>
                 
@@ -307,9 +330,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/12/31-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/">
+                      <a href="/2020/10/13/56-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">31.下一个排列</span>
+                        <span class="hidden-mobile">56.合并区间</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -317,8 +340,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/12/24-%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/">
-                        <span class="hidden-mobile">24.两两交换链表中的节点</span>
+                      <a href="/2020/10/13/54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/">
+                        <span class="hidden-mobile">54.螺旋矩阵</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -507,7 +530,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "26.删除排序数组中的重复项&nbsp;",
+        "55.跳跃游戏&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,

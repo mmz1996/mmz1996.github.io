@@ -4,6 +4,189 @@
   
   
   <entry>
+    <title>56.合并区间</title>
+    <link href="/2020/10/13/56-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/"/>
+    <url>/2020/10/13/56-%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] merge(<span class="hljs-keyword">int</span>[][] intervals) &#123;        List&lt;<span class="hljs-keyword">int</span>[]&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();        <span class="hljs-keyword">if</span>(intervals == <span class="hljs-keyword">null</span> || intervals.length &lt;= <span class="hljs-number">0</span> || intervals[<span class="hljs-number">0</span>].length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> list.toArray(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>][]);        &#125;        Arrays.sort(intervals,(o1,o2) -&gt; o1[<span class="hljs-number">0</span>]-o2[<span class="hljs-number">0</span>]);        <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;        <span class="hljs-keyword">while</span>(index &lt; intervals.length)&#123;            <span class="hljs-keyword">int</span> left = intervals[index][<span class="hljs-number">0</span>];            <span class="hljs-keyword">int</span> right = intervals[index][<span class="hljs-number">1</span>];            <span class="hljs-keyword">while</span>(index+<span class="hljs-number">1</span> &lt;intervals.length &amp;&amp; intervals[index+<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] &lt;= right)&#123;                right = Math.max(right,intervals[index+<span class="hljs-number">1</span>][<span class="hljs-number">1</span>]);                index++;            &#125;            list.add(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;left,right&#125;);            index++;        &#125;        <span class="hljs-keyword">return</span> list.toArray(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>][]);    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>第一个是list转换成数组的时候toArray() ，参数可以是泛型，表明转换成什么类型的。</p><p>第二个倒是里面的逻辑，别忘了每次while或者list.add之后，都需要把索引index++。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>55.跳跃游戏</title>
+    <link href="/2020/10/13/55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/"/>
+    <url>/2020/10/13/55-%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canJump</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length&lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;        &#125;        <span class="hljs-keyword">boolean</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[nums.length];        dp[<span class="hljs-number">0</span>] = <span class="hljs-keyword">true</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;nums.length;++i)&#123;            <span class="hljs-keyword">if</span>(dp[i])&#123;                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>;j&lt;=nums[i];++j)&#123;                    <span class="hljs-keyword">if</span>((i+j) &gt;= nums.length-<span class="hljs-number">1</span>)&#123;                        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;                    &#125;                    dp[i+j] = <span class="hljs-keyword">true</span>;            &#125;            &#125;                    &#125;        <span class="hljs-keyword">return</span> dp[dp.length-<span class="hljs-number">1</span>] == <span class="hljs-keyword">true</span>;    &#125;&#125;</code></pre><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canJump</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">int</span> target = <span class="hljs-number">0</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;nums.length;++i)&#123;            <span class="hljs-keyword">if</span>(i&lt;=target)&#123;                target = Math.max(target,i+nums[i]);                <span class="hljs-keyword">if</span>(target &gt;= nums.length-<span class="hljs-number">1</span>)&#123;                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;                &#125;            &#125;        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>第一种是我自己用dp做出来的，时间复杂度和空间复杂度都特别高。</p><p>第二种是参考别人的方法做出来的，判断能达到的最大值是否到达数组的最后一个。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>54.螺旋矩阵</title>
+    <link href="/2020/10/13/54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"/>
+    <url>/2020/10/13/54-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">spiralOrder</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;        List&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();        <span class="hljs-keyword">if</span>(matrix == <span class="hljs-keyword">null</span> || matrix.length &lt;= <span class="hljs-number">0</span> || matrix[<span class="hljs-number">0</span>].length&lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> list;        &#125;        <span class="hljs-keyword">int</span> height = matrix.length-<span class="hljs-number">1</span>;        <span class="hljs-keyword">int</span> width = matrix[<span class="hljs-number">0</span>].length-<span class="hljs-number">1</span>;        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> right = matrix[<span class="hljs-number">0</span>].length-<span class="hljs-number">1</span>;        <span class="hljs-keyword">int</span> top = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> bot = matrix.length-<span class="hljs-number">1</span>;        <span class="hljs-keyword">while</span>(left&lt;=right &amp;&amp; top&lt;=bot)&#123;            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = left;i&lt;=right;++i)&#123;                list.add(matrix[top][i]);            &#125;            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = top+<span class="hljs-number">1</span>;i&lt;=bot;++i)&#123;                list.add(matrix[i][right]);            &#125;            <span class="hljs-keyword">if</span>(left&lt;right &amp;&amp; top &lt; bot)&#123;                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = right-<span class="hljs-number">1</span>;i&gt;left;--i)&#123;                    list.add(matrix[bot][i]);                &#125;                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = bot;i&gt;top;--i)&#123;                    list.add(matrix[i][left]);                &#125;            &#125;            left++;            right--;            top++;            bot--;        &#125;        <span class="hljs-keyword">return</span> list;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>考虑left,right,top,bot四个阈值。</p><p>用大while循环，去过滤left&lt;=right,top=bot</p><p>还要考虑小范围的东西，有的时候并没有元素了，所以有if(left&lt;right &amp;&amp; top &lt; bot)判断</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>53.最大子序和</title>
+    <link href="/2020/10/13/53-%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/"/>
+    <url>/2020/10/13/53-%E6%9C%80%E5%A4%A7%E5%AD%90%E5%BA%8F%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxSubArray</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;        &#125;        <span class="hljs-keyword">int</span> max = nums[<span class="hljs-number">0</span>];        <span class="hljs-keyword">int</span> target = nums[<span class="hljs-number">0</span>];        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i&lt;nums.length;++i)&#123;            <span class="hljs-keyword">if</span>(target &lt; <span class="hljs-number">0</span>)&#123;                target = nums[i];            &#125;<span class="hljs-keyword">else</span>&#123;                target +=nums[i];            &#125;            max = Math.max(max,target);        &#125;        <span class="hljs-keyword">return</span> max;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>判断逻辑挺简单的，如果当前target小于0，那么直接舍弃，若不，累加。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>50.Pow(x,n)</title>
+    <link href="/2020/10/13/50-Pow-x-n/"/>
+    <url>/2020/10/13/50-Pow-x-n/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">myPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x, <span class="hljs-keyword">int</span> n)</span> </span>&#123;        <span class="hljs-keyword">if</span>(x == <span class="hljs-number">1</span> || n == <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">1.0</span>;        &#125;        <span class="hljs-keyword">long</span> N = n;        <span class="hljs-keyword">if</span>(n &lt; <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>/compute(x,-N);        &#125;        <span class="hljs-keyword">return</span> compute(x,N);    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">double</span> <span class="hljs-title">compute</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x,<span class="hljs-keyword">long</span> n)</span></span>&#123;        <span class="hljs-keyword">if</span>( n == <span class="hljs-number">1</span>)&#123;            <span class="hljs-keyword">return</span> x;        &#125;        <span class="hljs-keyword">if</span>(n% <span class="hljs-number">2</span>== <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">double</span> half = compute(x,n/<span class="hljs-number">2</span>);            <span class="hljs-keyword">return</span> half * half;        &#125;<span class="hljs-keyword">else</span>&#123;            <span class="hljs-keyword">double</span> half = compute(x,n/<span class="hljs-number">2</span>);            <span class="hljs-keyword">return</span> half* half*x;        &#125;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>第一：考虑这个参数应该为long类型</p><p>第二：考虑时间复杂度，用递归的思想去计算这个值。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>49.字母异位词分组</title>
+    <link href="/2020/10/13/49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/"/>
+    <url>/2020/10/13/49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;     List&lt;List&lt;String&gt;&gt; lists = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();    <span class="hljs-keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;        <span class="hljs-keyword">if</span>(strs == <span class="hljs-keyword">null</span> || strs.length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> lists;        &#125;        <span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>;        HashMap&lt;String,Integer&gt; hashmap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;strs.length;++i)&#123;            String string = strs[i];            <span class="hljs-keyword">char</span>[] nowchar = string.toCharArray();            Arrays.sort(nowchar);            String target = <span class="hljs-keyword">new</span> String(nowchar);            <span class="hljs-keyword">if</span>(hashmap.containsKey(target))&#123;                <span class="hljs-keyword">int</span> index = hashmap.get(target);                lists.get(index).add(string);            &#125;<span class="hljs-keyword">else</span>&#123;                hashmap.put(target,count++);                List&lt;String&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();                list.add(string);                lists.add(list);            &#125;        &#125;        <span class="hljs-keyword">return</span> lists;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>利用一个hashmap存放key为String类型的单词，value存放索引（索引存放于在lists里面的索引）。</p><p>然后每次传入新的string之后，利用Arrays.sort()方法去进行排序，之后进行比较。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>48.旋转图像</title>
+    <link href="/2020/10/13/48-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/"/>
+    <url>/2020/10/13/48-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;        <span class="hljs-keyword">if</span>(matrix == <span class="hljs-keyword">null</span> || matrix.length &lt;= <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span>;        &#125;        <span class="hljs-keyword">int</span> length = matrix.length;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;length;++i)&#123;            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = i;j&lt;length;++j)&#123;                <span class="hljs-keyword">int</span> temp = matrix[i][j];                matrix[i][j] = matrix[j][i];                matrix[j][i] = temp;            &#125;        &#125;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;length;++i)&#123;            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;j&lt;length/<span class="hljs-number">2</span>;++j)&#123;                <span class="hljs-keyword">int</span> temp = matrix[i][j];                matrix[i][j] = matrix[i][length-j-<span class="hljs-number">1</span>];                matrix[i][length-j-<span class="hljs-number">1</span>] = temp;            &#125;        &#125;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>先是根据对角线进行一次翻转，然后再根据中轴线进行每一行的翻转，最后得到了这个图形。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>46.全排列</title>
     <link href="/2020/10/12/46-%E5%85%A8%E6%8E%92%E5%88%97/"/>
     <url>/2020/10/12/46-%E5%85%A8%E6%8E%92%E5%88%97/</url>
