@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>146.LRU缓存机制 - 马铭泽的个人博客</title>
+  <title>66.加一 - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-16 00:30" pubdate>
-        2020年10月16日 凌晨
+      <time datetime="2020-10-13 17:01" pubdate>
+        2020年10月13日 下午
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      178 字
+      171 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3
+      2
        分钟
     </span>
   
@@ -246,75 +246,50 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">146.LRU缓存机制</h1>
+            <h1 style="display: none">66.加一</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：31 分钟前
+                  本文最后更新于：1 分钟前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LRUCache</span> </span>&#123;
-   LinkedList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-    HashMap&lt;Integer,Integer&gt; hashmap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
-    <span class="hljs-keyword">int</span> capacity;
-    <span class="hljs-keyword">int</span> size;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addNode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> number)</span></span>&#123;
-        list.addFirst(number);
-    &#125;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> number)</span></span>&#123;
-        list.remove(<span class="hljs-keyword">new</span> Integer(number));
-    &#125;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">moveToHead</span><span class="hljs-params">(<span class="hljs-keyword">int</span> number)</span></span>&#123;
-        remove(number);
-        addNode(number);
-    &#125;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">popTail</span><span class="hljs-params">()</span></span>&#123;
-        <span class="hljs-keyword">return</span> list.pollLast();
-    &#125;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LRUCache</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity)</span> </span>&#123;
-        <span class="hljs-keyword">this</span>.size = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">this</span>.capacity = capacity;
-    &#125;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(hashmap.containsKey(key))&#123;
-            moveToHead(key);
-            <span class="hljs-keyword">return</span> hashmap.get(key);
-        &#125;<span class="hljs-keyword">else</span>&#123;
-            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+              <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] plusOne(<span class="hljs-keyword">int</span>[] digits) &#123;
+        <span class="hljs-keyword">if</span>(digits == <span class="hljs-keyword">null</span> || digits.length &lt;= <span class="hljs-number">0</span>)&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];
         &#125;
-    &#125;
-
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span> value)</span> </span>&#123;
-        <span class="hljs-keyword">if</span>(hashmap.containsKey(key))&#123;
-            hashmap.put(key,value);
-            moveToHead(key);
-        &#125;<span class="hljs-keyword">else</span>&#123;
-            hashmap.put(key,value);
-            addNode(key);
-            size++;
+        LinkedList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
+        <span class="hljs-keyword">int</span>  flag = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = digits.length-<span class="hljs-number">1</span>;i&gt;=<span class="hljs-number">0</span>;--i)&#123;
+            <span class="hljs-keyword">int</span> number = digits[i]+flag;
+            <span class="hljs-keyword">if</span>(i == digits.length-<span class="hljs-number">1</span>)&#123;
+                number++;
+            &#125;
+            flag = number/<span class="hljs-number">10</span>;
+            list.addFirst(number%<span class="hljs-number">10</span>);
         &#125;
-        <span class="hljs-keyword">if</span>(size &gt; capacity)&#123;
-            <span class="hljs-keyword">int</span> number = popTail();
-            hashmap.remove(number);
-            --size;
+        <span class="hljs-keyword">if</span>(flag == <span class="hljs-number">1</span>)&#123;
+            list.addFirst(<span class="hljs-number">1</span>);
         &#125;
+
+        <span class="hljs-keyword">int</span>[] num = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[list.size()];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>;i&lt;list.size();++i)&#123;
+            num[i] = list.get(i);
+        &#125;
+
+        <span class="hljs-keyword">return</span> num;
+        
     &#125;
-&#125;
-
-<span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * Your LRUCache object will be instantiated and called as such:</span>
-<span class="hljs-comment"> * LRUCache obj = new LRUCache(capacity);</span>
-<span class="hljs-comment"> * int param_1 = obj.get(key);</span>
-<span class="hljs-comment"> * obj.put(key,value);</span>
-<span class="hljs-comment"> */</span></code></pre>
+&#125;</code></pre>
 
 
 
-<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>逻辑</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>其实这道题跟链表比较相似，我采用的这种方法可能比较复杂，先转ArrayList，再转成数组的形式。</p>
+<p>还有一种方法利用jdk8的stream方法</p>
+<p> return list.stream().mapToInt(Integer::intValue).toArray();</p>
+<p>这样也可以返回数组类型</p>
 
             </div>
             <hr>
@@ -332,9 +307,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+                      <a class="hover-with-bg" href="/tags/easy/">easy</a>
                     
-                      <a class="hover-with-bg" href="/tags/mid/">mid</a>
+                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
                     
                   </div>
                 
@@ -347,9 +322,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/16/148-%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/">
+                      <a href="/2020/10/13/69-x%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">148.排序链表</span>
+                        <span class="hidden-mobile">69.x的平方根</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -357,8 +332,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/15/144-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/">
-                        <span class="hidden-mobile">144.二叉树的前序遍历</span>
+                      <a href="/2020/10/13/64-%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C/">
+                        <span class="hidden-mobile">64.最小路径和</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -547,7 +522,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "146.LRU缓存机制&nbsp;",
+        "66.加一&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
