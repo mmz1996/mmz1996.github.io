@@ -188,22 +188,78 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/13/50-Pow-x-n/">50.Pow(x,n)</a>
+        <a href="/2020/10/15/136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">136.只出现一次的数字</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/13/50-Pow-x-n/">
+        <a href="/2020/10/15/136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/">
           
           
             
           
           题解class Solution &#123;
-    public double myPow(double x, int n) &#123;
-        if(x == 1 || n == 0)&#123;
-            return 1.0;
+    public int singleNumber(int[] nums) &#123;
+        if(nums == null || nums.length &lt;=0)&#123;
+            return -1;
         &#125;
-        long N = n;
-        if(n &lt; 0)&#123;
+        int result = 0;
+        for(in
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 16:29" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/easy/">easy</a>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/15/125-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2/">125.验证回文串</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/15/125-%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2/">
+          
+          
+            
+          
+          题解class Solution &#123;
+    public boolean isPalindrome(String s) &#123;
+        if(s == null || s.length() &lt;= 0)&#123;
+            return true;
+        &#125;
+
+        s= s.toLowerCase();
+
        
         </a>
       </p>
@@ -212,8 +268,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-13 13:24" pubdate>
-              2020-10-13
+            <time datetime="2020-10-15 16:02" pubdate>
+              2020-10-15
             </time>
           </div>
         
@@ -228,330 +284,11 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mid/">mid</a>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/13/49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/">49.字母异位词分组</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/13/49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/">
-          
-          
-            
-          
-          题解class Solution &#123;
-     List&lt;List&lt;String&gt;&gt; lists = new ArrayList&lt;&gt;();
-    public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;
-        if(strs == null || st
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-13 13:09" pubdate>
-              2020-10-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mid/">mid</a>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/13/48-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/">48.旋转图像</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/13/48-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/">
-          
-          
-            
-          
-          题解class Solution &#123;
-    public void rotate(int[][] matrix) &#123;
-        if(matrix == null || matrix.length &lt;= 0)&#123;
-            return;
-        &#125;
-        int length = matrix.length;
- 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-13 13:06" pubdate>
-              2020-10-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mid/">mid</a>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/12/46-%E5%85%A8%E6%8E%92%E5%88%97/">46.全排列</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/12/46-%E5%85%A8%E6%8E%92%E5%88%97/">
-          
-          
-            
-          
-          题解class Solution &#123;
-    List&lt;List&lt;Integer&gt;&gt; lists = new ArrayList&lt;&gt;();
-    public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;
-        if(nums == null || nums.lengt
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 21:09" pubdate>
-              2020-10-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mid/">mid</a>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/12/40-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">40.组合总和</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/12/40-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">
-          
-          
-            
-          
-          题解class Solution &#123;
-    List&lt;List&lt;Integer&gt;&gt; lists = new ArrayList&lt;&gt;();
-    public List&lt;List&lt;Integer&gt;&gt; combinationSum2(int[] candidates, int target) &#123;
-        if(
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 20:58" pubdate>
-              2020-10-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mid/">mid</a>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/12/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">39.组合总和</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/12/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C/">
-          
-          
-            
-          
-          题解class Solution &#123;
-    List&lt;List&lt;Integer&gt;&gt; lists = new ArrayList&lt;&gt;();
-    public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) &#123;
-        if(c
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 20:52" pubdate>
-              2020-10-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mid/">mid</a>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/10/12/38-%E5%A4%96%E8%A7%82%E6%95%B0%E7%BB%84/">38.外观数组</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/10/12/38-%E5%A4%96%E8%A7%82%E6%95%B0%E7%BB%84/">
-          
-          
-            
-          
-          题解class Solution &#123;
-    public String countAndSay(int n) &#123;
-        if(n == 1)&#123;
-            return &quot;1&quot;;
-        &#125;
-
-        StringBuffer stringbuffer = new StringBuffer();
- 
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 20:23" pubdate>
-              2020-10-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
             
               <a href="/tags/easy/">easy</a>
             
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
           </div>
         
       </div>
@@ -563,22 +300,22 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/12/35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/">35.搜索插入位置</a>
+        <a href="/2020/10/15/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/">121.买卖股票的最佳时机</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/12/35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/">
+        <a href="/2020/10/15/121-%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/">
           
           
             
           
           题解class Solution &#123;
-    public int searchInsert(int[] nums, int target) &#123;
-        if(nums == null || nums.length &lt;=0)&#123;
-            return -1;
+    public int maxProfit(int[] prices) &#123;
+        if(prices == null || prices.length &lt;= 0)&#123;
+            return 0;
         &#125;
-
-        for(int i = 0 ;i&
+        int max = 0;
+        int mi
         </a>
       </p>
 
@@ -586,8 +323,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 20:01" pubdate>
-              2020-10-12
+            <time datetime="2020-10-15 15:55" pubdate>
+              2020-10-15
             </time>
           </div>
         
@@ -602,11 +339,11 @@
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
             
               <a href="/tags/easy/">easy</a>
             
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
           </div>
         
       </div>
@@ -618,22 +355,23 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/12/34-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/">34.在排序数组中查找第一个和最后一个位置</a>
+        <a href="/2020/10/15/114-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/">114.二叉树展开为链表</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/12/34-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/">
+        <a href="/2020/10/15/114-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B1%95%E5%BC%80%E4%B8%BA%E9%93%BE%E8%A1%A8/">
           
           
             
           
-          题解class Solution &#123;
-    public int[] searchRange(int[] nums, int target) &#123;
-        if(nums == null || nums.length &lt;=0)&#123;
-            return new int[]&#123;-1,-1&#125;;
-        &#125;
-
-
+          题解/**
+ * Definition for a binary tree node.
+ * public class TreeNode &#123;
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() &#123;&#125;
+ *     TreeNode(int val) &#123; 
         </a>
       </p>
 
@@ -641,8 +379,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 19:56" pubdate>
-              2020-10-12
+            <time datetime="2020-10-15 15:47" pubdate>
+              2020-10-15
             </time>
           </div>
         
@@ -658,7 +396,121 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
               <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/15/109-%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">109.有序链表转换二叉搜索树</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/15/109-%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E8%BD%AC%E6%8D%A2%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+          
+          
+            
+          
+          题解/**
+ * Definition for singly-linked list.
+ * public class ListNode &#123;
+ *     int val;
+ *     ListNode next;
+ *     ListNode() &#123;&#125;
+ *     ListNode(int val) &#123; this.val = val; &#125;
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 15:32" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/15/108-%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">108.将有序数组转换成为二叉搜索树</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/15/108-%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E6%88%90%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">
+          
+          
+            
+          
+          题解/**
+ * Definition for a binary tree node.
+ * public class TreeNode &#123;
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) &#123; val = x; &#125;
+ * &#125;
+ */
+cla
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 15:28" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/easy/">easy</a>
             
               <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
             
@@ -673,22 +525,25 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
-        <a href="/2020/10/12/33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/">33.搜索旋转排序数组</a>
+        <a href="/2020/10/15/105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/">105.从前序和中序遍历构造二叉树</a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2020/10/12/33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/">
+        <a href="/2020/10/15/105-%E4%BB%8E%E5%89%8D%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91/">
           
           
             
           
-          题解class Solution &#123;
-    public int search(int[] nums, int target) &#123;
-        if(nums == null || nums.length &lt;=0)&#123;
-            return -1;
-        &#125;
-        int left = 0;
-        in
+          题解/**
+ * Definition for a binary tree node.
+ * public class TreeNode &#123;
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) &#123; val = x; &#125;
+ * &#125;
+ */
+cla
         </a>
       </p>
 
@@ -696,8 +551,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-10-12 18:33" pubdate>
-              2020-10-12
+            <time datetime="2020-10-15 15:19" pubdate>
+              2020-10-15
             </time>
           </div>
         
@@ -713,7 +568,181 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
               <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/15/104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">104.二叉树的最大深度</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/15/104-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/">
+          
+          
+            
+          
+          题解/**
+ * Definition for a binary tree node.
+ * public class TreeNode &#123;
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) &#123; val = x; &#125;
+ * &#125;
+ */
+cla
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 14:57" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/easy/">easy</a>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/15/103-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%94%AF%E9%BD%BF%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/">103.二叉树的锯齿层次遍历</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/15/103-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%94%AF%E9%BD%BF%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/">
+          
+          
+            
+          
+          题解/**
+ * Definition for a binary tree node.
+ * public class TreeNode &#123;
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) &#123; val = x; &#125;
+ * &#125;
+ */
+cla
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 14:56" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+              <a href="/tags/mid/">mid</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/15/102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/">102.二叉树的层次遍历</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/15/102-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86/">
+          
+          
+            
+          
+          题解/**
+ * Definition for a binary tree node.
+ * public class TreeNode &#123;
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) &#123; val = x; &#125;
+ * &#125;
+ */
+cla
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 14:31" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/easy/">easy</a>
             
               <a href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
             
@@ -727,7 +756,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
