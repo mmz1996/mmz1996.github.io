@@ -4,6 +4,349 @@
   
   
   <entry>
+    <title>进程的状态与转换 （八）</title>
+    <link href="/2020/10/19/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2-1/"/>
+    <url>/2020/10/19/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2-1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201019163330020.png" alt="image-20201019163330020"></p><h1 id="进程的状态——三种状态"><a href="#进程的状态——三种状态" class="headerlink" title="进程的状态——三种状态"></a>进程的状态——三种状态</h1><p>进程是程序的一次执行，在这个执行的过程中，有的进程正在被执行，也就是正在被cpu处理，有的需要等待cpu的服务。可见，进程的状态是会有多种变化的。为了方便对各个进程的管理，操作系统需要将进程合理地划分几种状态。</p><p><img src="image-20201019163524511.png" alt="image-20201019163524511"></p><h1 id="进程的状态——另外的两种状态"><a href="#进程的状态——另外的两种状态" class="headerlink" title="进程的状态——另外的两种状态"></a>进程的状态——另外的两种状态</h1><p>创建态与结束态。</p><h2 id="创建态"><a href="#创建态" class="headerlink" title="创建态"></a>创建态</h2><p>操作系统需要完成创建进程。操作系统为这个进程分配pcb，程序段和数据段。</p><h2 id="终止态"><a href="#终止态" class="headerlink" title="终止态"></a>终止态</h2><p>进程运行结束（或者由于bug/异常的原因导致进程无法执行下去，数组越界，除数为0），需要撤销进程。还需要将分配给进程的资源回收，撤销进程pcb等工作。</p><h1 id="进程状态的转换"><a href="#进程状态的转换" class="headerlink" title="进程状态的转换"></a>进程状态的转换</h1><p><img src="image-20201019164122957.png"></p><p>创建成功之后，就会由创建态进入到就绪态，此时等待cpu的资源，其他的资源都准备就绪。</p><p>等到cpu资源来到时，就绪态就会进入到运行态，此时进程被调度。</p><p>运行态时，如果进程运行结束，或者由于bug和异常退出，那么会进入到终止态。</p><p>运行态时，如果时间片运行到头了，就会退回到就绪态。</p><p>运行态时，进程用系统调用请求操作系统的某种资源，或者请求等待某件时间发生，这是一个主动行为的过程，会导致进程进入到阻塞太。</p><p>阻塞态到就绪态，是因为申请的资源被分配了，或者等待事件发生了。但是阻塞态进入到就绪态不是进程自身能控制的，是一种被动的行为。</p><h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>阻塞态是无法直接进入到运行态的，也不能由就绪态直接接入到则阻塞态。</p><h1 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h1><p><img src="image-20201019164631212.png"></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>操作系统</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>258.各位相加</title>
+    <link href="/2020/10/16/258-%E5%90%84%E4%BD%8D%E7%9B%B8%E5%8A%A0/"/>
+    <url>/2020/10/16/258-%E5%90%84%E4%BD%8D%E7%9B%B8%E5%8A%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">addDigits</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;        <span class="hljs-keyword">while</span>(num/<span class="hljs-number">10</span> != <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">int</span> res = <span class="hljs-number">0</span>;            <span class="hljs-keyword">while</span>(num != <span class="hljs-number">0</span>)&#123;                res += num%<span class="hljs-number">10</span>;                num = num/<span class="hljs-number">10</span>;            &#125;            num = res;        &#125;        <span class="hljs-keyword">return</span> num;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>就是一个简单的逻辑</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>242.有效的字母异位词</title>
+    <link href="/2020/10/16/242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/"/>
+    <url>/2020/10/16/242-%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isAnagram</span><span class="hljs-params">(String s, String t)</span> </span>&#123;        <span class="hljs-keyword">if</span>(s.length() != t.length())&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;        &#125;        <span class="hljs-keyword">char</span>[] first =s.toCharArray();        <span class="hljs-keyword">char</span>[] last = t.toCharArray();        Arrays.sort(first);        Arrays.sort(last);        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;s.length();++i)&#123;            <span class="hljs-keyword">if</span>(first[i] != last[i])&#123;                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;            &#125;        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>转成char，比较</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>240.搜索二维矩阵二</title>
+    <link href="/2020/10/16/240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%E4%BA%8C/"/>
+    <url>/2020/10/16/240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5%E4%BA%8C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">searchMatrix</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix, <span class="hljs-keyword">int</span> target)</span> </span>&#123;        <span class="hljs-keyword">if</span>(matrix == <span class="hljs-keyword">null</span> || matrix.length &lt;= <span class="hljs-number">0</span> || matrix[<span class="hljs-number">0</span>].length &lt;= <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;        &#125;        <span class="hljs-keyword">int</span> width = matrix[<span class="hljs-number">0</span>].length;        <span class="hljs-keyword">int</span> height = matrix.length;        <span class="hljs-keyword">int</span> first = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> last = width-<span class="hljs-number">1</span>;        <span class="hljs-keyword">while</span>(first&lt;height &amp;&amp; last&gt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">if</span>(target == matrix[first][last])&#123;                <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(target &gt; matrix[first][last])&#123;                first++;            &#125;<span class="hljs-keyword">else</span>&#123;                last--;            &#125;        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>时间复杂度是O(n+m)，算法很简单。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>238.除自身以外数组的乘积</title>
+    <link href="/2020/10/16/238-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/"/>
+    <url>/2020/10/16/238-%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] productExceptSelf(<span class="hljs-keyword">int</span>[] nums) &#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">0</span>];        &#125;        <span class="hljs-keyword">int</span> length = nums.length;        <span class="hljs-keyword">int</span>[] first = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length];        <span class="hljs-keyword">int</span>[] last = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length];        first[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;i&lt;length;++i)&#123;            first[i] = first[i-<span class="hljs-number">1</span>]*nums[i-<span class="hljs-number">1</span>];        &#125;        last[length-<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = length-<span class="hljs-number">2</span>;i&gt;=<span class="hljs-number">0</span>;--i)&#123;            last[i] = last[i+<span class="hljs-number">1</span>]*nums[i+<span class="hljs-number">1</span>];        &#125;        <span class="hljs-keyword">int</span>[] result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[length];        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;length;++i)&#123;            result[i] = first[i] * last[i];        &#125;        <span class="hljs-keyword">return</span> result;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>左边数的数组和右边数的数组，然后进行一次乘积，最后返回数组。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>234.回文链表</title>
+    <link href="/2020/10/16/234-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"/>
+    <url>/2020/10/16/234-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-comment">/**</span><span class="hljs-comment"> * Definition for singly-linked list.</span><span class="hljs-comment"> * public class ListNode &#123;</span><span class="hljs-comment"> *     int val;</span><span class="hljs-comment"> *     ListNode next;</span><span class="hljs-comment"> *     ListNode(int x) &#123; val = x; &#125;</span><span class="hljs-comment"> * &#125;</span><span class="hljs-comment"> */</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPalindrome</span><span class="hljs-params">(ListNode head)</span> </span>&#123;        <span class="hljs-keyword">if</span>(head == <span class="hljs-keyword">null</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;        &#125;        <span class="hljs-keyword">if</span>(head.next == <span class="hljs-keyword">null</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;        &#125;        ListNode quick = head.next;        ListNode slow = head;        <span class="hljs-keyword">while</span>(quick != <span class="hljs-keyword">null</span> &amp;&amp; quick.next != <span class="hljs-keyword">null</span>)&#123;            quick = quick.next.next;            slow = slow.next;        &#125;                ListNode nownode = reverse(slow.next);        slow.next = <span class="hljs-keyword">null</span>;        <span class="hljs-keyword">while</span>(nownode != <span class="hljs-keyword">null</span> &amp;&amp; head != <span class="hljs-keyword">null</span>)&#123;            <span class="hljs-keyword">if</span>(head.val != nownode.val)&#123;                <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;            &#125;            nownode = nownode.next;            head= head.next;        &#125;        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;    &#125;    ListNode pre = <span class="hljs-keyword">null</span>;    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverse</span><span class="hljs-params">(ListNode head)</span></span>&#123;        <span class="hljs-keyword">if</span>(head == <span class="hljs-keyword">null</span>)&#123;            <span class="hljs-keyword">return</span> pre;        &#125;        ListNode next = head.next;        head.next = pre;        pre = head;        head = next;        <span class="hljs-keyword">return</span> reverse(head);    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>翻转链表，对比</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>230.二叉搜索树中第k小的元素</title>
+    <link href="/2020/10/16/230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/"/>
+    <url>/2020/10/16/230-%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACk%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-comment">/**</span><span class="hljs-comment"> * Definition for a binary tree node.</span><span class="hljs-comment"> * public class TreeNode &#123;</span><span class="hljs-comment"> *     int val;</span><span class="hljs-comment"> *     TreeNode left;</span><span class="hljs-comment"> *     TreeNode right;</span><span class="hljs-comment"> *     TreeNode() &#123;&#125;</span><span class="hljs-comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span><span class="hljs-comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span><span class="hljs-comment"> *         this.val = val;</span><span class="hljs-comment"> *         this.left = left;</span><span class="hljs-comment"> *         this.right = right;</span><span class="hljs-comment"> *     &#125;</span><span class="hljs-comment"> * &#125;</span><span class="hljs-comment"> */</span><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        LinkedList&lt;TreeNode&gt; list  = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;            <span class="hljs-keyword">while</span>(root != <span class="hljs-keyword">null</span>)&#123;                list.add(root);                root = root.left;            &#125;            root = list.removeLast();            <span class="hljs-keyword">if</span>(--k == <span class="hljs-number">0</span>)&#123;                <span class="hljs-keyword">return</span> root.val;            &#125;            root = root.right;        &#125;    &#125;&#125;</code></pre><h1 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h1><p>时间复杂度，如果是平衡树logn+k，当树是一个不平衡树n+k，所以所有的节点都在左子树。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>215.数组中的第k个最大元素</title>
+    <link href="/2020/10/16/215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"/>
+    <url>/2020/10/16/215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKthLargest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;        &#125;        <span class="hljs-keyword">return</span> nums[coreFind(nums,nums.length-k,<span class="hljs-number">0</span>,nums.length-<span class="hljs-number">1</span>)];    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">coreFind</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums,<span class="hljs-keyword">int</span> k ,<span class="hljs-keyword">int</span> start,<span class="hljs-keyword">int</span> end)</span></span>&#123;        <span class="hljs-keyword">if</span>(start&lt;end)&#123;            <span class="hljs-keyword">int</span> pos = quick(nums,start,end);            <span class="hljs-keyword">if</span>(pos == k)&#123;                <span class="hljs-keyword">return</span> pos;            &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pos&lt;k)&#123;                <span class="hljs-keyword">return</span> coreFind(nums,k,pos+<span class="hljs-number">1</span>,end);            &#125;<span class="hljs-keyword">else</span>&#123;                <span class="hljs-keyword">return</span> coreFind(nums,k,start,pos-<span class="hljs-number">1</span>);            &#125;        &#125;        <span class="hljs-keyword">return</span> start;    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">quick</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums,<span class="hljs-keyword">int</span> start,<span class="hljs-keyword">int</span> end)</span></span>&#123;            <span class="hljs-keyword">if</span>(start&gt; end)&#123;                <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;            &#125;            <span class="hljs-keyword">int</span> temp = nums[start];            <span class="hljs-keyword">int</span> i = start;            <span class="hljs-keyword">int</span> j = end;            <span class="hljs-keyword">while</span>(i&lt;j)&#123;                <span class="hljs-keyword">while</span>(i&lt;j &amp;&amp; nums[j] &gt;= temp)&#123;                    j--;                &#125;                <span class="hljs-keyword">while</span>(i&lt;j &amp;&amp; nums[i] &lt;= temp)&#123;                    i++;                &#125;                <span class="hljs-keyword">if</span>(i&lt;j)&#123;                    <span class="hljs-keyword">int</span> tmp = nums[i];                    nums[i] = nums[j];                    nums[j] = tmp;                &#125;            &#125;            nums[start] = nums[i];            nums[i] =temp;            <span class="hljs-keyword">return</span> i;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>第k大，那么在递增排序，他的位置就是第nums.length-k个。</p><p>用快排和二分排序，时间复杂度O(n)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>198.打家劫舍</title>
+    <link href="/2020/10/16/198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/"/>
+    <url>/2020/10/16/198-%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">rob</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;        &#125;        <span class="hljs-keyword">if</span>(nums.length == <span class="hljs-number">1</span>)&#123;            <span class="hljs-keyword">return</span> nums[<span class="hljs-number">0</span>];        &#125;        <span class="hljs-keyword">int</span> pre = <span class="hljs-number">0</span>;        <span class="hljs-keyword">int</span> cur = <span class="hljs-number">0</span>;        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;nums.length;++i)&#123;            <span class="hljs-keyword">int</span> temp =cur;            cur = Math.max(cur,pre+nums[i]);            pre = temp;        &#125;        <span class="hljs-keyword">return</span> cur;    &#125;&#125;</code></pre><h1 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h1><p>其实这是一道动态规划的题，只不过化简了，我们只需用一个变量就可以了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>189.旋转数组</title>
+    <link href="/2020/10/16/189-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84/"/>
+    <url>/2020/10/16/189-%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;=<span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span>;        &#125;        k  = k%nums.length;        reverse(nums,<span class="hljs-number">0</span>,nums.length-<span class="hljs-number">1</span>);        reverse(nums,k,nums.length-<span class="hljs-number">1</span>);        reverse(nums,<span class="hljs-number">0</span>,k-<span class="hljs-number">1</span>);    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums,<span class="hljs-keyword">int</span> start,<span class="hljs-keyword">int</span> end)</span></span>&#123;        <span class="hljs-keyword">while</span>(start&lt;end)&#123;            <span class="hljs-keyword">int</span> temp = nums[start];            nums[start] = nums[end];            nums[end] = temp;            start++;            end--;        &#125;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>反转三次，原地修改。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>179.最大的数</title>
+    <link href="/2020/10/16/179-%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0/"/>
+    <url>/2020/10/16/179-%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">largestNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">if</span>(nums == <span class="hljs-keyword">null</span> || nums.length &lt;= <span class="hljs-number">0</span>)&#123;            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>;        &#125;        String[] string = <span class="hljs-keyword">new</span> String[nums.length];        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;nums.length;++i)&#123;            string[i] = Integer.toString(nums[i]);        &#125;        Arrays.sort(string,(o1,o2) -&gt; (o2+o1).compareTo(o1+o2));        <span class="hljs-keyword">if</span>(string[<span class="hljs-number">0</span>].equals(<span class="hljs-string">&quot;0&quot;</span>))&#123;            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0&quot;</span>;        &#125;        StringBuilder stringbuilder = <span class="hljs-keyword">new</span> StringBuilder();        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;i&lt;string.length;++i)&#123;            stringbuilder.append(string[i]);        &#125;        <span class="hljs-keyword">return</span> stringbuilder.toString();    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>利用java中的compareTo</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>172.阶乘后的零</title>
+    <link href="/2020/10/16/172-%E9%98%B6%E4%B9%98%E5%90%8E%E7%9A%84%E9%9B%B6/"/>
+    <url>/2020/10/16/172-%E9%98%B6%E4%B9%98%E5%90%8E%E7%9A%84%E9%9B%B6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">trailingZeroes</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;        <span class="hljs-keyword">int</span> zeroCount = <span class="hljs-number">0</span>;        <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>)&#123;            n /=<span class="hljs-number">5</span>;            zeroCount +=n;        &#125;        <span class="hljs-keyword">return</span> zeroCount;    &#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>就是当前的数反复除以5就可以，因为从5到1相乘为20，所以之后每有一个5就会多一个零。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>easy</tag>
+      
+      <tag>力扣</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>162.寻找峰值</title>
+    <link href="/2020/10/16/162-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/"/>
+    <url>/2020/10/16/162-%E5%AF%BB%E6%89%BE%E5%B3%B0%E5%80%BC/</url>
+    
+    <content type="html"><![CDATA[<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findPeakElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;        <span class="hljs-keyword">return</span> core(nums,<span class="hljs-number">0</span>,nums.length-<span class="hljs-number">1</span>);    &#125;    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">core</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums,<span class="hljs-keyword">int</span> left,<span class="hljs-keyword">int</span> right)</span></span>&#123;        <span class="hljs-keyword">if</span>(left == right)&#123;            <span class="hljs-keyword">return</span> left;        &#125;        <span class="hljs-keyword">int</span> mid = (left+right)/<span class="hljs-number">2</span>;        <span class="hljs-keyword">if</span>(nums[mid] &gt;nums[mid+<span class="hljs-number">1</span>])&#123;            <span class="hljs-keyword">return</span> core(nums,left,mid);        &#125;<span class="hljs-keyword">else</span>&#123;            <span class="hljs-keyword">return</span> core(nums,mid+<span class="hljs-number">1</span>,right);        &#125;    &#125;&#125;</code></pre><h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>因为想找的点永远是nums[i] &gt;nums[i+1]那么这个点就是峰值点。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>力扣</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>力扣</tag>
+      
+      <tag>mid</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>152.乘积最大子数组</title>
     <link href="/2020/10/16/152-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/"/>
     <url>/2020/10/16/152-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84/</url>
@@ -148,7 +491,7 @@
     
     <categories>
       
-      <category>mid</category>
+      <category>力扣</category>
       
     </categories>
     
@@ -1901,7 +2244,7 @@
   
   
   <entry>
-    <title>进程的定义，组成，组织方式，特征</title>
+    <title>进程的定义，组成，组织方式，特征 （七）</title>
     <link href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/"/>
     <url>/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/</url>
     
@@ -1955,7 +2298,7 @@
     <link href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"/>
     <url>/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/</url>
     
-    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201009205529316.png" alt="image-20201009205529316"></p><h1 id="系统调用的作用"><a href="#系统调用的作用" class="headerlink" title="系统调用的作用"></a>系统调用的作用</h1><p>操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，主要包括命令接口和程序接口，其中，程序接口由一组系统调用组成。</p><p>供给应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。</p><p>应用程序通过系统调用请求操作系统的服务，系统中各种共享资源都由操作系统统一掌管，因此在用户程序中，凡是与资源有关的操作（如存储分配，IO操作，文件管理等），都必须通过系统调用的方式向操作系统提出服务请求，由操作系统代为完成。这样可以保证系统的稳定性和安全性，防止用户进行非法操作。</p><p><img src="image-20201009211304714.png" alt="image-20201009211304714"></p><h1 id="系统调用和库函数的作用"><a href="#系统调用和库函数的作用" class="headerlink" title="系统调用和库函数的作用"></a>系统调用和库函数的作用</h1><p><img src="image-20201009211411935.png" alt="image-20201009211411935"></p><p>普通的应用程序可能调用库函数，库函数可能调用系统调用，也可能不调用系统调用。</p><h1 id="系统调用的背后的过程"><a href="#系统调用的背后的过程" class="headerlink" title="系统调用的背后的过程"></a>系统调用的背后的过程</h1><p>高级语言编译之后会变成汇编语言。</p><p><img src="image-20201009211748305.png" alt="image-20201009211748305"></p><p>传递系统调用参数 ——》 执行陷入指令（用户态） ——》 执行系统调用相应服务程序（核心态）——》返回用户程序</p><p>注意：</p><p>1）陷入指令是在用户态执行的，执行陷入指令之后立即引发一个内中断，从而cpu进入核心态</p><p>2）发出系统调用的请求是在用户态的，而对系统调用的相应处理是在核心态下进行的。</p><p>3） <strong>陷入指令是唯一一个在用户态下执行，而不能在核心态下面执行的指令</strong> </p><h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009212119178.png" alt="image-20201009212119178"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201009205529316.png"></p><h1 id="系统调用的作用"><a href="#系统调用的作用" class="headerlink" title="系统调用的作用"></a>系统调用的作用</h1><p>操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，主要包括命令接口和程序接口，其中，程序接口由一组系统调用组成。</p><p>供给应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。</p><p>应用程序通过系统调用请求操作系统的服务，系统中各种共享资源都由操作系统统一掌管，因此在用户程序中，凡是与资源有关的操作（如存储分配，IO操作，文件管理等），都必须通过系统调用的方式向操作系统提出服务请求，由操作系统代为完成。这样可以保证系统的稳定性和安全性，防止用户进行非法操作。</p><p><img src="image-20201009211304714.png" alt="image-20201009211304714"></p><h1 id="系统调用和库函数的作用"><a href="#系统调用和库函数的作用" class="headerlink" title="系统调用和库函数的作用"></a>系统调用和库函数的作用</h1><p><img src="image-20201009211411935.png"></p><p>普通的应用程序可能调用库函数，库函数可能调用系统调用，也可能不调用系统调用。</p><h1 id="系统调用的背后的过程"><a href="#系统调用的背后的过程" class="headerlink" title="系统调用的背后的过程"></a>系统调用的背后的过程</h1><p>高级语言编译之后会变成汇编语言。</p><p><img src="image-20201009211748305.png"></p><p>传递系统调用参数 ——》 执行陷入指令（用户态） ——》 执行系统调用相应服务程序（核心态）——》返回用户程序</p><p>注意：</p><p>1）陷入指令是在用户态执行的，执行陷入指令之后立即引发一个内中断，从而cpu进入核心态</p><p>2）发出系统调用的请求是在用户态的，而对系统调用的相应处理是在核心态下进行的。</p><p>3） <strong>陷入指令是唯一一个在用户态下执行，而不能在核心态下面执行的指令</strong> </p><h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009212119178.png"></p>]]></content>
     
     
     <categories>

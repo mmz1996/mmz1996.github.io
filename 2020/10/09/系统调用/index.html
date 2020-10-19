@@ -250,26 +250,26 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：6 天前
+                  本文最后更新于：2 分钟前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201009205529316.png" srcset="/img/loading.gif" alt="image-20201009205529316"></p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201009205529316.png" srcset="/img/loading.gif"></p>
 <h1 id="系统调用的作用"><a href="#系统调用的作用" class="headerlink" title="系统调用的作用"></a>系统调用的作用</h1><p>操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，主要包括命令接口和程序接口，其中，程序接口由一组系统调用组成。</p>
 <p>供给应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。</p>
 <p>应用程序通过系统调用请求操作系统的服务，系统中各种共享资源都由操作系统统一掌管，因此在用户程序中，凡是与资源有关的操作（如存储分配，IO操作，文件管理等），都必须通过系统调用的方式向操作系统提出服务请求，由操作系统代为完成。这样可以保证系统的稳定性和安全性，防止用户进行非法操作。</p>
 <p><img src="image-20201009211304714.png" srcset="/img/loading.gif" alt="image-20201009211304714"></p>
-<h1 id="系统调用和库函数的作用"><a href="#系统调用和库函数的作用" class="headerlink" title="系统调用和库函数的作用"></a>系统调用和库函数的作用</h1><p><img src="image-20201009211411935.png" srcset="/img/loading.gif" alt="image-20201009211411935"></p>
+<h1 id="系统调用和库函数的作用"><a href="#系统调用和库函数的作用" class="headerlink" title="系统调用和库函数的作用"></a>系统调用和库函数的作用</h1><p><img src="image-20201009211411935.png" srcset="/img/loading.gif"></p>
 <p>普通的应用程序可能调用库函数，库函数可能调用系统调用，也可能不调用系统调用。</p>
 <h1 id="系统调用的背后的过程"><a href="#系统调用的背后的过程" class="headerlink" title="系统调用的背后的过程"></a>系统调用的背后的过程</h1><p>高级语言编译之后会变成汇编语言。</p>
-<p><img src="image-20201009211748305.png" srcset="/img/loading.gif" alt="image-20201009211748305"></p>
+<p><img src="image-20201009211748305.png" srcset="/img/loading.gif"></p>
 <p>传递系统调用参数 ——》 执行陷入指令（用户态） ——》 执行系统调用相应服务程序（核心态）——》返回用户程序</p>
 <p>注意：</p>
 <p>1）陷入指令是在用户态执行的，执行陷入指令之后立即引发一个内中断，从而cpu进入核心态</p>
 <p>2）发出系统调用的请求是在用户态的，而对系统调用的相应处理是在核心态下进行的。</p>
 <p>3） <strong>陷入指令是唯一一个在用户态下执行，而不能在核心态下面执行的指令</strong> </p>
-<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009212119178.png" srcset="/img/loading.gif" alt="image-20201009212119178"></p>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><img src="image-20201009212119178.png" srcset="/img/loading.gif"></p>
 
             </div>
             <hr>
