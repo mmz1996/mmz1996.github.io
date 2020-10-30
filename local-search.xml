@@ -4,13 +4,50 @@
   
   
   <entry>
+    <title>多线程模型（十一）</title>
+    <link href="/2020/10/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/"/>
+    <url>/2020/10/30/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030170456670.png" alt="image-20201030170456670"></p><h1 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h1><p>在没有引入进程之前，系统在各个程序中只能串行执行。引入了进程之后，可以通过聊天加上听音乐。</p><p>但是一个聊天软件是一个进程，但是一个进程也要做很多的事情怎么办，发图片，语音，传送文件等等，应该怎么去做呢。</p><p>目前，线程是一个最基本的cpu执行单元，也是程序执行流的最小单位。</p><p>引入线程之后，进程只除cpu之外的系统资源的分配单元（如打印机，内存地址空间都是分配给进程的）</p><h1 id="引入线程机制之后"><a href="#引入线程机制之后" class="headerlink" title="引入线程机制之后"></a>引入线程机制之后</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171557691.png" alt="image-20201030171557691"></p><h1 id="线程的属性"><a href="#线程的属性" class="headerlink" title="线程的属性"></a>线程的属性</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171647765.png" alt="image-20201030171647765"></p><h1 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h1><h2 id="用户级别线程"><a href="#用户级别线程" class="headerlink" title="用户级别线程"></a>用户级别线程</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171753244.png" alt="image-20201030171753244"></p><p>用户级别线程由应用程序通过线程库实现。所有的线程管理工作都由应用程序负责（包括线程切换）</p><p>用户级别线程，线程切换可以在用户态下面即可完成，无需操作系统干预。</p><h2 id="内核级别线程"><a href="#内核级别线程" class="headerlink" title="内核级别线程"></a>内核级别线程</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171942203.png" alt="image-20201030171942203"></p><p>内核级线程的管理工作，由操作系统内核完成，线程调度，切换等工作，都由内核负责，因此，内核级别的切换必然需要在核心态下面才能完成。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在同时支持用户级别线程和内核级别线程的系统中，可采用二者组合的方式，将n个用户级别线程映射到m个内核级别线程上。</p><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030172130829.png" alt="image-20201030172130829"></p><p>只有内核级别线程，操作系统才是处理机分配的单位。</p><p>上图虽然有三个用户级别线程，但是只有两个内核级别线程。如果当前的cpu为4核，也只会分配2核。</p><h1 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h1><p>在同时支持用户级别线程和内核级别线程的系统中，由几个用户级别线程映射到几个内核级别线程的问题引出了“多线程模型”问题</p><h2 id="多对一模型"><a href="#多对一模型" class="headerlink" title="多对一模型"></a>多对一模型</h2><p>多个用户及线程映射到一个内核级别线程，每个用户进程只对应一个内核级别线程。</p><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030172632719.png" alt="image-20201030172632719"></p><p>优点：用户级别线程切换在用户态就可以完成，不需要切换到核心态，线程管理的系统开销小，效率高。</p><p>缺点：当一个用户级别线程阻塞之后，整个进程都会被阻塞，并发度不高，多个线程无法在多个处理机上运行。</p><h2 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a>一对一模型</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030173234816.png" alt="image-20201030173234816"></p><p>一对一模型：一个用户及线程映射到一个内核级别线程，每个用户进程与用户级别线程同数量的内核级别线程。</p><p>优点：当一个线程被阻塞后，别的线程还可以继续运行，并发能力强，多线程可以在多处理机上运行。</p><p>缺点：一个用户进程占用多个内核级别线程，线程切换由操作系统内核完成， 需要切换到核心态，因此线程管理的成本高，开销大。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>操作系统</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>进程通信（十）</title>
     <link href="/2020/10/30/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%88%E5%8D%81%EF%BC%89/"/>
     <url>/2020/10/30/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%88%E5%8D%81%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201030163554094.png" alt="image-20201030163554094"></p><h1 id="进程通信的定义"><a href="#进程通信的定义" class="headerlink" title="进程通信的定义"></a>进程通信的定义</h1><p>就是进程之间信息的交换</p><p>进程是分配系统资源的单位（包括内存地址空间），因此各进程拥有的内存地址空间相互独立</p><p>为了保证安全，一个进程是不能访问另一个的进程空间的</p><p>但是进程之间的进程交换又是必须实现的，为了保证进程的安全通信，操作系统提供了一些办法</p><h1 id="进程通信的分类"><a href="#进程通信的分类" class="headerlink" title="进程通信的分类"></a>进程通信的分类</h1><p><img src="image-20201030164052320.png" alt="image-20201030164052320"></p><h1 id="共享存储"><a href="#共享存储" class="headerlink" title="共享存储"></a>共享存储</h1><p>开辟一个共享空间，两个进程同时对空间进行访问。但是必须要注意的是，对共享空间的访问必须是互斥的。</p><p>操作系统只提供共享空间和互斥工具（pv操作）</p><p>共享存储还分为两种，基于数据结构的共享和基于存储区的共享。</p><h2 id="基于数据结构的共享"><a href="#基于数据结构的共享" class="headerlink" title="基于数据结构的共享"></a>基于数据结构的共享</h2><p>比如共享空间放入一个长度为10的数组，这种共享方式比较慢，是一种低级通信方式，固定的数据结构。</p><h2 id="基于存储区的共享"><a href="#基于存储区的共享" class="headerlink" title="基于存储区的共享"></a>基于存储区的共享</h2><p>在内存中画出一块共享存储区，数据的形式，存放的位置都由进程控制，而不是操作系统，相比之下，这种共享方式速度更快，是一种高级通信方式。</p><h1 id="管道通信"><a href="#管道通信" class="headerlink" title="管道通信"></a>管道通信</h1><p>管道是指用于连接读写进程的一个共享文件，又名pipe文件，其实就是在内存区域开辟一个大小固定的缓冲区</p><p>管道只能实现半双工通信，在某个时间段，只能实现单向的传输，如果想要实现双全工通信，则需要设置两个管道。</p><p>各个进程互斥的访问管道。</p><p>数据以字符流的形式写入管道，当管道写满的时候，写进程的write（）系统调用将会被阻塞，等待读进程将数据取走，当读进程将数据全部取走之后，管道变空，此时读进程的read（）系统调用将会被阻塞。</p><p>如果没写满，就不允许读，如果没读完，就不允许写。</p><p>数据一旦被读出，就从管道中被抛弃，这就意味着读进程最多只能有一个，否则就会出现读错数据的情况。</p><h1 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h1><p>进程之间的数据交换以格式化的消息为单位，进程通过操作系统提供的发送/接收消息两个原语进行数据交换。</p><p>消息包括消息头和消息体，消息头包括，发送进程ID，接收进程ID，消息类型，消息长度等格式化的信息。</p><h2 id="直接通信方式"><a href="#直接通信方式" class="headerlink" title="直接通信方式"></a>直接通信方式</h2><p>进程1通过发送原语，将消息发送到进程2的消息缓冲队列中。然后进程2会通过接受原语，接受消息。</p><h2 id="间接通信方式"><a href="#间接通信方式" class="headerlink" title="间接通信方式"></a>间接通信方式</h2><p>消息先发送到中间实体（信箱中），因为也称为“信箱通信方式”，操作系统会维护一个信箱。由于消息头的原因，不会出错。</p><h1 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h1><p><img src="image-20201030165927270.png" alt="image-20201030165927270"></p>]]></content>
     
     
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>操作系统</tag>
+      
+    </tags>
     
   </entry>
   

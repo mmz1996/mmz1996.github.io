@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>进程控制 （九） - 马铭泽的个人博客</title>
+  <title>多线程模型（十一） - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-19 16:51" pubdate>
-        2020年10月19日 下午
+      <time datetime="2020-10-30 17:03" pubdate>
+        2020年10月30日 下午
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      613 字
+      770 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6
+      7
        分钟
     </span>
   
@@ -246,42 +246,40 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">进程控制 （九）</h1>
+            <h1 style="display: none">多线程模型（十一）</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 小时前
+                  本文最后更新于：3 分钟前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201019165219755.png" srcset="/img/loading.gif" alt="image-20201019165219755"></p>
-<h1 id="进程控制的定义"><a href="#进程控制的定义" class="headerlink" title="进程控制的定义"></a>进程控制的定义</h1><p>进程控制的主要功能是对系统中的所有进程实施有效的管理，它具有创建新进程，撤销已有进程，实现进程状态控制等功能。</p>
-<p>总结一句话，就是像上一篇所讲的那样，实现进程的状态转换。</p>
-<h1 id="如何实现进程控制"><a href="#如何实现进程控制" class="headerlink" title="如何实现进程控制"></a>如何实现进程控制</h1><p>回顾一下之前的进程的组织问题，操作系统会将各个pcb挂载到就绪队列指针/阻塞队列指针。</p>
-<p><img src="image-20201019165622380.png" srcset="/img/loading.gif" alt="image-20201019165622380"></p>
-<p>进程被创建，在创建态，需要初始化pcb，然后分配系统资源。初始化结束之后，会把pcb放入到就绪队列中。这就是创建态——&gt;就绪态。</p>
-<p>当就绪态的进程获取了cpu，那么他会进入到运行态，需要恢复进程运行环境，修改pcb内容和相应队列。</p>
-<p>如果某个进程在运行态中，自己发生了系统调用，从运行态进入到了阻塞态，需要操作系统保存运行环境，修改pcb内容和相应队列（阻塞队列）。</p>
-<p>阻塞态转换到就绪态，需要修改pcb内容和相应队列。</p>
-<p>运行态到终止态，回收进程拥有的资源，撤销pcb。</p>
-<h2 id="原语"><a href="#原语" class="headerlink" title="原语"></a>原语</h2><p>原语用于进程控制，因为他的特点是执行期间不可以被中断，只能一气呵成。</p>
-<p>这种不可被中断的操作，即为原子操作。</p>
-<p>原语中采用“关中断指令”和“开中断指令”实现。</p>
-<p><img src="image-20201019172754064.png" srcset="/img/loading.gif" alt="image-20201019172754064"></p>
-<p>显然，开/关中断指令的权限非常大，必然只是允许在核心态下执行的特权指令。</p>
-<h1 id="进程控制相关的原语"><a href="#进程控制相关的原语" class="headerlink" title="进程控制相关的原语"></a>进程控制相关的原语</h1><p>进程控制会导致进程状态的转换：所以无论哪个原语，要做的事情有三件。</p>
-<p>1.更新pcb中的信息（修改进程状态标志，将运行环境保存到pcb中，从pcb中恢复运行环境）</p>
-<p>a.所有的进程控制原语一定都会修改进程状态标志</p>
-<p>b.剥夺当前运行进程的cpu使用权必然需要保存其运行的环境</p>
-<p>c.某进程开始运行前必然要恢复期运行环境</p>
-<p>2.将pcb插入合适的队列，就绪队列/阻塞队列</p>
-<p>3.分配和回收资源</p>
-<h2 id="创建原语"><a href="#创建原语" class="headerlink" title="创建原语"></a>创建原语</h2><p><img src="image-20201019203714006.png" srcset="/img/loading.gif" alt="image-20201019203714006"></p>
-<h2 id="撤销原语"><a href="#撤销原语" class="headerlink" title="撤销原语"></a>撤销原语</h2><p><img src="image-20201019204241101.png" srcset="/img/loading.gif" alt="image-20201019204241101"></p>
-<h2 id="阻塞与唤醒原语"><a href="#阻塞与唤醒原语" class="headerlink" title="阻塞与唤醒原语"></a>阻塞与唤醒原语</h2><p><img src="image-20201019214410047.png" srcset="/img/loading.gif" alt="image-20201019214410047"></p>
-<h2 id="进程的切换"><a href="#进程的切换" class="headerlink" title="进程的切换"></a>进程的切换</h2><p><img src="image-20201019214535442.png" srcset="/img/loading.gif" alt="image-20201019214535442"></p>
-<h1 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h1><p><img src="image-20201019215211999.png" srcset="/img/loading.gif" alt="image-20201019215211999">mei</p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030170456670.png" srcset="/img/loading.gif" alt="image-20201030170456670"></p>
+<h1 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h1><p>在没有引入进程之前，系统在各个程序中只能串行执行。引入了进程之后，可以通过聊天加上听音乐。</p>
+<p>但是一个聊天软件是一个进程，但是一个进程也要做很多的事情怎么办，发图片，语音，传送文件等等，应该怎么去做呢。</p>
+<p>目前，线程是一个最基本的cpu执行单元，也是程序执行流的最小单位。</p>
+<p>引入线程之后，进程只除cpu之外的系统资源的分配单元（如打印机，内存地址空间都是分配给进程的）</p>
+<h1 id="引入线程机制之后"><a href="#引入线程机制之后" class="headerlink" title="引入线程机制之后"></a>引入线程机制之后</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171557691.png" srcset="/img/loading.gif" alt="image-20201030171557691"></p>
+<h1 id="线程的属性"><a href="#线程的属性" class="headerlink" title="线程的属性"></a>线程的属性</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171647765.png" srcset="/img/loading.gif" alt="image-20201030171647765"></p>
+<h1 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h1><h2 id="用户级别线程"><a href="#用户级别线程" class="headerlink" title="用户级别线程"></a>用户级别线程</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171753244.png" srcset="/img/loading.gif" alt="image-20201030171753244"></p>
+<p>用户级别线程由应用程序通过线程库实现。所有的线程管理工作都由应用程序负责（包括线程切换）</p>
+<p>用户级别线程，线程切换可以在用户态下面即可完成，无需操作系统干预。</p>
+<h2 id="内核级别线程"><a href="#内核级别线程" class="headerlink" title="内核级别线程"></a>内核级别线程</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171942203.png" srcset="/img/loading.gif" alt="image-20201030171942203"></p>
+<p>内核级线程的管理工作，由操作系统内核完成，线程调度，切换等工作，都由内核负责，因此，内核级别的切换必然需要在核心态下面才能完成。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在同时支持用户级别线程和内核级别线程的系统中，可采用二者组合的方式，将n个用户级别线程映射到m个内核级别线程上。</p>
+<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030172130829.png" srcset="/img/loading.gif" alt="image-20201030172130829"></p>
+<p>只有内核级别线程，操作系统才是处理机分配的单位。</p>
+<p>上图虽然有三个用户级别线程，但是只有两个内核级别线程。如果当前的cpu为4核，也只会分配2核。</p>
+<h1 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h1><p>在同时支持用户级别线程和内核级别线程的系统中，由几个用户级别线程映射到几个内核级别线程的问题引出了“多线程模型”问题</p>
+<h2 id="多对一模型"><a href="#多对一模型" class="headerlink" title="多对一模型"></a>多对一模型</h2><p>多个用户及线程映射到一个内核级别线程，每个用户进程只对应一个内核级别线程。</p>
+<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030172632719.png" srcset="/img/loading.gif" alt="image-20201030172632719"></p>
+<p>优点：用户级别线程切换在用户态就可以完成，不需要切换到核心态，线程管理的系统开销小，效率高。</p>
+<p>缺点：当一个用户级别线程阻塞之后，整个进程都会被阻塞，并发度不高，多个线程无法在多个处理机上运行。</p>
+<h2 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a>一对一模型</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030173234816.png" srcset="/img/loading.gif" alt="image-20201030173234816"></p>
+<p>一对一模型：一个用户及线程映射到一个内核级别线程，每个用户进程与用户级别线程同数量的内核级别线程。</p>
+<p>优点：当一个线程被阻塞后，别的线程还可以继续运行，并发能力强，多线程可以在多处理机上运行。</p>
+<p>缺点：一个用户进程占用多个内核级别线程，线程切换由操作系统内核完成， 需要切换到核心态，因此线程管理的成本高，开销大。</p>
 
             </div>
             <hr>
@@ -312,18 +310,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/30/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%88%E5%8D%81%EF%BC%89/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">进程通信（十）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/19/%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2-1/">
-                        <span class="hidden-mobile">进程的状态与转换 （八）</span>
+                      <a href="/2020/10/30/%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1%EF%BC%88%E5%8D%81%EF%BC%89/">
+                        <span class="hidden-mobile">进程通信（十）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -512,7 +504,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "进程控制 （九）&nbsp;",
+        "多线程模型（十一）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
