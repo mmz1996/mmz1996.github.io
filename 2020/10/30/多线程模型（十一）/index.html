@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      770 字
+      852 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -250,36 +250,40 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 分钟前
+                  本文最后更新于：4 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030170456670.png" srcset="/img/loading.gif" alt="image-20201030170456670"></p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201030170456670.png" srcset="/img/loading.gif" alt="image-20201030170456670"></p>
 <h1 id="线程概念"><a href="#线程概念" class="headerlink" title="线程概念"></a>线程概念</h1><p>在没有引入进程之前，系统在各个程序中只能串行执行。引入了进程之后，可以通过聊天加上听音乐。</p>
 <p>但是一个聊天软件是一个进程，但是一个进程也要做很多的事情怎么办，发图片，语音，传送文件等等，应该怎么去做呢。</p>
 <p>目前，线程是一个最基本的cpu执行单元，也是程序执行流的最小单位。</p>
 <p>引入线程之后，进程只除cpu之外的系统资源的分配单元（如打印机，内存地址空间都是分配给进程的）</p>
-<h1 id="引入线程机制之后"><a href="#引入线程机制之后" class="headerlink" title="引入线程机制之后"></a>引入线程机制之后</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171557691.png" srcset="/img/loading.gif" alt="image-20201030171557691"></p>
-<h1 id="线程的属性"><a href="#线程的属性" class="headerlink" title="线程的属性"></a>线程的属性</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171647765.png" srcset="/img/loading.gif" alt="image-20201030171647765"></p>
-<h1 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h1><h2 id="用户级别线程"><a href="#用户级别线程" class="headerlink" title="用户级别线程"></a>用户级别线程</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171753244.png" srcset="/img/loading.gif" alt="image-20201030171753244"></p>
+<h1 id="引入线程机制之后"><a href="#引入线程机制之后" class="headerlink" title="引入线程机制之后"></a>引入线程机制之后</h1><p><img src="image-20201030171557691.png" srcset="/img/loading.gif" alt="image-20201030171557691"></p>
+<h1 id="线程的属性"><a href="#线程的属性" class="headerlink" title="线程的属性"></a>线程的属性</h1><p><img src="image-20201030171647765.png" srcset="/img/loading.gif" alt="image-20201030171647765"></p>
+<h1 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h1><h2 id="用户级别线程"><a href="#用户级别线程" class="headerlink" title="用户级别线程"></a>用户级别线程</h2><p><img src="image-20201030171753244.png" srcset="/img/loading.gif" alt="image-20201030171753244"></p>
 <p>用户级别线程由应用程序通过线程库实现。所有的线程管理工作都由应用程序负责（包括线程切换）</p>
 <p>用户级别线程，线程切换可以在用户态下面即可完成，无需操作系统干预。</p>
-<h2 id="内核级别线程"><a href="#内核级别线程" class="headerlink" title="内核级别线程"></a>内核级别线程</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030171942203.png" srcset="/img/loading.gif" alt="image-20201030171942203"></p>
+<h2 id="内核级别线程"><a href="#内核级别线程" class="headerlink" title="内核级别线程"></a>内核级别线程</h2><p><img src="image-20201030171942203.png" srcset="/img/loading.gif" alt="image-20201030171942203"></p>
 <p>内核级线程的管理工作，由操作系统内核完成，线程调度，切换等工作，都由内核负责，因此，内核级别的切换必然需要在核心态下面才能完成。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在同时支持用户级别线程和内核级别线程的系统中，可采用二者组合的方式，将n个用户级别线程映射到m个内核级别线程上。</p>
-<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030172130829.png" srcset="/img/loading.gif" alt="image-20201030172130829"></p>
+<p><img src="image-20201030172130829.png" srcset="/img/loading.gif" alt="image-20201030172130829"></p>
 <p>只有内核级别线程，操作系统才是处理机分配的单位。</p>
 <p>上图虽然有三个用户级别线程，但是只有两个内核级别线程。如果当前的cpu为4核，也只会分配2核。</p>
 <h1 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h1><p>在同时支持用户级别线程和内核级别线程的系统中，由几个用户级别线程映射到几个内核级别线程的问题引出了“多线程模型”问题</p>
 <h2 id="多对一模型"><a href="#多对一模型" class="headerlink" title="多对一模型"></a>多对一模型</h2><p>多个用户及线程映射到一个内核级别线程，每个用户进程只对应一个内核级别线程。</p>
-<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030172632719.png" srcset="/img/loading.gif" alt="image-20201030172632719"></p>
+<p><img src="image-20201030172632719.png" srcset="/img/loading.gif" alt="image-20201030172632719"></p>
 <p>优点：用户级别线程切换在用户态就可以完成，不需要切换到核心态，线程管理的系统开销小，效率高。</p>
 <p>缺点：当一个用户级别线程阻塞之后，整个进程都会被阻塞，并发度不高，多个线程无法在多个处理机上运行。</p>
-<h2 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a>一对一模型</h2><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201030173234816.png" srcset="/img/loading.gif" alt="image-20201030173234816"></p>
+<h2 id="一对一模型"><a href="#一对一模型" class="headerlink" title="一对一模型"></a>一对一模型</h2><p><img src="image-20201030173234816.png" srcset="/img/loading.gif" alt="image-20201030173234816"></p>
 <p>一对一模型：一个用户及线程映射到一个内核级别线程，每个用户进程与用户级别线程同数量的内核级别线程。</p>
 <p>优点：当一个线程被阻塞后，别的线程还可以继续运行，并发能力强，多线程可以在多处理机上运行。</p>
 <p>缺点：一个用户进程占用多个内核级别线程，线程切换由操作系统内核完成， 需要切换到核心态，因此线程管理的成本高，开销大。</p>
+<h2 id="多对多模型"><a href="#多对多模型" class="headerlink" title="多对多模型"></a>多对多模型</h2><p><img src="image-20201030173507627.png" srcset="/img/loading.gif" alt="image-20201030173507627"></p>
+<p>n用户级别线程映射到m内核级别线程，每个用户对应m个级别内核线程</p>
+<p>克服了多对一的模型并发读不高，克服一对一，一个用户进程占用太多的内核级别线程，开销太大的缺点。</p>
+<h1 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h1><p><img src="image-20201030173648312.png" srcset="/img/loading.gif" alt="image-20201030173648312"></p>
 
             </div>
             <hr>
@@ -309,6 +313,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/11/03/%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%81%E5%B1%82%E6%AC%A1-%EF%BC%88%E5%8D%81%E4%BA%8C%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">处理机调度的概念、层次 （十二）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
