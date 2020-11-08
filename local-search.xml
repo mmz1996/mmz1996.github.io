@@ -4,13 +4,75 @@
   
   
   <entry>
+    <title>前端中package-json文件</title>
+    <link href="/2020/11/08/%E5%89%8D%E7%AB%AF%E4%B8%ADpackage-json%E6%96%87%E4%BB%B6/"/>
+    <url>/2020/11/08/%E5%89%8D%E7%AB%AF%E4%B8%ADpackage-json%E6%96%87%E4%BB%B6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h1><p>这是我的一个前端项目的package.json文件</p><pre><code class="hljs json">&#123;  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;parking_space_master&quot;</span>,  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.0.0&quot;</span>,  <span class="hljs-attr">&quot;description&quot;</span>: <span class="hljs-string">&quot;A Vue.js project&quot;</span>,  <span class="hljs-attr">&quot;author&quot;</span>: <span class="hljs-string">&quot;mmz &lt;372461239@qq.com&gt;&quot;</span>,  <span class="hljs-attr">&quot;private&quot;</span>: <span class="hljs-literal">true</span>,  <span class="hljs-attr">&quot;scripts&quot;</span>: &#123;    <span class="hljs-attr">&quot;dev&quot;</span>: <span class="hljs-string">&quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;</span>,    <span class="hljs-attr">&quot;start&quot;</span>: <span class="hljs-string">&quot;npm run dev&quot;</span>,    <span class="hljs-attr">&quot;unit&quot;</span>: <span class="hljs-string">&quot;jest --config test/unit/jest.conf.js --coverage&quot;</span>,    <span class="hljs-attr">&quot;e2e&quot;</span>: <span class="hljs-string">&quot;node test/e2e/runner.js&quot;</span>,    <span class="hljs-attr">&quot;test&quot;</span>: <span class="hljs-string">&quot;npm run unit &amp;&amp; npm run e2e&quot;</span>,    <span class="hljs-attr">&quot;lint&quot;</span>: <span class="hljs-string">&quot;eslint --ext .js,.vue src test/unit test/e2e/specs&quot;</span>,    <span class="hljs-attr">&quot;build&quot;</span>: <span class="hljs-string">&quot;node build/build.js&quot;</span>  &#125;,  <span class="hljs-attr">&quot;dependencies&quot;</span>: &#123;    <span class="hljs-attr">&quot;axios&quot;</span>: <span class="hljs-string">&quot;^0.18.0&quot;</span>,    <span class="hljs-attr">&quot;echarts&quot;</span>: <span class="hljs-string">&quot;^4.2.1&quot;</span>,    <span class="hljs-attr">&quot;element-ui&quot;</span>: <span class="hljs-string">&quot;^2.7.2&quot;</span>,    <span class="hljs-attr">&quot;jquery&quot;</span>: <span class="hljs-string">&quot;^3.4.1&quot;</span>,    <span class="hljs-attr">&quot;stylus&quot;</span>: <span class="hljs-string">&quot;^0.54.5&quot;</span>,    <span class="hljs-attr">&quot;stylus-loader&quot;</span>: <span class="hljs-string">&quot;^3.0.2&quot;</span>,    <span class="hljs-attr">&quot;vue&quot;</span>: <span class="hljs-string">&quot;^2.5.2&quot;</span>,    <span class="hljs-attr">&quot;vue-router&quot;</span>: <span class="hljs-string">&quot;^3.0.1&quot;</span>,    <span class="hljs-attr">&quot;vuex&quot;</span>: <span class="hljs-string">&quot;^3.1.1&quot;</span>  &#125;,  <span class="hljs-attr">&quot;devDependencies&quot;</span>: &#123;    <span class="hljs-attr">&quot;autoprefixer&quot;</span>: <span class="hljs-string">&quot;^7.1.2&quot;</span>,    <span class="hljs-attr">&quot;babel-core&quot;</span>: <span class="hljs-string">&quot;^6.22.1&quot;</span>,    <span class="hljs-attr">&quot;babel-eslint&quot;</span>: <span class="hljs-string">&quot;^8.2.1&quot;</span>,    <span class="hljs-attr">&quot;babel-helper-vue-jsx-merge-props&quot;</span>: <span class="hljs-string">&quot;^2.0.3&quot;</span>,    <span class="hljs-attr">&quot;babel-jest&quot;</span>: <span class="hljs-string">&quot;^21.0.2&quot;</span>,    <span class="hljs-attr">&quot;babel-loader&quot;</span>: <span class="hljs-string">&quot;^7.1.1&quot;</span>,    <span class="hljs-attr">&quot;babel-plugin-dynamic-import-node&quot;</span>: <span class="hljs-string">&quot;^1.2.0&quot;</span>,    <span class="hljs-attr">&quot;babel-plugin-syntax-jsx&quot;</span>: <span class="hljs-string">&quot;^6.18.0&quot;</span>,    <span class="hljs-attr">&quot;babel-plugin-transform-es2015-modules-commonjs&quot;</span>: <span class="hljs-string">&quot;^6.26.0&quot;</span>,    <span class="hljs-attr">&quot;babel-plugin-transform-runtime&quot;</span>: <span class="hljs-string">&quot;^6.22.0&quot;</span>,    <span class="hljs-attr">&quot;babel-plugin-transform-vue-jsx&quot;</span>: <span class="hljs-string">&quot;^3.5.0&quot;</span>,    <span class="hljs-attr">&quot;babel-preset-env&quot;</span>: <span class="hljs-string">&quot;^1.3.2&quot;</span>,    <span class="hljs-attr">&quot;babel-preset-stage-2&quot;</span>: <span class="hljs-string">&quot;^6.22.0&quot;</span>,    <span class="hljs-attr">&quot;babel-register&quot;</span>: <span class="hljs-string">&quot;^6.22.0&quot;</span>,    <span class="hljs-attr">&quot;chalk&quot;</span>: <span class="hljs-string">&quot;^2.0.1&quot;</span>,    <span class="hljs-attr">&quot;chromedriver&quot;</span>: <span class="hljs-string">&quot;^2.27.2&quot;</span>,    <span class="hljs-attr">&quot;copy-webpack-plugin&quot;</span>: <span class="hljs-string">&quot;^4.0.1&quot;</span>,    <span class="hljs-attr">&quot;cross-spawn&quot;</span>: <span class="hljs-string">&quot;^5.0.1&quot;</span>,    <span class="hljs-attr">&quot;css-loader&quot;</span>: <span class="hljs-string">&quot;^0.28.0&quot;</span>,    <span class="hljs-attr">&quot;eslint&quot;</span>: <span class="hljs-string">&quot;^4.15.0&quot;</span>,    <span class="hljs-attr">&quot;eslint-config-standard&quot;</span>: <span class="hljs-string">&quot;^10.2.1&quot;</span>,    <span class="hljs-attr">&quot;eslint-friendly-formatter&quot;</span>: <span class="hljs-string">&quot;^3.0.0&quot;</span>,    <span class="hljs-attr">&quot;eslint-loader&quot;</span>: <span class="hljs-string">&quot;^1.7.1&quot;</span>,    <span class="hljs-attr">&quot;eslint-plugin-import&quot;</span>: <span class="hljs-string">&quot;^2.7.0&quot;</span>,    <span class="hljs-attr">&quot;eslint-plugin-node&quot;</span>: <span class="hljs-string">&quot;^5.2.0&quot;</span>,    <span class="hljs-attr">&quot;eslint-plugin-promise&quot;</span>: <span class="hljs-string">&quot;^3.4.0&quot;</span>,    <span class="hljs-attr">&quot;eslint-plugin-standard&quot;</span>: <span class="hljs-string">&quot;^3.0.1&quot;</span>,    <span class="hljs-attr">&quot;eslint-plugin-vue&quot;</span>: <span class="hljs-string">&quot;^4.0.0&quot;</span>,    <span class="hljs-attr">&quot;extract-text-webpack-plugin&quot;</span>: <span class="hljs-string">&quot;^3.0.0&quot;</span>,    <span class="hljs-attr">&quot;file-loader&quot;</span>: <span class="hljs-string">&quot;^1.1.4&quot;</span>,    <span class="hljs-attr">&quot;friendly-errors-webpack-plugin&quot;</span>: <span class="hljs-string">&quot;^1.6.1&quot;</span>,    <span class="hljs-attr">&quot;html-webpack-plugin&quot;</span>: <span class="hljs-string">&quot;^2.30.1&quot;</span>,    <span class="hljs-attr">&quot;jest&quot;</span>: <span class="hljs-string">&quot;^22.0.4&quot;</span>,    <span class="hljs-attr">&quot;jest-serializer-vue&quot;</span>: <span class="hljs-string">&quot;^0.3.0&quot;</span>,    <span class="hljs-attr">&quot;nightwatch&quot;</span>: <span class="hljs-string">&quot;^0.9.12&quot;</span>,    <span class="hljs-attr">&quot;node-notifier&quot;</span>: <span class="hljs-string">&quot;^5.1.2&quot;</span>,    <span class="hljs-attr">&quot;optimize-css-assets-webpack-plugin&quot;</span>: <span class="hljs-string">&quot;^3.2.0&quot;</span>,    <span class="hljs-attr">&quot;ora&quot;</span>: <span class="hljs-string">&quot;^1.2.0&quot;</span>,    <span class="hljs-attr">&quot;portfinder&quot;</span>: <span class="hljs-string">&quot;^1.0.13&quot;</span>,    <span class="hljs-attr">&quot;postcss-import&quot;</span>: <span class="hljs-string">&quot;^11.0.0&quot;</span>,    <span class="hljs-attr">&quot;postcss-loader&quot;</span>: <span class="hljs-string">&quot;^2.0.8&quot;</span>,    <span class="hljs-attr">&quot;postcss-url&quot;</span>: <span class="hljs-string">&quot;^7.2.1&quot;</span>,    <span class="hljs-attr">&quot;rimraf&quot;</span>: <span class="hljs-string">&quot;^2.6.0&quot;</span>,    <span class="hljs-attr">&quot;selenium-server&quot;</span>: <span class="hljs-string">&quot;^3.0.1&quot;</span>,    <span class="hljs-attr">&quot;semver&quot;</span>: <span class="hljs-string">&quot;^5.3.0&quot;</span>,    <span class="hljs-attr">&quot;shelljs&quot;</span>: <span class="hljs-string">&quot;^0.7.6&quot;</span>,    <span class="hljs-attr">&quot;uglifyjs-webpack-plugin&quot;</span>: <span class="hljs-string">&quot;^1.1.1&quot;</span>,    <span class="hljs-attr">&quot;url-loader&quot;</span>: <span class="hljs-string">&quot;^0.5.8&quot;</span>,    <span class="hljs-attr">&quot;vue-jest&quot;</span>: <span class="hljs-string">&quot;^1.0.2&quot;</span>,    <span class="hljs-attr">&quot;vue-loader&quot;</span>: <span class="hljs-string">&quot;^13.3.0&quot;</span>,    <span class="hljs-attr">&quot;vue-style-loader&quot;</span>: <span class="hljs-string">&quot;^3.0.1&quot;</span>,    <span class="hljs-attr">&quot;vue-template-compiler&quot;</span>: <span class="hljs-string">&quot;^2.5.2&quot;</span>,    <span class="hljs-attr">&quot;webpack&quot;</span>: <span class="hljs-string">&quot;^3.6.0&quot;</span>,    <span class="hljs-attr">&quot;webpack-bundle-analyzer&quot;</span>: <span class="hljs-string">&quot;^2.9.0&quot;</span>,    <span class="hljs-attr">&quot;webpack-dev-server&quot;</span>: <span class="hljs-string">&quot;^2.9.1&quot;</span>,    <span class="hljs-attr">&quot;webpack-merge&quot;</span>: <span class="hljs-string">&quot;^4.1.0&quot;</span>  &#125;,  <span class="hljs-attr">&quot;engines&quot;</span>: &#123;    <span class="hljs-attr">&quot;node&quot;</span>: <span class="hljs-string">&quot;&gt;= 6.0.0&quot;</span>,    <span class="hljs-attr">&quot;npm&quot;</span>: <span class="hljs-string">&quot;&gt;= 3.0.0&quot;</span>  &#125;,  <span class="hljs-attr">&quot;browserslist&quot;</span>: [    <span class="hljs-string">&quot;&gt; 1%&quot;</span>,    <span class="hljs-string">&quot;last 2 versions&quot;</span>,    <span class="hljs-string">&quot;not ie &lt;= 8&quot;</span>  ]&#125;</code></pre><h1 id="结构解析"><a href="#结构解析" class="headerlink" title="结构解析"></a>结构解析</h1><p>name 项目名称</p><p>version 版本号</p><p>description 项目描述</p><p>author 作者</p><p>private 为true，代表npm拒绝发布它，私有存储库</p><p>scripts 指定了运行一些脚本命令，npm run dev</p><p>dependencies 整个项目正常运行的时候依赖的包，也就是用户在npm install的时候，安装都是自动安装的这些依赖</p><p>devDependencies 项目开发时候依赖度的工具包，运行时不依赖于这些包</p><p>engines 指定项目的工作环境，除非用户自己设置，这个字段只是建议值</p><p>browserslist 在不同的前端工具之间共用目标浏览器和node版本的配置工具</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>进程互斥的软件实现方法（十八）</title>
+    <link href="/2020/11/07/%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%88%E5%8D%81%E5%85%AB%EF%BC%89/"/>
+    <url>/2020/11/07/%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%EF%BC%88%E5%8D%81%E5%85%AB%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107074926041.png" alt="image-20201107074926041"></p><h1 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h1><p>算法思想：两个进程访问临界区后把使用临界区的权限转交给另一个进程，也就是说每个进程进入临界区的权限只能被另一个进程赋予。</p><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107075118503.png" alt="image-20201107075118503"></p><p>有一点像java中的volatile修饰的关键字，把修饰的变量作为单标志法的标志。</p><p>同一时刻最多只允许一个进程访问临界区。</p><p>但是该算法导致了访问顺序是固定的，那么违背了“空闲让进”原则。</p><h1 id="双标志先检查法"><a href="#双标志先检查法" class="headerlink" title="双标志先检查法"></a>双标志先检查法</h1><p>算法思想：设置一个布尔类型的数组flag[]，数组中各个元素用来标记进程想进入临界区的意愿，0为true，flag[0] = true意味着0号进程P0想要进入临界区，每个进程在进入临界区之前先检查当前有没有别的进程想进入临界区，如果没有，把当前自身对应的标志flag[i]设置为true，之后开始访问临界区。</p><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107075705286.png" alt="image-20201107075705286"></p><p>按照上面的顺序执行,P0和P1会同时访问临界区，因此双标志法的主要问题是，违背了“忙则等待”原则。</p><p>原因在检查和上锁不是原子操作，两个处理不是一气呵成的。</p><h1 id="双标志后检查法"><a href="#双标志后检查法" class="headerlink" title="双标志后检查法"></a>双标志后检查法</h1><p>算法思想：在双标志先检查的方法改版，前一个算法的问题是先检查，后上锁。但是这两个操作又无法一气呵成，因此导致了两个进程同时进入临界区的问题。因此，人们又想到了先上锁，后检查的方法，来避免上述问题。</p><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107080051255.png" alt="image-20201107080051255"></p><p>先上锁，后检查。</p><p>当然，问题还是存在的，如果按照顺序1526的顺序，P0和P1都无法进入临界区。</p><p>因此，双标志后检查法虽然解决了“忙则等待”的问题，但是又违背了“空闲让进”和“有限等待”原则，会因为进程都长期无法访问临界区资源而产生“饥饿”现象。</p><h1 id="peterson算法"><a href="#peterson算法" class="headerlink" title="peterson算法"></a>peterson算法</h1><p>算法思想：双标志后检查中，两个进程都想访问临界区，但是谁都不让谁，最后谁都无法进入临界区，peterson想到一种方法，如果双方都抢着进入临界区，那可以让进程尝试“孔融让梨”</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>操作系统</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>进程同步与互斥（十七）</title>
     <link href="/2020/11/03/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89/"/>
     <url>/2020/11/03/%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5%EF%BC%88%E5%8D%81%E4%B8%83%EF%BC%89/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201106235038036.png" alt="image-20201106235038036"></p><h1 id="进程同步概念"><a href="#进程同步概念" class="headerlink" title="进程同步概念"></a>进程同步概念</h1><p>进程具有异步性的特征，异步性是指各个并发的进程以各自的，独立的，不可预知的速度向前推进。</p><p>同步亦称为直接制约关系，它是指完成某种任务而建立的两个或者多种进程，这些进程因为需要在某些位置上协调他们的工作次序而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。</p><h1 id="进程互斥"><a href="#进程互斥" class="headerlink" title="进程互斥"></a>进程互斥</h1><p>进程的并发需要共享的支持，各个并发执行的进程不可避免的需要共享一些系统资源（比如内存，打印机，摄像头这种IO设备）</p><p>我们把一个时间段内只允许一个进程使用的资源称为临界资源，许多物理设备（比如摄像头，打印机）都属于临界资源，此外还有更多变量，数据，内存都属于临界资源。</p><p>对临界资源的访问，必须互斥的进行，互斥，又称为间接制约关系。进程互斥，指当一个进程访问某临界资源时，另一个想要访问该临界资源的进程必须等待，当前访问临界资源的进程结束时候，释放该资源之后，另一个进程才能去访问该资源。</p><h2 id="两种资源共享方式"><a href="#两种资源共享方式" class="headerlink" title="两种资源共享方式"></a>两种资源共享方式</h2><p>互斥共享方式和同时共享方式</p><h2 id="遵循原则"><a href="#遵循原则" class="headerlink" title="遵循原则"></a>遵循原则</h2><p>1）空闲让进，临界区空闲，可以允许一个请求进入临界区的进程立即进入临界区</p><p>2）忙则等待，当已有进程访问临界区，其他试图进入临界区的进程必须等待</p><p>3）有限等待，对请求访问的进程，应该保证能在有限时间内进入临界区（保证不会饥饿） </p><p>4）让权等待，当进程不能进入临界区，应该立即释放处理机，防止进程忙等待</p><h1 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h1><p><img src="image-20201107000516392.png" alt="image-20201107000516392"></p>]]></content>
     
     
+    <categories>
+      
+      <category>操作系统</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>操作系统</tag>
+      
+    </tags>
     
   </entry>
   
