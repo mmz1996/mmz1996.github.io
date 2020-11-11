@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>数据可视化ECharts—基本使用</title>
+    <link href="/2020/11/10/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts%E2%80%94%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    <url>/2020/11/10/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts%E2%80%94%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ECharts-js的介绍"><a href="#ECharts-js的介绍" class="headerlink" title="ECharts.js的介绍"></a>ECharts.js的介绍</h1><p>是一个javascript实现的开源可视化库，兼容性强，底层依赖矢量图ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。</p><p>开源免费/功能丰富/社区活跃</p><h1 id="ECharts-js的特点"><a href="#ECharts-js的特点" class="headerlink" title="ECharts.js的特点"></a>ECharts.js的特点</h1><h2 id="丰富的可视化类型"><a href="#丰富的可视化类型" class="headerlink" title="丰富的可视化类型"></a>丰富的可视化类型</h2><p>折线图，柱状图，饼图，K线图</p><h2 id="多种数据支持"><a href="#多种数据支持" class="headerlink" title="多种数据支持"></a>多种数据支持</h2><p>key-value</p><p>二维表</p><p>TypedArray</p><h2 id="流数据支持"><a href="#流数据支持" class="headerlink" title="流数据支持"></a>流数据支持</h2><p>流数据的动态渲染</p><p>增量渲染技术</p><h1 id="ECharts-js上手"><a href="#ECharts-js上手" class="headerlink" title="ECharts.js上手"></a>ECharts.js上手</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>步骤1：引入echart.js</p><p>步骤2：准备一个呈现图表的盒子 div</p><p>步骤3：初始化echarts实例对象</p><p>步骤4：准备配置项</p><p>步骤5：将配置项设置给echarts实例对象</p><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><span class="hljs-comment">&lt;!--    步骤1：引入echart.js--&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;lib/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-comment">&lt;!--步骤2：准备一个呈现图表的盒子 div--&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 600px;height: 400px&quot;</span>&gt;</span>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">    <span class="hljs-comment">// 步骤3：初始化echarts实例对象</span></span><span class="javascript">    <span class="hljs-comment">//参数，dom决定图表最终呈现的位置</span></span><span class="javascript">    <span class="hljs-keyword">var</span> mCharts =  echarts.init(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;div&#x27;</span>))</span><span class="javascript">    <span class="hljs-comment">// 步骤4：准备配置项</span></span><span class="javascript">        <span class="hljs-keyword">var</span> option = &#123;</span>            xAxis:&#123;<span class="javascript">                type:<span class="hljs-string">&#x27;category&#x27;</span>,</span><span class="javascript">                data:[<span class="hljs-string">&#x27;小明&#x27;</span>,<span class="hljs-string">&#x27;小红&#x27;</span>,<span class="hljs-string">&#x27;小王&#x27;</span>]</span>            &#125;,            yAxis:&#123;<span class="javascript">                type:<span class="hljs-string">&#x27;value&#x27;</span></span>            &#125;,            series:[                &#123;<span class="javascript">                    name:<span class="hljs-string">&#x27;语文&#x27;</span>,</span><span class="javascript">                    type:<span class="hljs-string">&#x27;bar&#x27;</span>,</span>                    data:[70,92,87]                &#125;            ]        &#125;<span class="javascript">        <span class="hljs-comment">//步骤5：将配置项设置给echarts实例对象</span></span>        mCharts.setOption(option)    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201110115759608.png" alt="image-20201110115759608"></p><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>引入</p><p>准备</p><p>设置</p><h2 id="配置项的使用"><a href="#配置项的使用" class="headerlink" title="配置项的使用"></a>配置项的使用</h2><p>除了配置项以外，其他的代码都是固定不变的。</p><p>配置项的学习和使用应该参考官方文档和示例</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>数据可视化ECharts-前言</title>
+    <link href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%89%8D%E8%A8%80/"/>
+    <url>/2020/11/09/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%89%8D%E8%A8%80/</url>
+    
+    <content type="html"><![CDATA[<h1 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h1><p>ECharts.js</p><p>Vue全家桶（Vue router,Vuex）</p><p>Webpack打包工具</p><p>Axios 前端后端数据交互</p><p>WebSocket</p><p>koa2</p><h1 id="数据可视化概念"><a href="#数据可视化概念" class="headerlink" title="数据可视化概念"></a>数据可视化概念</h1><p>把数据以更直观的方式展现——图表</p><p>可以清晰有效的传递与沟通信息</p><p>还可以看到隐藏在数据中的信息</p><h1 id="可视化的实现方式"><a href="#可视化的实现方式" class="headerlink" title="可视化的实现方式"></a>可视化的实现方式</h1><h2 id="报表类"><a href="#报表类" class="headerlink" title="报表类"></a>报表类</h2><p>Excel</p><p>水晶报表</p><h2 id="商业智能BI"><a href="#商业智能BI" class="headerlink" title="商业智能BI"></a>商业智能BI</h2><p>microsoft BI</p><p>Power BI</p><h2 id="编码类"><a href="#编码类" class="headerlink" title="编码类"></a>编码类</h2><p>Echarts.js 百度开发</p><p>D3.js 国外开发</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>前端</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>前端中package-json文件</title>
     <link href="/2020/11/08/%E5%89%8D%E7%AB%AF%E4%B8%ADpackage-json%E6%96%87%E4%BB%B6/"/>
     <url>/2020/11/08/%E5%89%8D%E7%AB%AF%E4%B8%ADpackage-json%E6%96%87%E4%BB%B6/</url>

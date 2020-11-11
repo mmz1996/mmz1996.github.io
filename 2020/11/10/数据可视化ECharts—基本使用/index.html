@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>230.二叉搜索树中第k小的元素 - 马铭泽的个人博客</title>
+  <title>数据可视化ECharts—基本使用 - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-16 03:16" pubdate>
-        2020年10月16日 凌晨
+      <time datetime="2020-11-10 09:52" pubdate>
+        2020年11月10日 上午
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      137 字
+      442 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      6
        分钟
     </span>
   
@@ -246,50 +246,75 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">230.二叉搜索树中第k小的元素</h1>
+            <h1 style="display: none">数据可视化ECharts—基本使用</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 个月前
+                  本文最后更新于：1 天前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><pre><code class="hljs java"><span class="hljs-comment">/**</span>
-<span class="hljs-comment"> * Definition for a binary tree node.</span>
-<span class="hljs-comment"> * public class TreeNode &#123;</span>
-<span class="hljs-comment"> *     int val;</span>
-<span class="hljs-comment"> *     TreeNode left;</span>
-<span class="hljs-comment"> *     TreeNode right;</span>
-<span class="hljs-comment"> *     TreeNode() &#123;&#125;</span>
-<span class="hljs-comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span>
-<span class="hljs-comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span>
-<span class="hljs-comment"> *         this.val = val;</span>
-<span class="hljs-comment"> *         this.left = left;</span>
-<span class="hljs-comment"> *         this.right = right;</span>
-<span class="hljs-comment"> *     &#125;</span>
-<span class="hljs-comment"> * &#125;</span>
-<span class="hljs-comment"> */</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">kthSmallest</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> k)</span> </span>&#123;
-        LinkedList&lt;TreeNode&gt; list  = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();
-        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>)&#123;
-            <span class="hljs-keyword">while</span>(root != <span class="hljs-keyword">null</span>)&#123;
-                list.add(root);
-                root = root.left;
-            &#125;
-            root = list.removeLast();
-            <span class="hljs-keyword">if</span>(--k == <span class="hljs-number">0</span>)&#123;
-                <span class="hljs-keyword">return</span> root.val;
-            &#125;
-            root = root.right;
+              <h1 id="ECharts-js的介绍"><a href="#ECharts-js的介绍" class="headerlink" title="ECharts.js的介绍"></a>ECharts.js的介绍</h1><p>是一个javascript实现的开源可视化库，兼容性强，底层依赖矢量图ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。</p>
+<p>开源免费/功能丰富/社区活跃</p>
+<h1 id="ECharts-js的特点"><a href="#ECharts-js的特点" class="headerlink" title="ECharts.js的特点"></a>ECharts.js的特点</h1><h2 id="丰富的可视化类型"><a href="#丰富的可视化类型" class="headerlink" title="丰富的可视化类型"></a>丰富的可视化类型</h2><p>折线图，柱状图，饼图，K线图</p>
+<h2 id="多种数据支持"><a href="#多种数据支持" class="headerlink" title="多种数据支持"></a>多种数据支持</h2><p>key-value</p>
+<p>二维表</p>
+<p>TypedArray</p>
+<h2 id="流数据支持"><a href="#流数据支持" class="headerlink" title="流数据支持"></a>流数据支持</h2><p>流数据的动态渲染</p>
+<p>增量渲染技术</p>
+<h1 id="ECharts-js上手"><a href="#ECharts-js上手" class="headerlink" title="ECharts.js上手"></a>ECharts.js上手</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>步骤1：引入echart.js</p>
+<p>步骤2：准备一个呈现图表的盒子 div</p>
+<p>步骤3：初始化echarts实例对象</p>
+<p>步骤4：准备配置项</p>
+<p>步骤5：将配置项设置给echarts实例对象</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-comment">&lt;!--    步骤1：引入echart.js--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;lib/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-comment">&lt;!--步骤2：准备一个呈现图表的盒子 div--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 600px;height: 400px&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">    <span class="hljs-comment">// 步骤3：初始化echarts实例对象</span></span>
+<span class="javascript">    <span class="hljs-comment">//参数，dom决定图表最终呈现的位置</span></span>
+<span class="javascript">    <span class="hljs-keyword">var</span> mCharts =  echarts.init(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;div&#x27;</span>))</span>
+<span class="javascript">    <span class="hljs-comment">// 步骤4：准备配置项</span></span>
+<span class="javascript">        <span class="hljs-keyword">var</span> option = &#123;</span>
+            xAxis:&#123;
+<span class="javascript">                type:<span class="hljs-string">&#x27;category&#x27;</span>,</span>
+<span class="javascript">                data:[<span class="hljs-string">&#x27;小明&#x27;</span>,<span class="hljs-string">&#x27;小红&#x27;</span>,<span class="hljs-string">&#x27;小王&#x27;</span>]</span>
+            &#125;,
+            yAxis:&#123;
+<span class="javascript">                type:<span class="hljs-string">&#x27;value&#x27;</span></span>
+            &#125;,
+            series:[
+                &#123;
+<span class="javascript">                    name:<span class="hljs-string">&#x27;语文&#x27;</span>,</span>
+<span class="javascript">                    type:<span class="hljs-string">&#x27;bar&#x27;</span>,</span>
+                    data:[70,92,87]
+                &#125;
+            ]
         &#125;
-    &#125;
-&#125;</code></pre>
+<span class="javascript">        <span class="hljs-comment">//步骤5：将配置项设置给echarts实例对象</span></span>
+        mCharts.setOption(option)
+    <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
-
-
-<h1 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h1><p>时间复杂度，如果是平衡树logn+k，当树是一个不平衡树n+k，所以所有的节点都在左子树。</p>
+<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201110115759608.png" srcset="/img/loading.gif" alt="image-20201110115759608"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>引入</p>
+<p>准备</p>
+<p>设置</p>
+<h2 id="配置项的使用"><a href="#配置项的使用" class="headerlink" title="配置项的使用"></a>配置项的使用</h2><p>除了配置项以外，其他的代码都是固定不变的。</p>
+<p>配置项的学习和使用应该参考官方文档和示例</p>
 
             </div>
             <hr>
@@ -299,7 +324,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%8A%9B%E6%89%A3/">力扣</a>
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
                     
                   </div>
                 
@@ -307,9 +332,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E6%89%A3/">力扣</a>
-                    
-                      <a class="hover-with-bg" href="/tags/mid/">mid</a>
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
                     
                   </div>
                 
@@ -322,18 +345,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/16/234-%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">234.回文链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/16/215-%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACk%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/">
-                        <span class="hidden-mobile">215.数组中的第k个最大元素</span>
+                      <a href="/2020/11/09/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%89%8D%E8%A8%80/">
+                        <span class="hidden-mobile">数据可视化ECharts-前言</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -522,7 +539,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "230.二叉搜索树中第k小的元素&nbsp;",
+        "数据可视化ECharts—基本使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
