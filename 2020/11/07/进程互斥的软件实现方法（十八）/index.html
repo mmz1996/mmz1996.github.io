@@ -250,23 +250,23 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：4 天前
+                  本文最后更新于：11 分钟前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107074926041.png" srcset="/img/loading.gif" alt="image-20201107074926041"></p>
+              <h1 id="知识总览"><a href="#知识总览" class="headerlink" title="知识总览"></a>知识总览</h1><p><img src="image-20201107074926041.png" srcset="/img/loading.gif" alt="image-20201107074926041"></p>
 <h1 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h1><p>算法思想：两个进程访问临界区后把使用临界区的权限转交给另一个进程，也就是说每个进程进入临界区的权限只能被另一个进程赋予。</p>
-<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107075118503.png" srcset="/img/loading.gif" alt="image-20201107075118503"></p>
+<p><img src="image-20201107075118503.png" srcset="/img/loading.gif" alt="image-20201107075118503"></p>
 <p>有一点像java中的volatile修饰的关键字，把修饰的变量作为单标志法的标志。</p>
 <p>同一时刻最多只允许一个进程访问临界区。</p>
 <p>但是该算法导致了访问顺序是固定的，那么违背了“空闲让进”原则。</p>
 <h1 id="双标志先检查法"><a href="#双标志先检查法" class="headerlink" title="双标志先检查法"></a>双标志先检查法</h1><p>算法思想：设置一个布尔类型的数组flag[]，数组中各个元素用来标记进程想进入临界区的意愿，0为true，flag[0] = true意味着0号进程P0想要进入临界区，每个进程在进入临界区之前先检查当前有没有别的进程想进入临界区，如果没有，把当前自身对应的标志flag[i]设置为true，之后开始访问临界区。</p>
-<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107075705286.png" srcset="/img/loading.gif" alt="image-20201107075705286"></p>
+<p><img src="image-20201107075705286.png" srcset="/img/loading.gif" alt="image-20201107075705286"></p>
 <p>按照上面的顺序执行,P0和P1会同时访问临界区，因此双标志法的主要问题是，违背了“忙则等待”原则。</p>
 <p>原因在检查和上锁不是原子操作，两个处理不是一气呵成的。</p>
 <h1 id="双标志后检查法"><a href="#双标志后检查法" class="headerlink" title="双标志后检查法"></a>双标志后检查法</h1><p>算法思想：在双标志先检查的方法改版，前一个算法的问题是先检查，后上锁。但是这两个操作又无法一气呵成，因此导致了两个进程同时进入临界区的问题。因此，人们又想到了先上锁，后检查的方法，来避免上述问题。</p>
-<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201107080051255.png" srcset="/img/loading.gif" alt="image-20201107080051255"></p>
+<p><img src="image-20201107080051255.png" srcset="/img/loading.gif" alt="image-20201107080051255"></p>
 <p>先上锁，后检查。</p>
 <p>当然，问题还是存在的，如果按照顺序1526的顺序，P0和P1都无法进入临界区。</p>
 <p>因此，双标志后检查法虽然解决了“忙则等待”的问题，但是又违背了“空闲让进”和“有限等待”原则，会因为进程都长期无法访问临界区资源而产生“饥饿”现象。</p>
