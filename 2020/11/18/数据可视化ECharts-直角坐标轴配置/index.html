@@ -1,0 +1,625 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>数据可视化ECharts-直角坐标轴配置 - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-18 10:45" pubdate>
+        2020年11月18日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      558 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">数据可视化ECharts-直角坐标轴配置</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 小时前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="直角坐标轴的配置"><a href="#直角坐标轴的配置" class="headerlink" title="直角坐标轴的配置"></a>直角坐标轴的配置</h1><p>涉及到上面我们学习完的，柱状图，折线图，散点图</p>
+<p>配置1：gird 网格</p>
+<p>配置2：坐标轴axis</p>
+<p>配置3：缩放区域dataZoom</p>
+<h2 id="配置1-gird网格"><a href="#配置1-gird网格" class="headerlink" title="配置1 gird网格"></a>配置1 gird网格</h2><p>gird是用来控制直角坐标系的布局和大小</p>
+<p>x轴和y轴就是在gird的基础上绘制出来的</p>
+<pre><code class="hljs less"><span class="hljs-attribute">grid</span>: &#123; <span class="hljs-comment">// 坐标轴容器</span>
+    <span class="hljs-attribute">show</span>: true, <span class="hljs-comment">// 是否可见</span>
+    <span class="hljs-attribute">borderWidth</span>: <span class="hljs-number">10</span>, <span class="hljs-comment">// 边框的宽度</span>
+    <span class="hljs-attribute">borderColor</span>: <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-comment">// 边框的颜色</span>
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">120</span>, <span class="hljs-comment">// 边框的位置</span>
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">120</span>,
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">// 边框的大小</span>
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150</span>
+&#125;,</code></pre>
+
+<p><img src="image-20201118103816738.png" srcset="/img/loading.gif" alt="image-20201118103816738"></p>
+<p>显示gird show</p>
+<p>gird的边框 borderWidth borderColor</p>
+<p>gird的位置和大小 left top</p>
+<h2 id="配置2-坐标轴axis"><a href="#配置2-坐标轴axis" class="headerlink" title="配置2 坐标轴axis"></a>配置2 坐标轴axis</h2><p>坐标轴分为x轴和y轴</p>
+<h3 id="坐标类型-type"><a href="#坐标类型-type" class="headerlink" title="坐标类型 type"></a>坐标类型 type</h3><p>value：数值轴，自动会从目标数据中读取数据</p>
+<p>category：类目轴，该类型必须通过data设置类目数据</p>
+<pre><code class="hljs less"><span class="hljs-attribute">xAxis</span>: &#123;
+    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;category&#x27;</span>,
+    <span class="hljs-attribute">data</span>: xDataArr,
+    <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;top&#x27;</span> <span class="hljs-comment">// 控制坐标轴的位置</span>
+&#125;,
+<span class="hljs-attribute">yAxis</span>: &#123;
+    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;value&#x27;</span>,
+    <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;right&#x27;</span> <span class="hljs-comment">// 控制坐标轴的位置</span>
+&#125;,
+<span class="hljs-attribute">series</span>: [
+    &#123;
+        <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;语文&#x27;</span>,
+        <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
+        <span class="hljs-attribute">markPoint</span>: &#123;
+            <span class="hljs-attribute">data</span>: [
+                &#123;
+                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;max&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;最大值&#x27;</span>
+                &#125;,&#123;
+                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;min&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;最小值&#x27;</span>
+                &#125;
+            ]
+        &#125;,
+        <span class="hljs-attribute">markLine</span>: &#123;
+            <span class="hljs-attribute">data</span>: [
+                &#123;
+                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;average&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;平均值&#x27;</span>
+                &#125;
+            ]
+        &#125;,
+        <span class="hljs-attribute">label</span>: &#123;
+            <span class="hljs-attribute">show</span>: true,
+            <span class="hljs-attribute">rotate</span>: <span class="hljs-number">60</span>,
+            <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;top&#x27;</span>
+        &#125;,
+        <span class="hljs-attribute">barWidth</span>: <span class="hljs-string">&#x27;30%&#x27;</span>,
+        <span class="hljs-attribute">data</span>: yDataArr
+    &#125;
+]</code></pre>
+
+<h3 id="显示位置-position"><a href="#显示位置-position" class="headerlink" title="显示位置 position"></a>显示位置 position</h3><p>xAxis：可取值为top或者bottom</p>
+<p>yAxis：可取值为left或者right</p>
+<p><img src="image-20201118105324128.png" srcset="/img/loading.gif" alt="image-20201118105324128"></p>
+<h2 id="配置3-区域缩放dataZoom"><a href="#配置3-区域缩放dataZoom" class="headerlink" title="配置3 区域缩放dataZoom"></a>配置3 区域缩放dataZoom</h2><p>dataZoom 用于区域缩放，对数据范围过滤，x轴和y轴都可以拥有</p>
+<p>dataZoom是一个数组，意味着可以配置多个区域缩放器</p>
+<h3 id="类型-type"><a href="#类型-type" class="headerlink" title="类型 type"></a>类型 type</h3><p>slider：滑块</p>
+<p>inside：内置，依靠鼠标滚轮或者双指缩放</p>
+<h3 id="指明产生作用的轴"><a href="#指明产生作用的轴" class="headerlink" title="指明产生作用的轴"></a>指明产生作用的轴</h3><p>xAxisIndex：设置缩放组件控制的是哪个x轴，一般写0即可。</p>
+<p>yAxisIndex：设置缩放组件控制的是哪个y轴，一般写0即可。</p>
+<h3 id="指明初始状态缩放的情况"><a href="#指明初始状态缩放的情况" class="headerlink" title="指明初始状态缩放的情况"></a>指明初始状态缩放的情况</h3><p>start：数据窗口范围的初始百分比</p>
+<p>end：数据窗口范围的结束百分比</p>
+<h1 id="小结-直角坐标系"><a href="#小结-直角坐标系" class="headerlink" title="小结 直角坐标系"></a>小结 直角坐标系</h1><h2 id="直角坐标系的图表"><a href="#直角坐标系的图表" class="headerlink" title="直角坐标系的图表"></a>直角坐标系的图表</h2><p>柱状图，散点图，折线图</p>
+<h3 id="网格grid"><a href="#网格grid" class="headerlink" title="网格grid"></a>网格grid</h3><p>x轴和y轴的依附</p>
+<h3 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h3><p>xAxis和yAxis</p>
+<p>取值类型 value 和 category</p>
+<h3 id="区域缩放-dataZoom"><a href="#区域缩放-dataZoom" class="headerlink" title="区域缩放 dataZoom"></a>区域缩放 dataZoom</h3><p>x轴和y轴都可以设置</p>
+<p>inside和slider</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%95%A3%E7%82%B9%E5%9B%BE/">
+                        <span class="hidden-mobile">数据可视化ECharts-散点图</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据可视化ECharts-直角坐标轴配置&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
