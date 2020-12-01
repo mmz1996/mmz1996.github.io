@@ -1,0 +1,968 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>数据可视化ECharts-单独图标组件开发 - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-23 14:23" pubdate>
+        2020年11月23日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">数据可视化ECharts-单独图标组件开发</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 分钟前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="停车场商家销售统计（横向柱状图）"><a href="#停车场商家销售统计（横向柱状图）" class="headerlink" title="停车场商家销售统计（横向柱状图）"></a>停车场商家销售统计（横向柱状图）</h1><h2 id="组件结构"><a href="#组件结构" class="headerlink" title="组件结构"></a>组件结构</h2><p>seller.vue</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    seller组件
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="javascript">  name: <span class="hljs-string">&#x27;Seller&#x27;</span></span>
+&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
+
+<p>sellerpage.vue</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">seller</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">seller</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript"><span class="hljs-keyword">import</span> Seller <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../components/Seller&#x27;</span></span>
+<span class="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="javascript">  name: <span class="hljs-string">&#x27;SellerPage&#x27;</span>,</span>
+  components: &#123;
+    seller: Seller
+  &#125;
+&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
+
+
+
+<h2 id="布局结构"><a href="#布局结构" class="headerlink" title="布局结构"></a>布局结构</h2><p>在css下面的global.less中</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">html</span>,<span class="hljs-selector-tag">body</span>,<span class="hljs-selector-id">#app</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>:<span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+
+<span class="hljs-selector-class">.com-page</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+<span class="hljs-selector-class">.com-container</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+
+<span class="hljs-selector-class">.com-chart</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;</code></pre>
+
+<h2 id="图标基本功能实现"><a href="#图标基本功能实现" class="headerlink" title="图标基本功能实现"></a>图标基本功能实现</h2><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com-chart&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;seller&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%;height: 100%&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript"><span class="hljs-keyword">var</span> echarts = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;echarts&#x27;</span>)</span>
+<span class="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="javascript">  name: <span class="hljs-string">&#x27;Seller&#x27;</span>,</span>
+  data () &#123;
+<span class="javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="javascript">      chartInstance: <span class="hljs-literal">null</span>,</span>
+<span class="javascript">      allData: <span class="hljs-literal">null</span></span>
+    &#125;
+  &#125;,
+  mounted () &#123;
+<span class="javascript">    <span class="hljs-built_in">this</span>.initChart()</span>
+<span class="javascript">    <span class="hljs-built_in">this</span>.getData()</span>
+  &#125;,
+  methods: &#123;
+<span class="javascript">    <span class="hljs-comment">// 初始化echartsInstance对象</span></span>
+    initChart () &#123;
+<span class="javascript">      <span class="hljs-keyword">const</span> chart = <span class="hljs-built_in">this</span>.$refs.seller</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.chartInstance = echarts.init(chart)</span>
+<span class="javascript">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;初始化echarts&#x27;</span>)</span>
+    &#125;,
+<span class="javascript">    <span class="hljs-comment">// 获取服务器的数据</span></span>
+<span class="javascript">    <span class="hljs-keyword">async</span> getData () &#123;</span>
+<span class="javascript">      <span class="hljs-keyword">const</span> &#123;<span class="hljs-attr">data</span>: ret&#125; = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.$axios.get(<span class="hljs-string">&#x27;http://127.0.0.1:8888/api/seller&#x27;</span>)</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.allData = ret</span>
+<span class="javascript">      <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.allData)</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.updateChart()</span>
+    &#125;,
+<span class="javascript">    <span class="hljs-comment">// 更新图表</span></span>
+    updateChart () &#123;
+<span class="javascript">      <span class="hljs-keyword">const</span> sellerNames = <span class="hljs-built_in">this</span>.allData.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;</span>
+<span class="javascript">        <span class="hljs-keyword">return</span> item.name</span>
+      &#125;)
+<span class="javascript">      <span class="hljs-keyword">const</span> sellerValues = <span class="hljs-built_in">this</span>.allData.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;</span>
+<span class="javascript">        <span class="hljs-keyword">return</span> item.value</span>
+      &#125;)
+<span class="javascript">      <span class="hljs-keyword">const</span> option = &#123;</span>
+        xAxis: &#123;
+<span class="javascript">          type: <span class="hljs-string">&#x27;value&#x27;</span></span>
+        &#125;,
+        yAxis: &#123;
+<span class="javascript">          type: <span class="hljs-string">&#x27;category&#x27;</span>,</span>
+          data: sellerNames
+        &#125;,
+        series: [
+          &#123;
+<span class="javascript">            type: <span class="hljs-string">&#x27;bar&#x27;</span>,</span>
+            data: sellerValues
+          &#125;
+        ]
+      &#125;
+<span class="javascript">      <span class="hljs-built_in">this</span>.chartInstance.setOption(option)</span>
+    &#125;
+  &#125;
+&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span>
+<span class="css">  <span class="hljs-selector-class">.com-container</span> &#123;</span>
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  &#125;
+
+<span class="css">  <span class="hljs-selector-class">.com-chart</span> &#123;</span>
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
+
+<h3 id="initChart"><a href="#initChart" class="headerlink" title="initChart"></a>initChart</h3><p>初始化</p>
+<h3 id="getData"><a href="#getData" class="headerlink" title="getData"></a>getData</h3><p>获取数据</p>
+<h3 id="updateChart"><a href="#updateChart" class="headerlink" title="updateChart"></a>updateChart</h3><p>更新数据设置option</p>
+<h2 id="动态刷新的功能"><a href="#动态刷新的功能" class="headerlink" title="动态刷新的功能"></a>动态刷新的功能</h2><h3 id="数据的处理"><a href="#数据的处理" class="headerlink" title="数据的处理"></a>数据的处理</h3><h4 id="从小到大排序"><a href="#从小到大排序" class="headerlink" title="从小到大排序"></a>从小到大排序</h4><p><img src="image-20201124151247006.png" srcset="/img/loading.gif" alt="image-20201124151247006"></p>
+<h4 id="五个元素为一页-每隔三秒刷新一次"><a href="#五个元素为一页-每隔三秒刷新一次" class="headerlink" title="五个元素为一页 每隔三秒刷新一次"></a>五个元素为一页 每隔三秒刷新一次</h4><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com-container&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com-chart&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&quot;seller&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 100%;height: 100%&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript"><span class="hljs-keyword">var</span> echarts = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;echarts&#x27;</span>)</span>
+<span class="javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span>
+<span class="javascript">  name: <span class="hljs-string">&#x27;Seller&#x27;</span>,</span>
+  data () &#123;
+<span class="javascript">    <span class="hljs-keyword">return</span> &#123;</span>
+<span class="javascript">      chartInstance: <span class="hljs-literal">null</span>,</span>
+<span class="javascript">      allData: <span class="hljs-literal">null</span>,</span>
+<span class="javascript">      currentPage: <span class="hljs-number">1</span>, <span class="hljs-comment">// 当前显示的页数</span></span>
+<span class="javascript">      totalPage: <span class="hljs-number">0</span> <span class="hljs-comment">// 一共有多少页</span></span>
+    &#125;
+  &#125;,
+  mounted () &#123;
+<span class="javascript">    <span class="hljs-built_in">this</span>.initChart()</span>
+<span class="javascript">    <span class="hljs-built_in">this</span>.getData()</span>
+  &#125;,
+  methods: &#123;
+<span class="javascript">    <span class="hljs-comment">// 初始化echartsInstance对象</span></span>
+    initChart () &#123;
+<span class="javascript">      <span class="hljs-keyword">const</span> chart = <span class="hljs-built_in">this</span>.$refs.seller</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.chartInstance = echarts.init(chart)</span>
+<span class="javascript">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;初始化echarts&#x27;</span>)</span>
+    &#125;,
+<span class="javascript">    <span class="hljs-comment">// 获取服务器的数据</span></span>
+<span class="javascript">    <span class="hljs-keyword">async</span> getData () &#123;</span>
+<span class="javascript">      <span class="hljs-keyword">const</span> &#123;<span class="hljs-attr">data</span>: ret&#125; = <span class="hljs-keyword">await</span> <span class="hljs-built_in">this</span>.$axios.get(<span class="hljs-string">&#x27;http://127.0.0.1:8888/api/seller&#x27;</span>)</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.allData = ret</span>
+<span class="javascript">      <span class="hljs-comment">// 对数组进行排序</span></span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.allData.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> &#123;</span>
+<span class="javascript">        <span class="hljs-keyword">return</span> a.value - b.value</span>
+      &#125;)
+<span class="javascript">      <span class="hljs-comment">// 每五个元素显示一页</span></span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.totalPage = <span class="hljs-built_in">this</span>.allData.length % <span class="hljs-number">5</span> === <span class="hljs-number">0</span> ? <span class="hljs-built_in">this</span>.allData.length / <span class="hljs-number">5</span> : <span class="hljs-built_in">this</span>.allData.length / <span class="hljs-number">5</span> + <span class="hljs-number">1</span></span>
+<span class="javascript">      <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.allData)</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.updateChart()</span>
+<span class="javascript">      <span class="hljs-built_in">this</span>.startInterval()</span>
+    &#125;,
+<span class="javascript">    <span class="hljs-comment">// 更新图表</span></span>
+    updateChart () &#123;
+<span class="javascript">      <span class="hljs-keyword">const</span> start = (<span class="hljs-built_in">this</span>.currentPage - <span class="hljs-number">1</span>) * <span class="hljs-number">5</span></span>
+<span class="javascript">      <span class="hljs-keyword">const</span> end = <span class="hljs-built_in">this</span>.currentPage * <span class="hljs-number">5</span></span>
+<span class="javascript">      <span class="hljs-keyword">const</span> showData = <span class="hljs-built_in">this</span>.allData.slice(start, end)</span>
+<span class="javascript">      <span class="hljs-keyword">const</span> sellerNames = showData.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;</span>
+<span class="javascript">        <span class="hljs-keyword">return</span> item.name</span>
+      &#125;)
+<span class="javascript">      <span class="hljs-keyword">const</span> sellerValues = showData.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;</span>
+<span class="javascript">        <span class="hljs-keyword">return</span> item.value</span>
+      &#125;)
+<span class="javascript">      <span class="hljs-keyword">const</span> option = &#123;</span>
+        xAxis: &#123;
+<span class="javascript">          type: <span class="hljs-string">&#x27;value&#x27;</span></span>
+        &#125;,
+        yAxis: &#123;
+<span class="javascript">          type: <span class="hljs-string">&#x27;category&#x27;</span>,</span>
+          data: sellerNames
+        &#125;,
+        series: [
+          &#123;
+<span class="javascript">            type: <span class="hljs-string">&#x27;bar&#x27;</span>,</span>
+            data: sellerValues
+          &#125;
+        ]
+      &#125;
+<span class="javascript">      <span class="hljs-built_in">this</span>.chartInstance.setOption(option)</span>
+    &#125;,
+<span class="javascript">    <span class="hljs-comment">// 定时器</span></span>
+    startInterval () &#123;
+<span class="javascript">      <span class="hljs-built_in">setInterval</span>(<span class="hljs-function">() =&gt;</span> &#123;</span>
+<span class="javascript">        <span class="hljs-built_in">this</span>.currentPage++</span>
+<span class="javascript">        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.currentPage &gt; <span class="hljs-built_in">this</span>.totalPage) &#123;</span>
+<span class="javascript">          <span class="hljs-built_in">this</span>.currentPage = <span class="hljs-number">1</span></span>
+        &#125;
+<span class="javascript">        <span class="hljs-built_in">this</span>.updateChart()</span>
+      &#125;, 3000)
+    &#125;
+
+  &#125;
+&#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span>
+<span class="css">  <span class="hljs-selector-class">.com-container</span> &#123;</span>
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  &#125;
+
+<span class="css">  <span class="hljs-selector-class">.com-chart</span> &#123;</span>
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  &#125;
+<span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
+
+
+
+<h2 id="ui的调整"><a href="#ui的调整" class="headerlink" title="ui的调整"></a>ui的调整</h2><h3 id="主题的使用"><a href="#主题的使用" class="headerlink" title="主题的使用"></a>主题的使用</h3><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 100%;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width,initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>parking-lot<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;height: 100%; margin: 0px;&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- built files will be auto injected --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./static/lib/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./static/theme/chalk.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+
+
+<h3 id="整个的css文件"><a href="#整个的css文件" class="headerlink" title="整个的css文件"></a>整个的css文件</h3><pre><code class="hljs css"><span class="hljs-selector-tag">html</span>, <span class="hljs-selector-tag">body</span>, <span class="hljs-selector-id">#app</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+
+<span class="hljs-selector-class">.com-page</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+
+<span class="hljs-selector-class">.com-container</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+
+<span class="hljs-selector-class">.com-chart</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;
+
+<span class="hljs-selector-tag">canvas</span> &#123;
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">20px</span>;
+&#125;
+
+<span class="hljs-selector-class">.com-container</span> &#123;
+  <span class="hljs-attribute">position</span>: relative;
+&#125;
+
+<span class="hljs-selector-class">.com-management</span>&#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">overflow</span>: hidden;
+&#125;</code></pre>
+
+
+
+<h3 id="图表的标题"><a href="#图表的标题" class="headerlink" title="图表的标题"></a>图表的标题</h3><pre><code class="hljs yaml"><span class="hljs-attr">title:</span> &#123;
+  <span class="hljs-attr">text:</span> <span class="hljs-string">&#x27;   车场车位使用状况&#x27;</span>,
+  <span class="hljs-attr">textStyle:</span> &#123;
+    <span class="hljs-attr">fontSize:</span> <span class="hljs-number">66</span>
+  &#125;,
+  <span class="hljs-attr">left:</span> <span class="hljs-number">20</span>,
+  <span class="hljs-attr">top:</span> <span class="hljs-number">20</span>
+&#125;<span class="hljs-string">,</span></code></pre>
+
+
+
+<h3 id="坐标轴的位置"><a href="#坐标轴的位置" class="headerlink" title="坐标轴的位置"></a>坐标轴的位置</h3><pre><code class="hljs less"><span class="hljs-attribute">grid</span>: &#123;
+  <span class="hljs-attribute">top</span>: <span class="hljs-string">&#x27;20%&#x27;</span>,
+  <span class="hljs-attribute">left</span>: <span class="hljs-string">&#x27;3%&#x27;</span>,
+  <span class="hljs-attribute">right</span>: <span class="hljs-string">&#x27;6%&#x27;</span>,
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-string">&#x27;3%&#x27;</span>,
+  <span class="hljs-attribute">containLabel</span>: true
+&#125;,</code></pre>
+
+
+
+<h3 id="柱状图条目"><a href="#柱状图条目" class="headerlink" title="柱状图条目"></a>柱状图条目</h3><pre><code class="hljs yaml"><span class="hljs-attr">tooltip:</span> &#123;
+  <span class="hljs-attr">trigger:</span> <span class="hljs-string">&#x27;axis&#x27;</span>,
+  <span class="hljs-attr">axisPointer:</span> &#123;
+    <span class="hljs-attr">type:</span> <span class="hljs-string">&#x27;line&#x27;</span>,
+    <span class="hljs-attr">z:</span> <span class="hljs-number">0</span>,
+    <span class="hljs-attr">lineStyle:</span> &#123;
+      <span class="hljs-attr">width:</span> <span class="hljs-number">66</span>,
+      <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#2D3443&#x27;</span>
+    &#125;
+  &#125;
+&#125;<span class="hljs-string">,</span>
+<span class="hljs-attr">series:</span> [
+  &#123;
+    <span class="hljs-attr">type:</span> <span class="hljs-string">&#x27;bar&#x27;</span>,
+    <span class="hljs-attr">data:</span> <span class="hljs-string">sellerValues</span>,
+    <span class="hljs-attr">barWidth:</span> <span class="hljs-number">66</span>,
+    <span class="hljs-attr">label:</span> &#123;
+      <span class="hljs-attr">show:</span> <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">position:</span> <span class="hljs-string">&#x27;right&#x27;</span>,
+      <span class="hljs-attr">textStyle:</span> &#123;
+        <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;white&#x27;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-attr">itemStyle:</span> &#123;
+      <span class="hljs-attr">barBorderRadius:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">33</span>, <span class="hljs-number">33</span>, <span class="hljs-number">0</span>],
+      <span class="hljs-attr">color:</span> <span class="hljs-string">new</span> <span class="hljs-string">this.$echarts.graphic.LinearGradient(0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, [
+        &#123;
+          <span class="hljs-attr">offset:</span> <span class="hljs-number">0</span>,
+          <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#5052EE&#x27;</span>
+        &#125;,
+        &#123;
+          <span class="hljs-attr">offset:</span> <span class="hljs-number">1</span>,
+          <span class="hljs-attr">color:</span> <span class="hljs-string">&#x27;#AB6ee5&#x27;</span>
+        &#125;
+      ]<span class="hljs-string">)</span>
+    &#125;
+  &#125;
+]</code></pre>
+
+<h3 id="拆分图表的option"><a href="#拆分图表的option" class="headerlink" title="拆分图表的option"></a>拆分图表的option</h3><p>相当于在初始化的过程中设置一次option，没有数据的</p>
+<p>在updateOption中，在第二次获取数据的时候，在重新设置option即可。</p>
+<h3 id="分辨率的适配"><a href="#分辨率的适配" class="headerlink" title="分辨率的适配"></a>分辨率的适配</h3><p>监听窗口大小</p>
+<pre><code class="hljs kotlin">window.addEventListener(<span class="hljs-string">&#x27;resize&#x27;</span>, <span class="hljs-keyword">this</span>.screenAdapter)
+<span class="hljs-keyword">this</span>.screenAdapter()</code></pre>
+
+
+
+<pre><code class="hljs yaml"><span class="hljs-string">screenAdapter</span> <span class="hljs-string">()</span> &#123;
+  <span class="hljs-string">const</span> <span class="hljs-string">titleFontsize</span> <span class="hljs-string">=</span> <span class="hljs-string">this.$refs.seller.offsetWidth</span> <span class="hljs-string">/</span> <span class="hljs-number">100</span> <span class="hljs-string">*</span> <span class="hljs-number">3.6</span>
+  <span class="hljs-string">const</span> <span class="hljs-string">adapterOption</span> <span class="hljs-string">=</span> &#123;
+    <span class="hljs-attr">title:</span> &#123;
+      <span class="hljs-attr">textStyle:</span> &#123;
+        <span class="hljs-attr">fontSize:</span> <span class="hljs-number">66</span>
+      &#125;
+    &#125;,
+    <span class="hljs-attr">tooltip:</span> &#123;
+      <span class="hljs-attr">axisPointer:</span> &#123;
+        <span class="hljs-attr">lineStyle:</span> &#123;
+          <span class="hljs-attr">width:</span> <span class="hljs-string">titleFontsize</span>
+        &#125;
+      &#125;
+    &#125;,
+    <span class="hljs-attr">series:</span> [
+      &#123;
+        <span class="hljs-attr">barWidth:</span> <span class="hljs-string">titleFontsize</span>,
+        <span class="hljs-attr">itemStyle:</span> &#123;
+          <span class="hljs-attr">barBorderRadius:</span> [<span class="hljs-number">0</span>, <span class="hljs-string">titleFontsize</span> <span class="hljs-string">/</span> <span class="hljs-number">2</span>, <span class="hljs-string">titleFontsize</span> <span class="hljs-string">/</span> <span class="hljs-number">2</span>, <span class="hljs-number">0</span>],
+        &#125;
+      &#125;
+    ]
+  &#125;
+  <span class="hljs-string">this.chartInstance.setOption(adapterOption)</span>
+  <span class="hljs-string">this.chartInstance.resize()</span>
+&#125;<span class="hljs-string">,</span></code></pre>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ECharts/">ECharts</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/23/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%86%E5%A4%87/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据可视化ECharts-单独图标组件开发&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>数据可视化ECharts-高级使用显示相关 - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-21 15:05" pubdate>
+        2020年11月21日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      929 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">数据可视化ECharts-高级使用显示相关</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：10 天前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="显示相关"><a href="#显示相关" class="headerlink" title="显示相关"></a>显示相关</h1><p>主要包括，主题，调色盘，样式，自适应</p>
+<h1 id="内置主题"><a href="#内置主题" class="headerlink" title="内置主题"></a>内置主题</h1><p>ECharts主要内置了两套主题，light和dark</p>
+<p>在初始化对象方法init可以指明</p>
+<h2 id="light"><a href="#light" class="headerlink" title="light"></a>light</h2><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;lib/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;lib/jquery.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 600px;height:400px&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">    <span class="hljs-comment">// 1.在线编辑主题 https://www.echartsjs.com/theme-builder/</span></span>
+<span class="javascript">    <span class="hljs-comment">// 2.下载主题的js文件</span></span>
+<span class="javascript">    <span class="hljs-comment">// 3.在html中导入js文件</span></span>
+<span class="javascript">    <span class="hljs-comment">// 4.在init方法中指明主题的名称</span></span>
+<span class="javascript">    <span class="hljs-keyword">var</span> mCharts = echarts.init(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;div&quot;</span>),<span class="hljs-string">&#x27;light&#x27;</span>)</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> xDataArr = [<span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-string">&#x27;王五&#x27;</span>, <span class="hljs-string">&#x27;闰土&#x27;</span>, <span class="hljs-string">&#x27;小明&#x27;</span>, <span class="hljs-string">&#x27;茅台&#x27;</span>, <span class="hljs-string">&#x27;二妞&#x27;</span>, <span class="hljs-string">&#x27;大强&#x27;</span>]</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> yDataArr = [<span class="hljs-number">88</span>, <span class="hljs-number">92</span>, <span class="hljs-number">63</span>, <span class="hljs-number">77</span>, <span class="hljs-number">94</span>, <span class="hljs-number">80</span>, <span class="hljs-number">72</span>, <span class="hljs-number">86</span>]</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> option = &#123;</span>
+        xAxis: &#123;
+<span class="javascript">            type: <span class="hljs-string">&#x27;category&#x27;</span>,</span>
+            data: xDataArr
+        &#125;,
+        yAxis: &#123;
+<span class="javascript">            type: <span class="hljs-string">&#x27;value&#x27;</span></span>
+        &#125;,
+        series: [
+            &#123;
+<span class="javascript">                type: <span class="hljs-string">&#x27;bar&#x27;</span>,</span>
+                data: yDataArr,
+                markPoint: &#123;
+                    data: [
+                        &#123;
+<span class="javascript">                            type: <span class="hljs-string">&#x27;max&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;最大值&#x27;</span></span>
+                        &#125;,
+                        &#123;
+<span class="javascript">                            type: <span class="hljs-string">&#x27;min&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;最小值&#x27;</span></span>
+                        &#125;
+                    ]
+                &#125;,
+                markLine: &#123;
+                    data: [
+                        &#123;
+<span class="javascript">                            type: <span class="hljs-string">&#x27;average&#x27;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;平均值&#x27;</span></span>
+                        &#125;
+                    ]
+                &#125;,
+                label: &#123;
+<span class="javascript">                    show: <span class="hljs-literal">true</span>,</span>
+                    rotate: 60
+                &#125;,
+<span class="javascript">                barWidth: <span class="hljs-string">&#x27;30%&#x27;</span></span>
+            &#125;
+        ]
+    &#125;;
+    mCharts.setOption(option)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<p><img src="image-20201121151354370.png" srcset="/img/loading.gif" alt="image-20201121151354370"></p>
+<h2 id="dark"><a href="#dark" class="headerlink" title="dark"></a>dark</h2><pre><code class="hljs dart"><span class="hljs-keyword">var</span> mCharts = echarts.init(<span class="hljs-built_in">document</span>.<span class="hljs-built_in">querySelector</span>(<span class="hljs-string">&quot;div&quot;</span>),<span class="hljs-string">&#x27;dark&#x27;</span>)</code></pre>
+
+<p><img src="image-20201121151415052.png" srcset="/img/loading.gif" alt="image-20201121151415052"></p>
+<h1 id="自定义主题"><a href="#自定义主题" class="headerlink" title="自定义主题"></a>自定义主题</h1><p>1）在主题编辑器里面编辑主题</p>
+<p>2）下载主题，是一个js文件</p>
+<p>3）引入js文件</p>
+<p>4）在init使用自定义主题</p>
+<h1 id="调色盘"><a href="#调色盘" class="headerlink" title="调色盘"></a>调色盘</h1><p>他是一组颜色，图形，系列都会自动从其中选择颜色</p>
+<h2 id="主题调色盘"><a href="#主题调色盘" class="headerlink" title="主题调色盘"></a>主题调色盘</h2><p><img src="image-20201121152114556.png" srcset="/img/loading.gif" alt="image-20201121152114556"></p>
+<h2 id="全局调色盘"><a href="#全局调色盘" class="headerlink" title="全局调色盘"></a>全局调色盘</h2><p>option:{</p>
+<p>color: [],</p>
+<p>}</p>
+<p> 会覆盖主题的调色盘</p>
+<h2 id="局部调色盘"><a href="#局部调色盘" class="headerlink" title="局部调色盘"></a>局部调色盘</h2><p>调色盘采用的原则就是就近原则</p>
+<pre><code class="hljs less"><span class="hljs-attribute">series</span>: [
+    &#123;
+        <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;pie&#x27;</span>,
+        <span class="hljs-attribute">data</span>: pieData,
+        <span class="hljs-attribute">color</span>: [<span class="hljs-string">&#x27;pink&#x27;</span>, <span class="hljs-string">&#x27;yellow&#x27;</span>, <span class="hljs-string">&#x27;black&#x27;</span>, <span class="hljs-string">&#x27;orange&#x27;</span>, <span class="hljs-string">&#x27;red&#x27;</span>]
+    &#125;
+]</code></pre>
+
+
+
+<h1 id="颜色渐变"><a href="#颜色渐变" class="headerlink" title="颜色渐变"></a>颜色渐变</h1><h2 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h2><pre><code class="hljs xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;lib/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;lib/jquery.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;width: 600px;height:400px&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> mCharts = echarts.init(<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&quot;div&quot;</span>))</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> xDataArr = [<span class="hljs-string">&#x27;张三&#x27;</span>, <span class="hljs-string">&#x27;李四&#x27;</span>, <span class="hljs-string">&#x27;王五&#x27;</span>, <span class="hljs-string">&#x27;闰土&#x27;</span>, <span class="hljs-string">&#x27;小明&#x27;</span>, <span class="hljs-string">&#x27;茅台&#x27;</span>, <span class="hljs-string">&#x27;二妞&#x27;</span>, <span class="hljs-string">&#x27;大强&#x27;</span>]</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> yDataArr = [<span class="hljs-number">88</span>, <span class="hljs-number">92</span>, <span class="hljs-number">63</span>, <span class="hljs-number">77</span>, <span class="hljs-number">94</span>, <span class="hljs-number">80</span>, <span class="hljs-number">72</span>, <span class="hljs-number">86</span>]</span>
+<span class="javascript">    <span class="hljs-keyword">var</span> option = &#123;</span>
+        xAxis: &#123;
+<span class="javascript">            type: <span class="hljs-string">&#x27;category&#x27;</span>,</span>
+            data: xDataArr
+        &#125;,
+        yAxis: &#123;
+<span class="javascript">            type: <span class="hljs-string">&#x27;value&#x27;</span></span>
+        &#125;,
+        series: [
+            &#123;
+<span class="javascript">                type: <span class="hljs-string">&#x27;bar&#x27;</span>,</span>
+                data: yDataArr,
+                itemStyle:&#123;
+                    color:&#123;
+<span class="javascript">                        type:<span class="hljs-string">&#x27;linear&#x27;</span>,<span class="hljs-comment">//线性渐变</span></span>
+                        x:0,
+                        y:0,
+                        x2:0,
+                        y2:1,
+                        colorStops:[
+                            &#123;
+                                offset:0,
+<span class="javascript">                                color:<span class="hljs-string">&#x27;red&#x27;</span></span>
+                            &#125;,
+                            &#123;
+                                offset:1,
+<span class="javascript">                                color: <span class="hljs-string">&#x27;blue&#x27;</span></span>
+                            &#125;
+                        ]
+                    &#125;
+                &#125;
+
+            &#125;
+        ]
+    &#125;
+    mCharts.setOption(option)
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<p><img src="image-20201121153221098.png" srcset="/img/loading.gif" alt="image-20201121153221098"></p>
+<h2 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h2><pre><code class="hljs less"><span class="hljs-attribute">color</span>:&#123;
+    <span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;radial&#x27;</span>,
+    <span class="hljs-attribute">x</span>:<span class="hljs-number">0.5</span>,
+    <span class="hljs-attribute">y</span>:<span class="hljs-number">0.5</span>,
+    <span class="hljs-attribute">r</span>:<span class="hljs-number">0.5</span>,
+    <span class="hljs-attribute">colorStops</span>:[
+        &#123;
+          <span class="hljs-attribute">offset</span>:<span class="hljs-number">0</span>,
+            <span class="hljs-attribute">color</span>:<span class="hljs-string">&#x27;red&#x27;</span>
+        &#125;,
+        &#123;
+            <span class="hljs-attribute">offset</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attribute">color</span>: <span class="hljs-string">&#x27;blue&#x27;</span>
+        &#125;
+    ]
+
+&#125;</code></pre>
+
+<p><img src="image-20201121153410521.png" srcset="/img/loading.gif" alt="image-20201121153410521"></p>
+<h1 id="样式控制"><a href="#样式控制" class="headerlink" title="样式控制"></a>样式控制</h1><h2 id="直接样式"><a href="#直接样式" class="headerlink" title="直接样式"></a>直接样式</h2><p>itemStyle，textStyle，lineStyle，areaStyle，label</p>
+<h3 id="itemStyle"><a href="#itemStyle" class="headerlink" title="itemStyle"></a>itemStyle</h3><p>可以控制一块区域</p>
+<pre><code class="hljs less"><span class="hljs-attribute">itemStyle</span>: &#123; <span class="hljs-comment">// 控制淘宝这一区域的样式</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-string">&#x27;yellow&#x27;</span>
+&#125;,</code></pre>
+
+<h3 id="textStyle"><a href="#textStyle" class="headerlink" title="textStyle"></a>textStyle</h3><p>在title下面</p>
+<pre><code class="hljs less"><span class="hljs-attribute">title</span>: &#123;
+    <span class="hljs-attribute">text</span>: <span class="hljs-string">&#x27;饼图的测试&#x27;</span>,
+    <span class="hljs-attribute">textStyle</span>: &#123; <span class="hljs-comment">// 控制标题的文字样式</span>
+        <span class="hljs-attribute">color</span>: <span class="hljs-string">&#x27;blue&#x27;</span>
+    &#125;
+&#125;,</code></pre>
+
+<h3 id="label"><a href="#label" class="headerlink" title="label"></a>label</h3><p>文字</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">label</span>: &#123;
+    <span class="hljs-attribute">color</span>: <span class="hljs-string">&#x27;green&#x27;</span>
+&#125;,</code></pre>
+
+<h2 id="高亮样式"><a href="#高亮样式" class="headerlink" title="高亮样式"></a>高亮样式</h2><p>用emphasis中包裹以上的style</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">emphasis</span>: &#123;
+    <span class="hljs-attribute">itemStyle</span>: &#123; // 控制淘宝这一区域的样式
+        color: <span class="hljs-string">&#x27;pink&#x27;</span>
+    &#125;,
+    <span class="hljs-selector-tag">label</span>: &#123;
+        <span class="hljs-attribute">color</span>: <span class="hljs-string">&#x27;black&#x27;</span>
+    &#125;
+&#125;</code></pre>
+
+<p>优先级最高</p>
+<h1 id="自适应"><a href="#自适应" class="headerlink" title="自适应"></a>自适应</h1><p>当浏览器大小发生变化的时候，如果想让图表也随之适配变化</p>
+<p>1）监听窗口大小变化事件</p>
+<p>2）在事件处理函数中调用ECharts实例对象的resize即可</p>
+<pre><code class="hljs awk">window.onresize = <span class="hljs-keyword">function</span>()&#123;
+    <span class="hljs-regexp">//</span> console.log(<span class="hljs-string">&#x27;window.onresize...&#x27;</span>)
+    <span class="hljs-regexp">//</span> 调用echarts实例对象的resize方法
+    mCharts.resize()
+&#125;</code></pre>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/tags/ECharts/">ECharts</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/21/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8%E5%8A%A8%E7%94%BB%E7%9B%B8%E5%85%B3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数据可视化ECharts-高级使用动画相关</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/19/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E4%BB%AA%E8%A1%A8%E7%9B%98/">
+                        <span class="hidden-mobile">数据可视化ECharts-仪表盘</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "数据可视化ECharts-高级使用显示相关&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
