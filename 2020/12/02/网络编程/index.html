@@ -1,0 +1,956 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>网络编程 - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-02 17:53" pubdate>
+        2020年12月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">网络编程</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：6 天前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>古代两个人想要进行远处沟通的话是用邮件，那么邮件就包含对方的邮编，对方的地址，对方的姓名，自己的地址</p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>将地理位置不同，将具有独立功能的多台计算机设备，通过通信进行连接起来。在网络操作系统，网络管理软件以及网络通信协议的管理和协商下，实现资源共享和信息传递的计算机系统。</p>
+<h2 id="网络编程的目的"><a href="#网络编程的目的" class="headerlink" title="网络编程的目的"></a>网络编程的目的</h2><p>传播信息，共享资源</p>
+<h2 id="想要达到效果需要做什么"><a href="#想要达到效果需要做什么" class="headerlink" title="想要达到效果需要做什么"></a>想要达到效果需要做什么</h2><p>1）精准确定一个网络上面的主机 ip：端口，定位到计算机上的某个资源。<br>2）找到了主机，如何传输数据</p>
+<h1 id="网络通信的要素"><a href="#网络通信的要素" class="headerlink" title="网络通信的要素"></a>网络通信的要素</h1><h2 id="通信双方地址"><a href="#通信双方地址" class="headerlink" title="通信双方地址"></a>通信双方地址</h2><p>ip 端口号</p>
+<h2 id="规则：网络通信的协议"><a href="#规则：网络通信的协议" class="headerlink" title="规则：网络通信的协议"></a>规则：网络通信的协议</h2><p>tcp/ip 参考模型</p>
+<h1 id="ip"><a href="#ip" class="headerlink" title="ip"></a>ip</h1><h2 id="ip地址"><a href="#ip地址" class="headerlink" title="ip地址"></a>ip地址</h2><p> inetAddress  唯一定位一台网络上的计算机<br>127.0.0.1 本地计算机的地址</p>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p>记忆ip地址</p>
+<h2 id="java中ip的类"><a href="#java中ip的类" class="headerlink" title="java中ip的类"></a>java中ip的类</h2><pre><code class="hljs reasonml">import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname TestInetAddress</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2020/12/2 15:16</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+public <span class="hljs-keyword">class</span> TestInetAddress &#123;
+    public static void main(String<span class="hljs-literal">[]</span> args) &#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 得到本机的这个地址类</span>
+            InetAddress inetAddress1 =  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">InetAddress</span>.</span></span>get<span class="hljs-constructor">ByName(<span class="hljs-string">&quot;127.0.0.1&quot;</span>)</span>;
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress1);
+
+            <span class="hljs-comment">// 得到百度ip地址类</span>
+            InetAddress inetAddress2 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">InetAddress</span>.</span></span>get<span class="hljs-constructor">ByName(<span class="hljs-string">&quot;www.baidu.com&quot;</span>)</span>;
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress2);
+
+            <span class="hljs-comment">// 得到本机的ip地址类</span>
+            InetAddress inetAddress3 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">InetAddress</span>.</span></span>get<span class="hljs-constructor">LocalHost()</span>;
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress3);
+
+            <span class="hljs-comment">// 分隔符</span>
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(<span class="hljs-string">&quot;____________________________________&quot;</span>);
+            
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress2.get<span class="hljs-constructor">Address()</span>);
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress2.get<span class="hljs-constructor">CanonicalHostName()</span>);
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress2.get<span class="hljs-constructor">Class()</span>);
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress2.get<span class="hljs-constructor">HostAddress()</span>);
+            <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetAddress2.get<span class="hljs-constructor">HostName()</span>);
+        &#125; catch (UnknownHostException e) &#123;
+            e.print<span class="hljs-constructor">StackTrace()</span>;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>端口表示计算机上的一个程序的进程<br>不同的进程有不同的端口号，用来区分软件。<br>被规定0~65535，又被分为tcp和udp端口，相当于一共有65535*2个端口，但是单个协议下，端口不能冲突</p>
+<h2 id="公用端口"><a href="#公用端口" class="headerlink" title="公用端口"></a>公用端口</h2><p>http 80<br>https 443<br>ftp 21<br>ssh 22<br>telent 23</p>
+<h2 id="程序注册端口"><a href="#程序注册端口" class="headerlink" title="程序注册端口"></a>程序注册端口</h2><p>1024~49151 分配给用户和程序<br>tomcat 8080<br>mysql 3306<br>oracle 1521</p>
+<h2 id="动态私有端口"><a href="#动态私有端口" class="headerlink" title="动态私有端口"></a>动态私有端口</h2><p>49152~65535</p>
+<pre><code class="hljs reasonml">import java.net.InetSocketAddress;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname TestInetSocketAddress</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2020/12/2 15:35</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+public <span class="hljs-keyword">class</span> TestInetSocketAddress &#123;
+    public static void main(String<span class="hljs-literal">[]</span> args) &#123;
+        InetSocketAddress inetSocketAddress = <span class="hljs-keyword">new</span> <span class="hljs-constructor">InetSocketAddress(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, 8080)</span>;
+        InetSocketAddress inetSocketAddress2 = <span class="hljs-keyword">new</span> <span class="hljs-constructor">InetSocketAddress(<span class="hljs-string">&quot;localhost&quot;</span>, 8080)</span>;
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetSocketAddress);
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetSocketAddress2);
+
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetSocketAddress.get<span class="hljs-constructor">Address()</span>);
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetSocketAddress.get<span class="hljs-constructor">HostName()</span>);
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(inetSocketAddress.get<span class="hljs-constructor">Port()</span>);
+    &#125;
+&#125;
+</code></pre>
+<h1 id="通信协议"><a href="#通信协议" class="headerlink" title="通信协议"></a>通信协议</h1><p>协议：约定，就好比我们说话说的是普通话<br>网络通信协议：速率，传输码率，代码结构，传输控制</p>
+<p>TCP/IP协议簇 一组协议<br>tcp：用户传输协议<br>ip：用户数据报协议</p>
+<h2 id="tcp和udp对比"><a href="#tcp和udp对比" class="headerlink" title="tcp和udp对比"></a>tcp和udp对比</h2><p>老生常谈了，最主要还是一个可靠，另一个不可靠。<br>tcp：连接，稳定，三次握手，四次挥手<br>udp：不连接，不稳定<br>其实最主要的还是因为tcp与ip报文的差距</p>
+<h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="https://img-blog.csdnimg.cn/20201202154707197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p><img src="https://img-blog.csdnimg.cn/20201202154821565.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><p>客户端</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> tcp;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.OutputStream;
+<span class="hljs-keyword">import</span> java.net.InetAddress;
+<span class="hljs-keyword">import</span> java.net.Socket;
+<span class="hljs-keyword">import</span> java.net.UnknownHostException;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> tcp.TpcCLientDemo1</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/2 15:49</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">// 客户端</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TcpCLientDemo1</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        Socket socket = <span class="hljs-keyword">null</span>;
+        OutputStream outputStream = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 1.要知道服务器的地址</span>
+            InetAddress inetAddresses = InetAddress.getByName(<span class="hljs-string">&quot;127.0.01&quot;</span>);
+            <span class="hljs-comment">// 2.端口号</span>
+            <span class="hljs-keyword">int</span> port = <span class="hljs-number">9999</span>;
+            <span class="hljs-comment">// 3.创建一个socket通信</span>
+            socket = <span class="hljs-keyword">new</span> Socket(inetAddresses,port);
+            <span class="hljs-comment">// 4.发送消息 IO流</span>
+            outputStream = socket.getOutputStream();
+            outputStream.write(<span class="hljs-string">&quot;你好，mmz&quot;</span>.getBytes());
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            <span class="hljs-keyword">if</span>(outputStream != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    outputStream.close();
+                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+            <span class="hljs-keyword">if</span>(socket != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    socket.close();
+                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+
+        &#125;
+    &#125;
+
+
+&#125;
+</code></pre>
+
+<p>服务器</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> tcp;
+
+<span class="hljs-keyword">import</span> java.io.ByteArrayInputStream;
+<span class="hljs-keyword">import</span> java.io.ByteArrayOutputStream;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.InputStream;
+<span class="hljs-keyword">import</span> java.net.ServerSocket;
+<span class="hljs-keyword">import</span> java.net.Socket;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> tcp.TcpServerDemo1</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/2 15:49</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">// 服务器</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TcpServerDemo1</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        ServerSocket serverSocket = <span class="hljs-keyword">null</span>;
+        Socket accept = <span class="hljs-keyword">null</span>;
+        InputStream inputStream = <span class="hljs-keyword">null</span>;
+        ByteArrayOutputStream byteArrayOutputStream = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 1.我得有一个地址</span>
+            serverSocket = <span class="hljs-keyword">new</span> ServerSocket(<span class="hljs-number">9999</span>);
+            <span class="hljs-comment">// 2.等待客户端连接</span>
+            accept = serverSocket.accept();
+            <span class="hljs-comment">// 3.读取客户端的消息</span>
+            inputStream = accept.getInputStream();
+            byteArrayOutputStream = <span class="hljs-keyword">new</span> ByteArrayOutputStream();
+            <span class="hljs-keyword">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
+            <span class="hljs-keyword">int</span> len ;
+            <span class="hljs-keyword">while</span>((len = inputStream.read(buffer)) != -<span class="hljs-number">1</span>)&#123;
+                byteArrayOutputStream.write(buffer,<span class="hljs-number">0</span>,len);
+            &#125;
+            System.out.println(byteArrayOutputStream.toString());
+
+        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+            e.printStackTrace();
+        &#125; <span class="hljs-keyword">finally</span> &#123;
+            <span class="hljs-keyword">if</span> (byteArrayOutputStream != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    byteArrayOutputStream.close();
+                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+            <span class="hljs-keyword">if</span> (inputStream != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    inputStream.close();
+                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+            <span class="hljs-keyword">if</span> (accept != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    accept.close();
+                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+            <span class="hljs-keyword">if</span> (serverSocket != <span class="hljs-keyword">null</span>)&#123;
+                <span class="hljs-keyword">try</span> &#123;
+                    serverSocket.close();
+                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+                    e.printStackTrace();
+                &#125;
+            &#125;
+
+        &#125;
+    &#125;
+
+
+&#125;
+</code></pre>
+
+
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><pre><code class="hljs arduino">package tcp;
+
+<span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.net.ServerSocket;
+<span class="hljs-keyword">import</span> java.net.Socket;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname TcpServerDemo2</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2020/12/2 16:20</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+
+<span class="hljs-comment">// 服务器</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TcpServerDemo2</span> &#123;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 1.创建服务</span>
+            ServerSocket serverSocket = <span class="hljs-keyword">new</span> ServerSocket(<span class="hljs-number">9000</span>);
+            <span class="hljs-comment">// 2.监听客户端的连接</span>
+            Socket accept = serverSocket.accept();
+            <span class="hljs-comment">// 3.获取输入流</span>
+            InputStream inputStream = accept.getInputStream();
+            <span class="hljs-comment">// 4.文件输出</span>
+            FileOutputStream fileOutputStream = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-keyword">new</span> <span class="hljs-built_in">File</span>(<span class="hljs-string">&quot;receive.jpg&quot;</span>));
+
+            <span class="hljs-keyword">byte</span>[] bytes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
+            <span class="hljs-keyword">int</span> len;
+            <span class="hljs-keyword">while</span>((len =inputStream.<span class="hljs-built_in">read</span>(bytes)) != <span class="hljs-number">-1</span>)&#123;
+                fileOutputStream.<span class="hljs-built_in">write</span>(bytes,<span class="hljs-number">0</span>,len);
+            &#125;
+
+            <span class="hljs-comment">// 通知客户端，我服务器这边已经完成了流的获取</span>
+            OutputStream outputStream = accept.getOutputStream();
+            outputStream.<span class="hljs-built_in">write</span>(<span class="hljs-string">&quot;我接受完毕了&quot;</span>.getBytes());
+            <span class="hljs-comment">// 5.关闭资源</span>
+            fileOutputStream.<span class="hljs-built_in">close</span>();
+            inputStream.<span class="hljs-built_in">close</span>();
+            accept.<span class="hljs-built_in">close</span>();
+            serverSocket.<span class="hljs-built_in">close</span>();
+        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><pre><code class="hljs arduino">package tcp;
+
+<span class="hljs-keyword">import</span> java.io.*;
+<span class="hljs-keyword">import</span> java.net.InetAddress;
+<span class="hljs-keyword">import</span> java.net.Socket;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname TcpClientDemo02</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2020/12/2 16:15</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">// 客户端</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TcpClientDemo2</span> &#123;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span> </span>&#123;
+
+        <span class="hljs-keyword">try</span> &#123;
+            <span class="hljs-comment">// 1.创建一个socket连接</span>
+            Socket socket = <span class="hljs-keyword">new</span> Socket(InetAddress.getByName(<span class="hljs-string">&quot;127.0.0.1&quot;</span>), <span class="hljs-number">9000</span>);
+            <span class="hljs-comment">// 2.创建一个输出流</span>
+            OutputStream outputStream = socket.getOutputStream();
+
+            <span class="hljs-comment">// 3.读取文件流</span>
+            FileInputStream fileInputStream = <span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-keyword">new</span> <span class="hljs-built_in">File</span>(<span class="hljs-string">&quot;hengfu.jpg&quot;</span>));
+            <span class="hljs-comment">// 4.写出文件流</span>
+            <span class="hljs-keyword">byte</span>[] bytes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
+            <span class="hljs-keyword">int</span> len;
+            <span class="hljs-keyword">while</span>((len=fileInputStream.<span class="hljs-built_in">read</span>(bytes)) != <span class="hljs-number">-1</span>)&#123;
+                outputStream.<span class="hljs-built_in">write</span>(bytes,<span class="hljs-number">0</span>,len);
+            &#125;
+
+            <span class="hljs-comment">// 通知服务器结束了</span>
+            socket.shutdownOutput();
+
+            InputStream inputStream = socket.getInputStream();
+            ByteArrayOutputStream byteArrayOutputStream = <span class="hljs-keyword">new</span> ByteArrayOutputStream();
+
+            <span class="hljs-keyword">byte</span>[] bytes1 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
+            <span class="hljs-keyword">int</span> len1;
+            <span class="hljs-keyword">while</span>((len1 = inputStream.<span class="hljs-built_in">read</span>(bytes1)) != <span class="hljs-number">-1</span>)&#123;
+                byteArrayOutputStream.<span class="hljs-built_in">write</span>(bytes1,<span class="hljs-number">0</span>,len1);
+            &#125;
+
+            System.out.<span class="hljs-built_in">println</span>(byteArrayOutputStream.toString());
+
+            byteArrayOutputStream.<span class="hljs-built_in">close</span>();
+            inputStream.<span class="hljs-built_in">close</span>();
+            fileInputStream.<span class="hljs-built_in">close</span>();
+            outputStream.<span class="hljs-built_in">close</span>();
+            socket.<span class="hljs-built_in">close</span>();
+        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+<h1 id="Tomcat"><a href="#Tomcat" class="headerlink" title="Tomcat"></a>Tomcat</h1><h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>发短信，不用连接，但是需要知道对方的地址</p>
+<h2 id="服务器-1"><a href="#服务器-1" class="headerlink" title="服务器"></a>服务器</h2><pre><code class="hljs arduino">package udp;
+
+
+<span class="hljs-keyword">import</span> java.net.DatagramPacket;
+<span class="hljs-keyword">import</span> java.net.DatagramSocket;
+<span class="hljs-keyword">import</span> java.net.SocketException;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname UdpServerDemo1</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2020/12/2 17:03</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UdpServerDemo1</span> &#123;</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span> </span>&#123;
+        <span class="hljs-keyword">try</span> &#123;
+            DatagramSocket socket = <span class="hljs-keyword">new</span> DatagramSocket(<span class="hljs-number">9090</span>);
+            <span class="hljs-comment">// 接受数据</span>
+            <span class="hljs-keyword">byte</span>[] bytes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
+
+            DatagramPacket datagramPacket = <span class="hljs-keyword">new</span> DatagramPacket(bytes, <span class="hljs-number">0</span>, bytes.length);
+
+            socket.receive(datagramPacket);
+            System.out.<span class="hljs-built_in">println</span>(datagramPacket.getAddress().getHostAddress());
+            System.out.<span class="hljs-built_in">println</span>(<span class="hljs-keyword">new</span> <span class="hljs-keyword">String</span>(datagramPacket.getData(),<span class="hljs-number">0</span>,datagramPacket.getLength()));
+
+            socket.<span class="hljs-built_in">close</span>();
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+<h2 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h2><pre><code class="hljs java"><span class="hljs-keyword">package</span> udp;
+
+<span class="hljs-keyword">import</span> java.net.DatagramPacket;
+<span class="hljs-keyword">import</span> java.net.DatagramSocket;
+<span class="hljs-keyword">import</span> java.net.InetAddress;
+<span class="hljs-keyword">import</span> java.net.SocketException;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> UdpClientDemo1</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/2 16:59</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">// 不需要连接服务器</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UdpClientDemo1</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        <span class="hljs-comment">// 1.建立一个socket</span>
+        <span class="hljs-keyword">try</span> &#123;
+            DatagramSocket datagramSocket = <span class="hljs-keyword">new</span> DatagramSocket();
+            <span class="hljs-comment">// 2.发送包</span>
+            String message = <span class="hljs-string">&quot;你好&quot;</span>;
+            <span class="hljs-comment">// 3.发送的人</span>
+            InetAddress localhost = InetAddress.getByName(<span class="hljs-string">&quot;localhost&quot;</span>);
+            <span class="hljs-keyword">int</span> port = <span class="hljs-number">9090</span>;
+            <span class="hljs-comment">// 参数：数据长度，起始，发送给谁</span>
+            DatagramPacket datagramPacket = <span class="hljs-keyword">new</span> DatagramPacket(message.getBytes(),<span class="hljs-number">0</span>,message.getBytes().length,localhost,port);
+            datagramSocket.send(datagramPacket);
+
+            <span class="hljs-comment">// 4.关闭流</span>
+            datagramSocket.close();
+
+        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+            e.printStackTrace();
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/java/">java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/07/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">lambda表达式</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/01/%E5%BC%82%E5%B8%B8/">
+                        <span class="hidden-mobile">Java中的异常</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "网络编程&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

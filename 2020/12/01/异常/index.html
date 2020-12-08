@@ -250,7 +250,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：5 分钟前
+                  本文最后更新于：6 天前
                 
               </p>
             
@@ -260,7 +260,7 @@
 <p>当然与之对应的成为error，是一种错误，要与异常区分开来，一般不是程序员造成的。</p>
 <h1 id="异常的体系结构"><a href="#异常的体系结构" class="headerlink" title="异常的体系结构"></a>异常的体系结构</h1><p>java把异常作为一个对象来处理，并定义了一个基类java.lang.Throwable作为所有异常的超类。</p>
 <p>在java中的api已经定义了许多异常类，这些异常分为两大类，就是上面我提及到的Error错误与Exception异常</p>
-<p><img src="C:\Users\mmz\AppData\Roaming\Typora\typora-user-images\image-20201201205648154.png" srcset="/img/loading.gif" alt="image-20201201205648154"></p>
+<p><img src="image-20201201205648154.png" srcset="/img/loading.gif" alt="image-20201201205648154"></p>
 <h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>从上图可以看到Error中，有一分支是虚拟机运行错误，就比如我们常见的栈溢出StackOverFlowError（互相调用）或者内存溢出OutOfMemoryError（内存泄漏），这些错误发生时，java虚拟机会直接停止线程，也就是程序停止运行。</p>
 <h2 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h2><p>当然在exception中有一个特别热重要的子类就是RuntimeException（运行时异常），包含数组下标越界（），空指针异常（NullPointerException），算术异常（ArithmeticException），寻找不到类（ClassNotFoundException），这些异常不是编译型异常，所以可以不用进行处理。</p>
 <h1 id="异常处理机制"><a href="#异常处理机制" class="headerlink" title="异常处理机制"></a>异常处理机制</h1><h2 id="try-catch"><a href="#try-catch" class="headerlink" title="try/catch"></a>try/catch</h2><p>通俗的来说，try就相当于一个监控的区域，在监管当前的代码块里会出现的异常。catch相当于匹配类型，因为异常会有很多类型（类），同时我们无法预知会发生什么样的异常，所以可能会很多块catch。最后finally相当于兜底，用于资源的关闭，防止出现异常之后，对资源进行浪费。</p>
@@ -470,9 +470,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%BC%82%E5%B8%B8/">异常</a>
-                    
                       <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%BC%82%E5%B8%B8/">异常</a>
                     
                   </div>
                 
@@ -484,6 +484,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/12/02/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">网络编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
