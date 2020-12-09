@@ -1,0 +1,815 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>java内存分析与反射 - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-10 02:29" pubdate>
+        2020年12月10日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">java内存分析与反射</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：1 分钟前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h1><p>java内存分为程序计数器，堆，本地方法栈，虚拟机方法栈，方法区</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>存放所有new的对象和数组<br>可以被所有的线程共享，不会存放别的对象引用</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>存放基本变量类型（会包含这个基本类型的具体数值）<br>引用对象的变量（会存放这个引用在堆里面的具体地址）</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>可以被所有的线程共享<br>包含了所有的class和static变量</p>
+<h1 id="了解类的加载过程"><a href="#了解类的加载过程" class="headerlink" title="了解类的加载过程"></a>了解类的加载过程</h1><p>当程序主要使用某个类的时候，如果该类还未被加载到内存中，则系统会通过如下三个步骤来对类进行初始化</p>
+<h2 id="类的加载load"><a href="#类的加载load" class="headerlink" title="类的加载load"></a>类的加载load</h2><p>将类的class文件读入内存，并为之创建一个java.lang.Class对象，此过程由类加载器完成</p>
+<h2 id="类的链接"><a href="#类的链接" class="headerlink" title="类的链接"></a>类的链接</h2><p>将类的二进制数据合并到JRE中</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>确保加载类信息符合jvm规范，没有安全方面的问题</p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>正式为变量（static）分配内存并设置类变量默认初始值的阶段，这些内存都将在方法区中分配</p>
+<h3 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h3><p>虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程</p>
+<h2 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h2><p>JVM负责对类进行初始化连接</p>
+<p>执行类构造器<code>&lt;clinit&gt;()</code>方法的过程，类构造器方法是由编译期自动收集类中所有类变量的赋值动作和静态代码语句块中的语句合并的产生的。</p>
+<p>当初始化一个类的时候，如果发现一个父类还没有被初始化，则需要先触发父类的初始化</p>
+<p>虚拟机会保证一个类的clinit方法在多线程环境中正确加锁和同步</p>
+<h1 id="加载过程代码"><a href="#加载过程代码" class="headerlink" title="加载过程代码"></a>加载过程代码</h1><pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> TestClassLoad</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/9 14:45</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestClassLoad</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;
+        A a = <span class="hljs-keyword">new</span> A();
+        System.out.println(A.m);
+    &#125;
+
+
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">A</span></span>&#123;
+    <span class="hljs-keyword">static</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;A类静态代码块初始化&quot;</span>);
+        m = <span class="hljs-number">300</span>;
+    &#125;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> m = <span class="hljs-number">100</span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">A</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;A类的无参构造初始化&quot;</span>);
+    &#125;
+&#125;</code></pre>
+
+<h1 id="类什么会初始化"><a href="#类什么会初始化" class="headerlink" title="类什么会初始化"></a>类什么会初始化</h1><h2 id="类的主动引用（一定会发生类的初始化）"><a href="#类的主动引用（一定会发生类的初始化）" class="headerlink" title="类的主动引用（一定会发生类的初始化）"></a>类的主动引用（一定会发生类的初始化）</h2><p>当虚拟机启动后，先初始化main方法所在的类<br>new一个类的对象<br>调用类的静态成员和静态方法<br>使用java.lang.reflect包的方法对类进行反射调用<br>当初始化一个类，如果其父类没有被初始化，则先会初始化它的父类</p>
+<h2 id="类的被动引用（不会发生类的初始化）"><a href="#类的被动引用（不会发生类的初始化）" class="headerlink" title="类的被动引用（不会发生类的初始化）"></a>类的被动引用（不会发生类的初始化）</h2><p>当访问一个静态域，只有真正声明这个域的类才会被初始化<br>通过数组定义类引用，不会触发此类的初始化<br>引用常量不会触发此类的初始化（常量在链接阶段就存入调用类的常量池了）</p>
+<pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> TestClassInit</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/9 15:00</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestClassInit</span> </span>&#123;
+    <span class="hljs-keyword">static</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;main类被加载&quot;</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException </span>&#123;
+<span class="hljs-comment">//        // 主动引用</span>
+<span class="hljs-comment">//        Son son = new Son();</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//        // 反射 也是主动引用</span>
+<span class="hljs-comment">//        Class.forName(&quot;Son&quot;);</span>
+
+<span class="hljs-comment">//        // 不会产生类的引用的方法</span>
+<span class="hljs-comment">//        System.out.println(Son.b);</span>
+
+<span class="hljs-comment">//        Son[] array = new Son[10];</span>
+
+        System.out.println(Son.M);
+    &#125;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Father</span></span>&#123;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">static</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;父类被加载&quot;</span>);
+    &#125;
+&#125;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span></span>&#123;
+    <span class="hljs-keyword">static</span> &#123;
+        System.out.println(<span class="hljs-string">&quot;子类被加载&quot;</span>);
+    &#125;
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> m = <span class="hljs-number">300</span>;
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> M = <span class="hljs-number">1</span>;
+&#125;</code></pre>
+
+<h1 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h1><h2 id="类加载器的作用"><a href="#类加载器的作用" class="headerlink" title="类加载器的作用"></a>类加载器的作用</h2><p>将class文件字节码内容加载到内存中，并将这些静态数据转换成方法区运行时数据结构，然后在堆中生成一个代表这个类的java.lang.Class对象，作为方法区中类数据访问的入口</p>
+<h2 id="类缓存"><a href="#类缓存" class="headerlink" title="类缓存"></a>类缓存</h2><p>标准的javase类加载器可以按要求查找类，但一旦某个类被加载到类加载器中，它将维持加载（缓存）一段时间不，不过JVM垃圾回收机制可以回收这些Class对象</p>
+<h2 id="类加载器类型"><a href="#类加载器类型" class="headerlink" title="类加载器类型"></a>类加载器类型</h2><h3 id="引导类加载器-Bootstap-ClassLoader"><a href="#引导类加载器-Bootstap-ClassLoader" class="headerlink" title="引导类加载器 Bootstap ClassLoader"></a>引导类加载器 Bootstap ClassLoader</h3><p>用C++编写的，是JVM自带的类加载器，负责java平台核心库，用来装载核心类库，该加载器无法直接获取</p>
+<p>就是在rt.jar包里面的类</p>
+<h3 id="拓展类加载器-Extension-ClassLoader"><a href="#拓展类加载器-Extension-ClassLoader" class="headerlink" title="拓展类加载器 Extension ClassLoader"></a>拓展类加载器 Extension ClassLoader</h3><p>负责jre/lib/ext 目录下的jar包或者-D java.ext.dirs目录下的jar包装入工作</p>
+<h3 id="系统类加载器-System-ClassLoader"><a href="#系统类加载器-System-ClassLoader" class="headerlink" title="系统类加载器 System ClassLoader"></a>系统类加载器 System ClassLoader</h3><p>负责java -classpath 或者java.class.path所指目录下面的类和jar包装入工作，是最常用的加载器</p>
+<pre><code class="hljs java"><span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> TestClassLoader</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/10 1:11</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestClassLoader</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException </span>&#123;
+        <span class="hljs-comment">// 系统类加载器</span>
+        ClassLoader classLoader =  ClassLoader.getSystemClassLoader();
+        System.out.println(classLoader);
+
+        <span class="hljs-comment">// 获取拓展类加载器</span>
+        ClassLoader parent = classLoader.getParent();
+        System.out.println(parent);
+
+        <span class="hljs-comment">// 获取根类加载器</span>
+        ClassLoader parent1 = parent.getParent();
+        System.out.println(parent1);
+
+
+        <span class="hljs-comment">// 测试当前的类是谁加载的</span>
+        ClassLoader testClassLoader = Class.forName(<span class="hljs-string">&quot;TestClassLoader&quot;</span>).getClassLoader();
+        System.out.println(testClassLoader);
+
+
+        <span class="hljs-comment">// 测试jdk内置的类是谁加载的</span>
+        testClassLoader = Class.forName(<span class="hljs-string">&quot;java.lang.Object&quot;</span>).getClassLoader();
+        System.out.println(testClassLoader);
+
+        <span class="hljs-comment">// 得到系统类加载器可以加载的路径</span>
+        System.out.println(System.getProperty(<span class="hljs-string">&quot;java.class.path&quot;</span>));
+    &#125;
+&#125;
+</code></pre>
+
+<h1 id="创建运行时类的对象"><a href="#创建运行时类的对象" class="headerlink" title="创建运行时类的对象"></a>创建运行时类的对象</h1><p>通过反射可以获得运行时类的完整结构<br>Field,Method,Constructor,Superclass,Interface,Annotation</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.reflect.Constructor;
+<span class="hljs-keyword">import</span> java.lang.reflect.Field;
+<span class="hljs-keyword">import</span> java.lang.reflect.Method;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> TestInfoClass</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/10 1:21</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">/*获取类的信息*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestInfoClass</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException, NoSuchFieldException, NoSuchMethodException </span>&#123;
+        Class user = Class.forName(<span class="hljs-string">&quot;User&quot;</span>);
+
+        User users = <span class="hljs-keyword">new</span> User();
+        <span class="hljs-comment">// 获得类的名字</span>
+        System.out.println(user.getName()); <span class="hljs-comment">// 可以得到包名</span>
+
+        <span class="hljs-comment">// 获得类的简单名字</span>
+        System.out.println(user.getSimpleName());
+
+        <span class="hljs-comment">// 获得类的属性</span>
+        Field[] fields = user.getFields(); <span class="hljs-comment">// 只能找到public属性</span>
+        <span class="hljs-keyword">for</span> (Field field : fields) &#123;
+            System.out.println(field);
+        &#125;
+
+        fields = user.getDeclaredFields();
+        <span class="hljs-keyword">for</span> (Field field : fields) &#123;
+            System.out.println(field);
+        &#125;
+        System.out.println(<span class="hljs-string">&quot;-----&quot;</span>);
+        <span class="hljs-comment">// 获得指定的名字</span>
+        System.out.println(user.getDeclaredField(<span class="hljs-string">&quot;name&quot;</span>));
+
+        <span class="hljs-comment">// 获得类的方法，以及父类的所有方法</span>
+
+        Method[] methods = user.getMethods();
+        <span class="hljs-keyword">for</span> (Method method : methods) &#123;
+            System.out.println(<span class="hljs-string">&quot;正常的&quot;</span>+method);
+        &#125;
+
+        <span class="hljs-comment">// 只获得本类的方法</span>
+        methods = user.getDeclaredMethods();
+        <span class="hljs-keyword">for</span> (Method method : methods) &#123;
+            System.out.println(<span class="hljs-string">&quot;私有的&quot;</span>+method);
+        &#125;
+
+        <span class="hljs-comment">// 获得指定方法</span>
+        System.out.println(user.getMethod(<span class="hljs-string">&quot;getName&quot;</span>, <span class="hljs-keyword">null</span>));
+
+        System.out.println(user.getMethod(<span class="hljs-string">&quot;setName&quot;</span>, String.class));
+
+        <span class="hljs-comment">// 获得指定的构造器</span>
+        Constructor[] declaredConstructors = user.getDeclaredConstructors();
+        <span class="hljs-keyword">for</span> (Constructor declaredConstructor : declaredConstructors) &#123;
+            System.out.println(declaredConstructor);
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+
+<h1 id="有了class对象我们能做些什么"><a href="#有了class对象我们能做些什么" class="headerlink" title="有了class对象我们能做些什么"></a>有了class对象我们能做些什么</h1><p>创建类的对象，调用Class对象的newInstance方法<br>必须满足两点<br>1）类必须有一个无参的构造器<br>2）类的构造器的访问权限必须足够</p>
+<h2 id="调用指定的方法"><a href="#调用指定的方法" class="headerlink" title="调用指定的方法"></a>调用指定的方法</h2><p>通过Class类的getMethod方法，获取一个method对象，并设置此方法需要操作时的所需要的参数类型</p>
+<p>之后使用object invoke（Object obj，Object[] args）进行调用，向方法中传递obj对象的参数信息</p>
+<h2 id="setAccessible"><a href="#setAccessible" class="headerlink" title="setAccessible"></a>setAccessible</h2><p>Method和Field，Constructor对象都有setAccessible方法<br>setAccessible作用是启动和禁用访问安全检查的开关<br>参数值为true，j取消ava语言访问检查</p>
+<h1 id="反射操作泛型"><a href="#反射操作泛型" class="headerlink" title="反射操作泛型"></a>反射操作泛型</h1><p> java采用泛型擦除的机制来引入泛型，java中的泛型仅仅是给编译器和javac使用的，确保数据的安全性和免去强制类型转换的问题，但是，一旦编译完成，所有和泛型相关的类型全部擦除。</p>
+<p>为了通过反射操作这些类型，java新增了几种类型来代表不能被归一到Class类中的类型但是又和原始类型齐名的类</p>
+<p><img src="https://img-blog.csdnimg.cn/20201210020253742.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.reflect.Method;
+<span class="hljs-keyword">import</span> java.lang.reflect.ParameterizedType;
+<span class="hljs-keyword">import</span> java.lang.reflect.Type;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Map;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> TestGetFanxing</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/10 2:03</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">/*通过反射获取泛型*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestGetFanxing</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test01</span><span class="hljs-params">(Map&lt;String,User&gt; map, List&lt;User&gt; list)</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;test01&quot;</span>);
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Map&lt;String,User&gt; <span class="hljs-title">test02</span><span class="hljs-params">()</span></span>&#123;
+        System.out.println(<span class="hljs-string">&quot;test02&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> NoSuchMethodException </span>&#123;
+        Method method = TestGetFanxing.class.getDeclaredMethod(<span class="hljs-string">&quot;test01&quot;</span>, Map.class, List.class);
+        Type[] genericParameterTypes = method.getGenericParameterTypes();
+        <span class="hljs-keyword">for</span> (Type genericParameterType : genericParameterTypes) &#123;
+            System.out.println(genericParameterType);
+            <span class="hljs-keyword">if</span>(genericParameterType <span class="hljs-keyword">instanceof</span> ParameterizedType)&#123;
+                Type[] actualTypeArguments = ((ParameterizedType) genericParameterType).getActualTypeArguments();
+                <span class="hljs-keyword">for</span> (Type actualTypeArgument : actualTypeArguments) &#123;
+                    System.out.println(actualTypeArgument);
+                &#125;
+            &#125;
+        &#125;
+
+        method = TestGetFanxing.class.getDeclaredMethod(<span class="hljs-string">&quot;test02&quot;</span>,<span class="hljs-keyword">null</span>);
+        Type genericReturnType = method.getGenericReturnType();
+        <span class="hljs-keyword">if</span>(genericReturnType <span class="hljs-keyword">instanceof</span> ParameterizedType)&#123;
+            Type[] actualTypeArguments = ((ParameterizedType) genericReturnType).getActualTypeArguments();
+            <span class="hljs-keyword">for</span> (Type actualTypeArgument : actualTypeArguments) &#123;
+                System.out.println(actualTypeArgument);
+            &#125;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+
+
+<h1 id="获取注解信息"><a href="#获取注解信息" class="headerlink" title="获取注解信息"></a>获取注解信息</h1><p>getAnnotation</p>
+<h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><p>object relationship Mapping 对象关系映射</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/java/">java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/jvm/">jvm</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8F%8D%E5%B0%84/">反射</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/09/java%E5%8F%8D%E5%B0%84/">
+                        <span class="hidden-mobile">java反射</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "java内存分析与反射&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

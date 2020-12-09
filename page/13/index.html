@@ -188,6 +188,163 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/">进程的定义，组成，组织方式，特征 （七）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/11/%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%8C%E7%BB%84%E6%88%90%EF%BC%8C%E7%BB%84%E7%BB%87%E6%96%B9%E5%BC%8F%EF%BC%8C%E7%89%B9%E5%BE%81/">
+          
+          
+            
+          
+          知识总览
+进程的定义程序：就是一个指令序列
+早起计算机的时候，只支持单道程序，内存里面只有一个程序在跑，分为程序段（程序代码）和数据段（变量）。
+引入多道程序之后，内存可以有多道程序运行，各个程序的代码、运算数据存放的位置不同，操作系统需要怎么才能找到程序的存放位置呢。
+操作系统在每一个进程执行之前，都会创建一个叫PCB（进程控制块）的这样的一个东西，用来描述进程当前的信息。
+程序段，数据段，pc
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-11 16:01" pubdate>
+              2020-10-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/09/%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8java%E5%86%85%E7%BD%AEExecutors%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">阿里规约禁止使用java内置Executors创建线程池</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/09/%E9%98%BF%E9%87%8C%E8%A7%84%E7%BA%A6%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8java%E5%86%85%E7%BD%AEExecutors%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+          
+          
+            
+          
+          提出几个问题1）线程池存在的意义
+2）Executors创建线程池一共几种方式
+3）ThreadPoolExecutor对象
+4）线程池执行的逻辑和线程池参数关系
+5）OOM会发生么
+6）如何定义线程池参数
+线程池的意义线程池可以复用线程，每个线程的创建与销毁其实都会耗费资源的，所以有了池的概念，可以节省一些资源。
+1）减少资源创建，减少内存开销
+2）降低系统开销，创建线程需要时间，会延迟处理请求
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-09 21:53" pubdate>
+              2020-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">系统调用 （六）</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/10/09/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
+          
+          
+            
+          
+          知识总览
+系统调用的作用操作系统作为用户和计算机硬件之间的接口，需要向上提供一些简单易用的服务，主要包括命令接口和程序接口，其中，程序接口由一组系统调用组成。
+供给应用程序调用的特殊函数，应用程序可以发出系统调用请求来获得操作系统的服务。
+应用程序通过系统调用请求操作系统的服务，系统中各种共享资源都由操作系统统一掌管，因此在用户程序中，凡是与资源有关的操作（如存储分配，IO操作，文件管理等），都必
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-09 20:54" pubdate>
+              2020-10-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/10/09/%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8/">中断和异常 （五）</a>
       </h1>
 
