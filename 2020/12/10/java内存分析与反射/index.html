@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      2.4k 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      33
        分钟
     </span>
   
@@ -250,7 +250,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 分钟前
+                  本文最后更新于：7 天前
                 
               </p>
             
@@ -506,7 +506,106 @@
 
 <h1 id="获取注解信息"><a href="#获取注解信息" class="headerlink" title="获取注解信息"></a>获取注解信息</h1><p>getAnnotation</p>
 <h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><p>object relationship Mapping 对象关系映射</p>
+<pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.annotation.*;
+<span class="hljs-keyword">import</span> java.lang.reflect.Field;
 
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> TestAnnotation</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2020/12/10 2:12</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-comment">/*反射操作注解*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestAnnotation</span> </span>&#123;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException, NoSuchFieldException </span>&#123;
+        Class c1 = Class.forName(<span class="hljs-string">&quot;Student2&quot;</span>);
+        Annotation[] annotations = c1.getAnnotations();
+        <span class="hljs-keyword">for</span> (Annotation annotation : annotations) &#123;
+            System.out.println(annotation);
+        &#125;
+
+        <span class="hljs-comment">// 获取注解value的值</span>
+        Mmz mmz  =(Mmz)c1.getDeclaredAnnotation(Mmz.class);
+        String value = mmz.value();
+        System.out.println(value);
+
+        <span class="hljs-comment">// 获得类指定的注解</span>
+        Field name = c1.getDeclaredField(<span class="hljs-string">&quot;name&quot;</span>);
+        Fieldmmz annotation = name.getAnnotation(Fieldmmz.class);
+        System.out.println(annotation.columnName());
+        System.out.println(annotation.length());
+        System.out.println(annotation.type());
+    &#125;
+
+&#125;
+<span class="hljs-meta">@Mmz(&quot;db_student&quot;)</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student2</span></span>&#123;
+    <span class="hljs-meta">@Fieldmmz(columnName = &quot;db_id&quot;,type = &quot;int&quot;,length = 10)</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id ;
+    <span class="hljs-meta">@Fieldmmz(columnName = &quot;db_age&quot;,type = &quot;int&quot;,length = 10)</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;
+    <span class="hljs-meta">@Fieldmmz(columnName = &quot;db_name&quot;,type = &quot;varchar&quot;,length = 3)</span>
+    <span class="hljs-keyword">private</span> String name;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Student2</span><span class="hljs-params">()</span> </span>&#123;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Student2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id, <span class="hljs-keyword">int</span> age, String name)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.id = id;
+        <span class="hljs-keyword">this</span>.age = age;
+        <span class="hljs-keyword">this</span>.name = name;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> id;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setId</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.id = id;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAge</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> age;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.age = age;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> name;
+    &#125;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;
+        <span class="hljs-keyword">this</span>.name = name;
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Student2&#123;&quot;</span> +
+                <span class="hljs-string">&quot;id=&quot;</span> + id +
+                <span class="hljs-string">&quot;, age=&quot;</span> + age +
+                <span class="hljs-string">&quot;, name=&#x27;&quot;</span> + name + <span class="hljs-string">&#x27;\&#x27;&#x27;</span> +
+                <span class="hljs-string">&#x27;&#125;&#x27;</span>;
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 类名的注解</span>
+<span class="hljs-meta">@Target(ElementType.TYPE)</span>
+<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
+<span class="hljs-meta">@interface</span> Mmz&#123;
+    <span class="hljs-function">String <span class="hljs-title">value</span><span class="hljs-params">()</span></span>;
+&#125;
+
+<span class="hljs-comment">// 属性的注解</span>
+<span class="hljs-meta">@Target(ElementType.FIELD)</span>
+<span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span>
+<span class="hljs-meta">@interface</span> Fieldmmz&#123;
+    <span class="hljs-function">String <span class="hljs-title">columnName</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function">String <span class="hljs-title">type</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">length</span><span class="hljs-params">()</span></span>;
+&#125;
+</code></pre>
             </div>
             <hr>
             <div>
@@ -539,6 +638,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/12/16/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E5%A7%8Bjavaweb%E9%A1%B9%E7%9B%AE/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">新建一个原始javaweb项目</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
