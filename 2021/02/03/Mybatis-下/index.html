@@ -1,0 +1,857 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>Mybatis-下 - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-03 21:50" pubdate>
+        2021年2月3日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Mybatis-下</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2 分钟前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="Lombok"><a href="#Lombok" class="headerlink" title="Lombok"></a>Lombok</h1><p>偷懒神器</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>在settings里面Plugins搜索lombok<br>在项目中导入lombok的jar包</p>
+<pre><code class="hljs java">&lt;!-- https:<span class="hljs-comment">//mvnrepository.com/artifact/org.projectlombok/lombok --&gt;</span>
+&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.12&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>@Data 无参构造 get/set toString hashcode equals<br>@AllArgsConstructor 有参构造<br>@NoArgsConstructor 无参构造</p>
+<h1 id="多对一处理"><a href="#多对一处理" class="headerlink" title="多对一处理"></a>多对一处理</h1><p>多个学生对应一个老师，<br>对于学生这边而言，关联， 多个学生关联一个老师<br>对于老师而言，集合，一个老师有很多学生</p>
+<h2 id="重新开启一个module模块"><a href="#重新开启一个module模块" class="headerlink" title="重新开启一个module模块"></a>重新开启一个module模块</h2><p>复制一些配置文件，创建两个实体类，Teacher和Student<br>然后在resource下面创建同名包，TeacherMapper.xml 和 StudentMapper.xml两个配置文件<br>配置内容，复制一下mybatis的配置文件，把所有的configuration改成mapper即可</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>导入lombok<br>新建实体类Teacher Student<br>建立Mapper接口<br>建立Mapper.xml文件<br>在核心配置文件中绑定注册的我们的Mapper接口或者文件<br>测试查询是否成功</p>
+<h2 id="复杂的多对一查询"><a href="#复杂的多对一查询" class="headerlink" title="复杂的多对一查询"></a>复杂的多对一查询</h2><pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF8&quot;</span>?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC <span class="hljs-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span>
+        <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;
+
+&lt;!--核心配置文件--&gt;
+&lt;mapper namespace=<span class="hljs-string">&quot;com.mmz.dao.StudentMapper&quot;</span>&gt;
+
+    &lt;!--思路
+    <span class="hljs-number">1.</span>查询所有的学生信息
+    <span class="hljs-number">2.</span>根据查询出来的学生的id，寻找对应的老师！
+    --&gt;
+   &lt;resultMap id=<span class="hljs-string">&quot;StudentTeacher&quot;</span> type=<span class="hljs-string">&quot;Student&quot;</span>&gt;
+       &lt;result property=&quot;id&quot; column=&quot;id&quot;&gt;&lt;/result&gt;
+       &lt;result property=&quot;name&quot; column=&quot;name&quot;&gt;&lt;/result&gt;
+       &lt;!--复杂的属性需要单独处理
+       对象使用assocation
+       集合使用collection
+       --&gt;
+       &lt;association property=<span class="hljs-string">&quot;teacher&quot;</span> column=<span class="hljs-string">&quot;tid&quot;</span> javaType=<span class="hljs-string">&quot;com.mmz.pojo.Teacher&quot;</span> select=<span class="hljs-string">&quot;getTeacher&quot;</span>&gt;
+       &lt;/association&gt;
+   &lt;/resultMap&gt;
+    
+    &lt;select id=<span class="hljs-string">&quot;getStudent&quot;</span> resultMap=<span class="hljs-string">&quot;StudentTeacher&quot;</span>&gt;
+        select * from student
+    &lt;/select&gt;
+
+    &lt;select id=<span class="hljs-string">&quot;getTeacher&quot;</span> resultType=<span class="hljs-string">&quot;com.mmz.pojo.Teacher&quot;</span>&gt;
+        select * from teacher where id = #&#123;id&#125;
+    &lt;/select&gt;
+&lt;/mapper&gt;</code></pre>
+
+<p>首先明确，老师的查询是通过tid进行查询的，那么学生可以得到老师的tid，所以查询到了学生就能查询到了老师。</p>
+<p>需要用resultMap进行一个整合的查询，首先查询学生的信息并且查询其老师。需要用result标签查询，property是java属性名，column是数据库的列名。然后teacher是一个引用类型，用assocation标签，property属性是student类中的id，column是对应的数据库中的tid，然后在要声明这个javaType是什么类型，然后在调用查询老师，select =”getTeacher”</p>
+<h1 id="一对多处理"><a href="#一对多处理" class="headerlink" title="一对多处理"></a>一对多处理</h1><p>一个老师拥有多个学生<br>对于老师而言，就是一对多的关系</p>
+<pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF8&quot;</span>?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC <span class="hljs-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span>
+        <span class="hljs-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;
+
+&lt;!--核心配置文件--&gt;
+&lt;mapper namespace=<span class="hljs-string">&quot;com.mmz.dao.TeacherMapper&quot;</span>&gt;
+    &lt;resultMap id=<span class="hljs-string">&quot;TeacherStudent&quot;</span> type=<span class="hljs-string">&quot;com.mmz.pojo.Teacher&quot;</span>&gt;
+        &lt;result property=&quot;id&quot; column=&quot;tid&quot;&gt;&lt;/result&gt;
+        &lt;result property=&quot;name&quot; column=&quot;name&quot;&gt;&lt;/result&gt;
+        &lt;collection property=<span class="hljs-string">&quot;students&quot;</span> ofType=<span class="hljs-string">&quot;com.mmz.pojo.Student&quot;</span>&gt;
+            &lt;result property=&quot;id&quot; column=&quot;sid&quot;&gt;&lt;/result&gt;
+            &lt;result property=&quot;name&quot; column=&quot;sname&quot;&gt;&lt;/result&gt;
+            &lt;result property=&quot;tid&quot; column=&quot;tid&quot;&gt;&lt;/result&gt;
+        &lt;/collection&gt;
+    &lt;/resultMap&gt;
+    
+    &lt;select id=<span class="hljs-string">&quot;getTeacher&quot;</span> resultMap=<span class="hljs-string">&quot;TeacherStudent&quot;</span>&gt;
+        select s.id sid,s.name sname,t.id tid
+        from student s ,teacher t
+        where s.tid = t.id and t.id = #&#123;tid&#125;
+    &lt;/select&gt;
+
+    &lt;select id=<span class="hljs-string">&quot;getTeachers&quot;</span> resultType=<span class="hljs-string">&quot;com.mmz.pojo.Teacher&quot;</span>&gt;
+        select * from teacher
+    &lt;/select&gt;
+    
+
+&lt;/mapper&gt;</code></pre>
+
+<h1 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h1><p>动态sql就是根据不同的条件生成不同的sql语句</p>
+<p>新建sql</p>
+<pre><code class="hljs java">CREATE TABLE `blog`(
+`id` VARCHAR(<span class="hljs-number">50</span>) NOT NULL COMMENT <span class="hljs-string">&#x27;博客id&#x27;</span>,
+`title` VARCHAR(<span class="hljs-number">100</span>) NOT NULL COMMENT <span class="hljs-string">&#x27;博客标题&#x27;</span>,
+`author` VARCHAR(<span class="hljs-number">30</span>) NOT NULL COMMENT <span class="hljs-string">&#x27;博客作者&#x27;</span>,
+`create_time` DATETIME NOT NULL COMMENT <span class="hljs-string">&#x27;创建时间&#x27;</span>,
+`views` INT(<span class="hljs-number">30</span>) NOT NULL COMMENT <span class="hljs-string">&#x27;浏览量&#x27;</span>
+)ENGINE=INNODB DEFAULT CHARSET=utf8</code></pre>
+
+<p>创建一个基础工程<br>1.导包<br>2.编写配置文件<br>3.编写实体类<br>4.编写mapper以及mapper.xml<br>5.测试</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.mmz.pojo;
+
+<span class="hljs-keyword">import</span> lombok.Data;
+
+<span class="hljs-keyword">import</span> java.util.Date;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> Blog</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/1/11 16:34</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Data</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Blog</span> </span>&#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> id ;
+    <span class="hljs-keyword">private</span> String title;
+    <span class="hljs-keyword">private</span> String author;
+    <span class="hljs-keyword">private</span> Date createTime;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> views;
+
+&#125;
+</code></pre>
+
+<h2 id="if标签"><a href="#if标签" class="headerlink" title="if标签"></a>if标签</h2><p><img src="https://img-blog.csdnimg.cn/20210120143910467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>目的需求就是在于if进行条件判断，如果有这个条件参数那么进行判断，如果没有照常查询。</p>
+<p>下面是xml配置文件的sql语句</p>
+<pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;queryBlogIF&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;map&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.mmz.pojo.Blog&quot;</span>&gt;</span></span>
+<span class="xml">       select * from blog where 1=1</span>
+<span class="xml">       <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;title != null&quot;</span>&gt;</span></span>
+<span class="xml">           and title = #</span><span class="hljs-template-variable">&#123;title&#125;</span>
+<span class="xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span>
+<span class="xml">       <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;author != null&quot;</span>&gt;</span></span>
+<span class="xml">           and author = #</span><span class="hljs-template-variable">&#123;author&#125;</span>
+<span class="xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span>
+<span class="xml">   <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></span></code></pre>
+
+<p>我们用万能的map类型先进行测试一下，这里map为空</p>
+<pre><code class="hljs reasonml">@Test
+   public void test<span class="hljs-constructor">If()</span>&#123;
+       SqlSession sqlsession = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">MybatisUtils</span>.</span></span>get<span class="hljs-constructor">Sqlsession()</span>;
+       BlogMapper mapper = sqlsession.get<span class="hljs-constructor">Mapper(BlogMapper.<span class="hljs-params">class</span>)</span>;
+
+       HashMap hashMap = <span class="hljs-keyword">new</span> <span class="hljs-constructor">HashMap()</span>;
+
+       List&lt;Blog&gt; blogs = mapper.query<span class="hljs-constructor">BlogIF(<span class="hljs-params">hashMap</span>)</span>;
+
+       <span class="hljs-keyword">for</span> (Blog blog : blogs) &#123;
+           <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">System</span>.</span></span>out.println(blog);
+       &#125;
+
+       sqlsession.close<span class="hljs-literal">()</span>;
+   &#125;</code></pre>
+<p>输出显而易见<img src="https://img-blog.csdnimg.cn/20210121002805434.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>那么我们在进行对map进行一次操作</p>
+<pre><code class="hljs applescript">hashMap.<span class="hljs-keyword">put</span>(<span class="hljs-string">&quot;title&quot;</span>,<span class="hljs-string">&quot;java yyds&quot;</span>);</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210121002927721.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>就会只查询到两条记录</p>
+<h2 id="choose-when-otherwise标签"><a href="#choose-when-otherwise标签" class="headerlink" title="choose when otherwise标签"></a>choose when otherwise标签</h2><p>有时候我们不想应用到所有的条件语句，而只想从中选择其中一项，针对这种情况，mybatis提供了choose元素，它有点像java中switch语句。<br><img src="https://img-blog.csdnimg.cn/20210201220735827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>那么if标签其实相当于有多个条件的时候，进行并列的查询。choose标签上面也提及到了相当于switch语句，只判断一个等价的条件。</p>
+<pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;queryBlogChoose&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;map&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;blog&quot;</span>&gt;</span></span>
+<span class="xml">        select * from blog</span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span></span>
+<span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">choose</span>&gt;</span></span>
+<span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">when</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;title != null&quot;</span>&gt;</span></span>
+<span class="xml">                    title = #</span><span class="hljs-template-variable">&#123;title&#125;</span>
+<span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">when</span>&gt;</span></span>
+<span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">when</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;author != null&quot;</span>&gt;</span></span>
+<span class="xml">                    and author = #</span><span class="hljs-template-variable">&#123;author&#125;</span>
+<span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">when</span>&gt;</span></span>
+<span class="xml">                <span class="hljs-tag">&lt;<span class="hljs-name">otherwise</span>&gt;</span></span>
+<span class="xml">                    and views = #</span><span class="hljs-template-variable">&#123;views&#125;</span>
+<span class="xml">                <span class="hljs-tag">&lt;/<span class="hljs-name">otherwise</span>&gt;</span></span>
+<span class="xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">choose</span>&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></span></code></pre>
+
+
+
+
+<h2 id="where标签"><a href="#where标签" class="headerlink" title="where标签"></a>where标签</h2><p>这种情况会导致查询失败，如果我们不使用where标签的情况下<br><img src="https://img-blog.csdnimg.cn/20210201221112577.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>那么mybatis提供了一个where标签<br><img src="https://img-blog.csdnimg.cn/20210201221154190.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>where元素只会在至少有一个子元素的条件返回Sql子句的情况下才会去插入where子句，而且开头为AND或者OR，where元素也会将它们去除</p>
+<pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span></span>
+<span class="xml">           <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;title != null&quot;</span>&gt;</span></span>
+<span class="xml">                title = #</span><span class="hljs-template-variable">&#123;title&#125;</span>
+<span class="xml">           <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span>
+<span class="xml">           <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;author != null&quot;</span>&gt;</span></span>
+<span class="xml">               and author = #</span><span class="hljs-template-variable">&#123;author&#125;</span>
+<span class="xml">           <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span>
+<span class="xml">       <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span></span></code></pre>
+
+
+<h2 id="set标签"><a href="#set标签" class="headerlink" title="set标签"></a>set标签</h2><p>set类似于应用在更新这个函数中，update/set<br><img src="https://img-blog.csdnimg.cn/20210201222454152.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>正常的sql更新语句</p>
+<pre><code class="hljs routeros">UPDATE Person <span class="hljs-builtin-name">SET</span><span class="hljs-built_in"> Address </span>= <span class="hljs-string">&#x27;Zhongshan 23&#x27;</span>, City = <span class="hljs-string">&#x27;Nanjing&#x27;</span>
+WHERE LastName = <span class="hljs-string">&#x27;Wilson&#x27;</span></code></pre>
+<p>那么set标签就起到一个考虑逗号的作用。</p>
+<p>所谓的动态sql，其实还是sql语句。只是我们可以在sql层面去执行一些逻辑代码。</p>
+<h2 id="sql片段"><a href="#sql片段" class="headerlink" title="sql片段"></a>sql片段</h2><p>有的时候，我们会将公共的sql部分抽取出来，方便复用。</p>
+<pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;queryBlogIF&quot;</span> <span class="hljs-attr">parameterType</span>=<span class="hljs-string">&quot;map&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.mmz.pojo.Blog&quot;</span>&gt;</span></span>
+<span class="xml">        select * from blog</span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span></span>
+<span class="xml">            <span class="hljs-tag">&lt;<span class="hljs-name">include</span> <span class="hljs-attr">refid</span>=<span class="hljs-string">&quot;if-title-author&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">include</span>&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span></span>
+<span class="xml">    </span>
+<span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">sql</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;if-title-author&quot;</span>&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;title != null&quot;</span>&gt;</span></span>
+<span class="xml">            title = #</span><span class="hljs-template-variable">&#123;title&#125;</span>
+<span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;author != null&quot;</span>&gt;</span></span>
+<span class="xml">            and author = #</span><span class="hljs-template-variable">&#123;author&#125;</span>
+<span class="xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">sql</span>&gt;</span></span></code></pre>
+<p>首先把复用的代码写入一个sql标签中，标明好其id，然后在要使用的地方，用include标签进行引入。</p>
+<p>注意事项：1）最好基于单表来定义SQL字段。2）不要存在where标签</p>
+<h2 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h2><p>动态sql的另外一个常用的操作需求是对一个集合进行遍历，通常是在构建in条件语句的时候，比如： ID in 集合<br><img src="https://img-blog.csdnimg.cn/20210201224513777.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>动态sql就是在拼接sql语句，我们只要保证sql的正确性，按照sql的格式，排列组合就可以了。</p>
+<p>提出建议，先在mysql写出完整的sql，在对应的去修改成为我们的动态sql，实现通用。</p>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>我们每次进行查询的时候，都需要连接数据库，浪费消耗资源。<br>所以我们把查询的结果，放置在内存中暂存。<br>我们再次查询相同数据的时候，直接走缓存就可以了。<br>主要解决高并发的系统性能问题。</p>
+<h2 id="mybatis中的缓存"><a href="#mybatis中的缓存" class="headerlink" title="mybatis中的缓存"></a>mybatis中的缓存</h2><p>Mybatis包含了一个非常强大的查询缓存特性，它可以非常方便地定制和配置缓存，缓存可以极大的提升查询效率。</p>
+<p>mybatis定了一级缓存和二级缓存，默认情况下，只有一级缓存开启，sqlsession级别的缓存，也称为本地缓存（也就是sqlsession.close）。二级缓存需要开启和配置，它是基于namespace级别的缓存。</p>
+<p>为了提高拓展性，mybatis定义了缓存接口cache，我们可以通过实现Cache接口来自定义二级接口。</p>
+<h2 id="Cache类"><a href="#Cache类" class="headerlink" title="Cache类"></a>Cache类</h2><p>是ibatis下面的类</p>
+<p><img src="https://img-blog.csdnimg.cn/20210202182321781.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="缓存的更新策略"><a href="#缓存的更新策略" class="headerlink" title="缓存的更新策略"></a>缓存的更新策略</h2><p><img src="https://img-blog.csdnimg.cn/20210202182412405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2><p>一级缓存上述说道是默认存在的，又开启了一个新的模块。对User进行查询的功能。<br><img src="https://img-blog.csdnimg.cn/20210202183742597.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>可以发现查询到User对象是相同的。<br><img src="https://img-blog.csdnimg.cn/20210202183916712.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>为了进行测试，在两次查询中间加入一次更新的操作。</p>
+<pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> com.mmz.dao.UserMapper;
+<span class="hljs-keyword">import</span> com.mmz.pojo.<span class="hljs-keyword">User</span>;
+<span class="hljs-keyword">import</span> com.mmz.utils.MybatisUtils;
+<span class="hljs-keyword">import</span> org.apache.ibatis.<span class="hljs-keyword">session</span>.SqlSession;
+<span class="hljs-keyword">import</span> org.junit.Test;
+
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname MyTest</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2021/2/2 18:31</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-built_in">public</span> <span class="hljs-keyword">class</span> MyTest &#123;
+    @Test
+    <span class="hljs-built_in">public</span> <span class="hljs-type">void</span> testUser()&#123;
+        SqlSession sqlsession = MybatisUtils.getSqlsession();
+        UserMapper mapper = sqlsession.getMapper(UserMapper.<span class="hljs-keyword">class</span>);
+
+        List&lt;<span class="hljs-keyword">User</span>&gt; users = mapper.queryUsers();
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">User</span> <span class="hljs-keyword">user</span> : users) &#123;
+            <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">user</span>);
+        &#125;
+
+        sqlsession.<span class="hljs-keyword">close</span>();
+    &#125;
+
+    @Test
+    <span class="hljs-built_in">public</span> <span class="hljs-type">void</span> testUserById()&#123;
+        SqlSession sqlsession = MybatisUtils.getSqlsession();
+        UserMapper mapper = sqlsession.getMapper(UserMapper.<span class="hljs-keyword">class</span>);
+        <span class="hljs-keyword">User</span> <span class="hljs-keyword">user</span> = mapper.queryUserById(<span class="hljs-number">1</span>);
+
+        <span class="hljs-keyword">User</span> user1 = mapper.queryUserById(<span class="hljs-number">1</span>);
+
+        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">user</span>);
+        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(user1);
+        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">user</span> == user1);
+
+        sqlsession.<span class="hljs-keyword">close</span>();
+    &#125;
+
+
+    @Test
+    <span class="hljs-built_in">public</span> <span class="hljs-type">void</span> testUserUpdateAndSelect()&#123;
+        SqlSession sqlsession = MybatisUtils.getSqlsession();
+        UserMapper mapper = sqlsession.getMapper(UserMapper.<span class="hljs-keyword">class</span>);
+
+        <span class="hljs-keyword">User</span> <span class="hljs-keyword">user</span> = mapper.queryUserById(<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">user</span>);
+
+        <span class="hljs-keyword">User</span> user1 = <span class="hljs-built_in">new</span> <span class="hljs-keyword">User</span>();
+        user1.setId(<span class="hljs-number">1</span>);
+        user1.setName(&quot;zxg&quot;);
+        user1.setPwd(&quot;xixi&quot;);
+        mapper.updateUser(user1);
+
+        <span class="hljs-keyword">User</span> user2 = mapper.queryUserById(<span class="hljs-number">1</span>);
+        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(user2);
+        <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-keyword">user</span> == user2);
+
+        sqlsession.<span class="hljs-keyword">close</span>();
+    &#125;
+&#125;
+</code></pre>
+<p>结果测试截图如下<br><img src="https://img-blog.csdnimg.cn/20210202184544914.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>最后结果可以看到，两个独享的结果不一样了。是false</p>
+<h2 id="缓存失效的原因"><a href="#缓存失效的原因" class="headerlink" title="缓存失效的原因"></a>缓存失效的原因</h2><p>1）查询不同的语句<br>2）增删改操作，可能会改变原来的数据，所以必定会刷新缓存<br>3）查询不同的mapper<br>4）手动清理缓存</p>
+<pre><code class="hljs abnf">sqlsession.clearCache()<span class="hljs-comment">;</span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210202185031946.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>一级缓存是默认开启的，只在一次sqlsession中有效果，也就是拿到连接到关闭连接这个区间之内。</p>
+<h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2><p>默认情况下，只启动了本地的会话缓存，它仅仅会对一个会话的数据进行缓存，要启用全局的二级缓存，只需要在sql映射文件添加一行</p>
+<pre><code class="hljs apache"><span class="hljs-section">&lt;cache/&gt;</span></code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210202185443741.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="cache内部还可以添加一些属性"><a href="#cache内部还可以添加一些属性" class="headerlink" title="cache内部还可以添加一些属性"></a>cache内部还可以添加一些属性</h3><p><img src="https://img-blog.csdnimg.cn/20210202185513324.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210202185526335.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="二级缓存开启步骤"><a href="#二级缓存开启步骤" class="headerlink" title="二级缓存开启步骤"></a>二级缓存开启步骤</h3><p>1）开启全局缓存</p>
+<pre><code class="hljs routeros">&lt;setting <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;cacheEnabled&quot;</span> <span class="hljs-attribute">value</span>=<span class="hljs-string">&quot;true&quot;</span>/&gt;</code></pre>
+<p>2）在mapper里面开启</p>
+<pre><code class="hljs apache"><span class="hljs-section">&lt;cache/&gt;</span></code></pre>
+
+<h2 id="Mybatis缓存原理"><a href="#Mybatis缓存原理" class="headerlink" title="Mybatis缓存原理"></a>Mybatis缓存原理</h2><p><img src="https://img-blog.csdnimg.cn/20210203214245584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/mybatis/">mybatis</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/mybatis/">mybatis</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/05/Mybatis-%E4%B8%8A/">
+                        <span class="hidden-mobile">Mybatis(上)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Mybatis-下&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
