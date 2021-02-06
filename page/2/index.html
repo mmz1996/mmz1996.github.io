@@ -188,6 +188,56 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/12/08/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E4%BD%9C/">java多线程之线程协作</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/08/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E4%BD%9C/">
+          
+          
+            
+          
+          生产者和消费者就是有一个中间的仓库，生产者生产商品放入仓库，消费者从仓库取走产品进行消费
+没有产品的话，消费者暂停，生产者不断的生产仓库的商品满了的花，生产者暂停，消费者不断的消费
+java提供的解决线程之间通信的方法wait（） 表示线程一直等待，直到其他线程通知，与sleep不同，会释放锁的资源
+notify（）唤醒一个处于等待的线程notifyAll（） 唤醒同一个对象上所有调用wait（）
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-08 18:02" pubdate>
+              2020-12-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/12/08/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/">java多线程之线程同步</a>
       </h1>
 
@@ -667,58 +717,6 @@ Vue.prototype.$echarts = window.echarts
               <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
             
               <a href="/tags/echarts/">echarts</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/11/21/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8%E5%8A%A8%E7%94%BB%E7%9B%B8%E5%85%B3/">数据可视化ECharts-高级使用动画相关</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/21/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E9%AB%98%E7%BA%A7%E4%BD%BF%E7%94%A8%E5%8A%A8%E7%94%BB%E7%9B%B8%E5%85%B3/">
-          
-          
-            
-          
-          加载动画在ECharts获取数据中，数据没有呈现出来的时候，ECharts提供的一个更友好的效果
-ECharts已经内置好了加载数据的动画，我们只需要在合适的时机显示或者隐藏即可
-显示/隐藏加载动画mCharts.showLoading() // 在获取数据之前, 显示加载动画
-$.get(&#x27;data/test_data.json&#x27;, function (ret) &#123;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-21 15:54" pubdate>
-              2020-11-21
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-              <a href="/tags/ECharts/">ECharts</a>
             
           </div>
         
