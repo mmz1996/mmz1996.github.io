@@ -1,0 +1,1014 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>SpringMVC - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-04 01:52" pubdate>
+        2021年3月4日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      51
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">SpringMVC</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ssm springmvc+spring+mybaits MVC三层架构</p>
+<p>javaSE：认真学习，快速入门<br>javaWeb：认真学习</p>
+<p>框架：研究官方文档，锻炼自学/笔记/项目能力</p>
+<h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><p>mvc是模型model，视图view，控制器controller的简写，是一种软件设计思想。<br>是将业务逻辑、数据、显示分离的方法来组织代码</p>
+<h2 id="model1时代"><a href="#model1时代" class="headerlink" title="model1时代"></a>model1时代</h2><p><img src="https://img-blog.csdnimg.cn/20210228154546775.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="model2时代"><a href="#model2时代" class="headerlink" title="model2时代"></a>model2时代</h2><p><img src="https://img-blog.csdnimg.cn/20210228155404136.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>model2这样不仅提高了代码的复用率与项目的拓展性，且大大降低了项目的维护成本，Model1的实现方式比较简单，适用于开发小规模项目，Model中jsp页面兼View和Controller两种角色，将控制逻辑和表现逻辑混杂在一起，从而导致代码的重用率非常低，增加了应用的拓展性和维护的难度，model2消除了model1的缺点。</p>
+<h1 id="学习复习前提"><a href="#学习复习前提" class="headerlink" title="学习复习前提"></a>学习复习前提</h1><p>新建项目<br>在pom.xml中添加依赖<br>创建子项目<br>然后右键点击增加框架，增加web框架</p>
+<h2 id="servlet用来处理请求"><a href="#servlet用来处理请求" class="headerlink" title="servlet用来处理请求"></a>servlet用来处理请求</h2><pre><code class="hljs scala"><span class="hljs-keyword">package</span> com.mmz.servlet;
+
+<span class="hljs-keyword">import</span> javax.servlet.<span class="hljs-type">ServletException</span>;
+<span class="hljs-keyword">import</span> javax.servlet.http.<span class="hljs-type">HttpServlet</span>;
+<span class="hljs-keyword">import</span> javax.servlet.http.<span class="hljs-type">HttpServletRequest</span>;
+<span class="hljs-keyword">import</span> javax.servlet.http.<span class="hljs-type">HttpServletResponse</span>;
+<span class="hljs-keyword">import</span> java.io.<span class="hljs-type">IOException</span>;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * @Classname com.mmz.servlet.HelloServlet</span>
+<span class="hljs-comment"> * @Description TODO</span>
+<span class="hljs-comment"> * @Date 2021/2/28 19:59</span>
+<span class="hljs-comment"> * @Created by mmz</span>
+<span class="hljs-comment"> */</span>
+public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloServlet</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpServlet</span> </span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> void doGet(<span class="hljs-type">HttpServletRequest</span> req, <span class="hljs-type">HttpServletResponse</span> resp) <span class="hljs-keyword">throws</span> <span class="hljs-type">ServletException</span>, <span class="hljs-type">IOException</span> &#123;
+        <span class="hljs-comment">// 1 获取前端参数</span>
+        <span class="hljs-type">String</span> method  = req.getParameter(<span class="hljs-string">&quot;method&quot;</span>);
+        <span class="hljs-keyword">if</span>(method.equals(<span class="hljs-string">&quot;add&quot;</span>))&#123;
+            req.getSession().setAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;执行了add方法&quot;</span>);
+        &#125;
+        <span class="hljs-keyword">if</span>(method.equals(<span class="hljs-string">&quot;delete&quot;</span>))&#123;
+            req.getSession().setAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;执行了delete方法&quot;</span>);
+        &#125;
+        <span class="hljs-comment">// 2 调用业务层</span>
+        <span class="hljs-comment">// 3 视图转发或者重定向</span>
+
+        req.getRequestDispatcher(<span class="hljs-string">&quot;/WEB-INF/jsp/test.jsp&quot;</span>).forward(req,resp);
+
+
+    &#125;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">protected</span> void doPost(<span class="hljs-type">HttpServletRequest</span> req, <span class="hljs-type">HttpServletResponse</span> resp) <span class="hljs-keyword">throws</span> <span class="hljs-type">ServletException</span>, <span class="hljs-type">IOException</span> &#123;
+        doGet(req,resp);
+    &#125;
+&#125;
+</code></pre>
+
+
+<h2 id="jsp返回页面"><a href="#jsp返回页面" class="headerlink" title="jsp返回页面"></a>jsp返回页面</h2><pre><code class="hljs dust"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">%--</span></span></span>
+<span class="xml">  Created by IntelliJ IDEA.</span>
+<span class="xml">  User: mmz</span>
+<span class="xml">  Date: 2021/2/28</span>
+<span class="xml">  Time: 20:02</span>
+<span class="xml">  To change this template use File | Settings | File Templates.</span>
+<span class="xml">--%&gt;</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">%@</span> <span class="hljs-attr">page</span> <span class="hljs-attr">contentType</span>=<span class="hljs-string">&quot;text/html;charset=UTF-8&quot;</span> <span class="hljs-attr">language</span>=<span class="hljs-string">&quot;java&quot;</span> %&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span>
+<span class="xml">$</span><span class="hljs-template-variable">&#123;msg&#125;</span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+</code></pre>
+<h2 id="web-xml配置"><a href="#web-xml配置" class="headerlink" title="web.xml配置"></a>web.xml配置</h2><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;4.0&quot;</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>com.mmz.servlet.HelloServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>hello<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/hello<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--    &lt;session-config&gt;--&gt;</span>
+<span class="hljs-comment">&lt;!--        &lt;session-timeout&gt;15&lt;/session-timeout&gt;--&gt;</span>
+<span class="hljs-comment">&lt;!--    &lt;/session-config&gt;--&gt;</span>
+
+<span class="hljs-comment">&lt;!--    &lt;welcome-file-list&gt;--&gt;</span>
+<span class="hljs-comment">&lt;!--        &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;--&gt;</span>
+<span class="hljs-comment">&lt;!--    &lt;/welcome-file-list&gt;--&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span>
+
+</code></pre>
+
+<h2 id="总结-mvc框架可能要做哪些事情"><a href="#总结-mvc框架可能要做哪些事情" class="headerlink" title="总结 mvc框架可能要做哪些事情"></a>总结 mvc框架可能要做哪些事情</h2><p>将url映射到java类或者java类的方法<br>封装用户提交的数据<br>处理请求-调用相关的业务-封装响应数据<br>将响应的数据进行渲染 .jsp/html 等表示层数据</p>
+<h1 id="中心控制器DispatcherServlet"><a href="#中心控制器DispatcherServlet" class="headerlink" title="中心控制器DispatcherServlet"></a>中心控制器DispatcherServlet</h1><p>spring的web框架围绕DispathcerServlet设计，dispatcherservlet的作用是将请求分发到不同的处理器。<br>现在可以基于Controller的注解声明处理器。<br><img src="https://img-blog.csdnimg.cn/20210228211133629.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>DispatcherServlet本质也是一个Servlet</p>
+<h1 id="Springmvc-执行流程"><a href="#Springmvc-执行流程" class="headerlink" title="Springmvc 执行流程"></a>Springmvc 执行流程</h1><p><img src="https://img-blog.csdnimg.cn/20210302004739892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="配置dispatcherServlet"><a href="#配置dispatcherServlet" class="headerlink" title="配置dispatcherServlet"></a>配置dispatcherServlet</h2><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;4.0&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springmvc<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath:springmvc-servlet.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springmvc<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span></code></pre>
+
+<h2 id="执行handler"><a href="#执行handler" class="headerlink" title="执行handler"></a>执行handler</h2><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span>
+<span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd&quot;</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--视图解析器--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;internalResourceViewResolver&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;prefix&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;/WEB-INF/jsp/&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;suffix&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;.jsp&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;/hello&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.mmz.controller.HelloController&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
+
+
+<h2 id="找到相应Controller并且返回视图模型"><a href="#找到相应Controller并且返回视图模型" class="headerlink" title="找到相应Controller并且返回视图模型"></a>找到相应Controller并且返回视图模型</h2><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.ModelAndView;
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.mvc.Controller;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServlet;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> HelloController</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/1 21:10</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloController</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Controller</span> </span>&#123;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">handleRequest</span><span class="hljs-params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        ModelAndView modelAndView = <span class="hljs-keyword">new</span> ModelAndView();
+
+        modelAndView.addObject(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;HelloSpringMVC&quot;</span>);
+
+        modelAndView.setViewName(<span class="hljs-string">&quot;hello&quot;</span>);
+        <span class="hljs-keyword">return</span> modelAndView;
+    &#125;
+&#125;
+</code></pre>
+
+<h2 id="具体的执行流程"><a href="#具体的执行流程" class="headerlink" title="具体的执行流程"></a>具体的执行流程</h2><p>这部分以前整理过，就是从前端发送请求到后端，首先先到DispatcherServlet，然后HandlerMapping处理器映射器去寻找相应的handler，在根据handler被HandlerAdapter处理器适配器去执行。Handler最后会执行controller，controller把执行的信息返回ModelAndView给HandlerApadter，然后dispatcherServlet调用视图解析器ViewResolver去解析视图。最后视图呈现给用户。</p>
+<h1 id="注解开发SpringMVC"><a href="#注解开发SpringMVC" class="headerlink" title="注解开发SpringMVC"></a>注解开发SpringMVC</h1><h2 id="首先还是要配置web-xml"><a href="#首先还是要配置web-xml" class="headerlink" title="首先还是要配置web.xml"></a>首先还是要配置web.xml</h2><p>配置dispatcherServlet</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GBK&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span></span>
+<span class="hljs-tag">         <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;4.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springmvc<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath:springmvc-servlet.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>springmvc<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span></code></pre>
+
+<h2 id="配置注解使用SpringMVC"><a href="#配置注解使用SpringMVC" class="headerlink" title="配置注解使用SpringMVC"></a>配置注解使用SpringMVC</h2><p>无论哪种方式配置SpringMVC都需要配置处理器映射器，处理器适配器，视图解析器</p>
+<pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/mvc&quot;</span></span>
+<span class="hljs-tag">        <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/context</span></span>
+<span class="hljs-tag"><span class="hljs-string">        https://www.springframework.org/schema/context/spring-context.xsd</span></span>
+<span class="hljs-tag"><span class="hljs-string">        http://www.springframework.org/schema/mvc</span></span>
+<span class="hljs-tag"><span class="hljs-string">        https://www.springframework.org/schema/mvc/spring-mvc.xsd&quot;</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--自动扫描包+--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">&quot;com.mmz.controller&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">context:component-scan</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--SpringMVC不处理静态资源  .css .js .html 不走视图解析--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:default-servlet-handler</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mvc:default-servlet-handler</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!--原来需要配置两个，现在只需要配置--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
+
+
+    <span class="hljs-comment">&lt;!--视图解析器--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;internalResourceViewResolver&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;prefix&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;/WEB-INF/jsp/&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;suffix&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;.jsp&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span></code></pre>
+
+<h2 id="最后编写Controller"><a href="#最后编写Controller" class="headerlink" title="最后编写Controller"></a>最后编写Controller</h2><pre><code class="hljs kotlin"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;
+<span class="hljs-keyword">import</span> org.springframework.ui.Model;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.<span class="hljs-keyword">annotation</span>.RequestMapping;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> HelloController</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/2 14:13</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-meta">@RequestMapping(<span class="hljs-meta-string">&quot;/hello&quot;</span>)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloController</span> </span>&#123;
+
+    <span class="hljs-comment">/*localhost:8080/hello/h1*/</span>
+    <span class="hljs-meta">@RequestMapping(<span class="hljs-meta-string">&quot;/h1&quot;</span>)</span>
+    <span class="hljs-keyword">public</span> String hello(Model model)&#123;
+        <span class="hljs-comment">// 封装数据</span>
+        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;hello,springmvc&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;hello&quot;</span>; <span class="hljs-comment">// 会被视图解析器处理</span>
+
+    &#125;
+&#125;
+</code></pre>
+
+<p>Controller注解，就是标记该类是个Controller，与extends一样，是继承类。<br>RequestMapping标记url，在类上是上级url，方法是下级url<br>需要在里面封装数据，使用Model封装，同样的增加属性<br>最后返回值return的字符串，就是根据web.xml配置的dispatcherServlet的地方的jsp</p>
+<h1 id="深入学习Controller"><a href="#深入学习Controller" class="headerlink" title="深入学习Controller"></a>深入学习Controller</h1><h2 id="第一种implement-Controller接口"><a href="#第一种implement-Controller接口" class="headerlink" title="第一种implement Controller接口"></a>第一种implement Controller接口</h2><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.ModelAndView;
+<span class="hljs-keyword">import</span> org.springframework.web.servlet.mvc.Controller;
+
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletRequest;
+<span class="hljs-keyword">import</span> javax.servlet.http.HttpServletResponse;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> ControllerTest1</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/2 15:09</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ControllerTest1</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Controller</span> </span>&#123;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ModelAndView <span class="hljs-title">handleRequest</span><span class="hljs-params">(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;
+        ModelAndView modelAndView = <span class="hljs-keyword">new</span> ModelAndView();
+        modelAndView.addObject(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;ControllerTest1&quot;</span>);
+        modelAndView.setViewName(<span class="hljs-string">&quot;test&quot;</span>);
+        <span class="hljs-keyword">return</span> modelAndView;
+    &#125;
+&#125;
+</code></pre>
+
+<p>然后在spring中配置bean</p>
+<pre><code class="hljs routeros">&lt;bean <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;/text1&quot;</span> <span class="hljs-attribute">class</span>=<span class="hljs-string">&quot;com.mmz.controller.ControllerTest1&quot;</span>&gt;&lt;/bean&gt;</code></pre>
+
+
+
+<p>这种方式，一个控制器中只有一种方法， 如果要多个方法使用，需要定义多个Controller，定义的方式比较麻烦。</p>
+<h2 id="使用注解"><a href="#使用注解" class="headerlink" title="使用注解"></a>使用注解</h2><pre><code class="hljs kotlin"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;
+<span class="hljs-keyword">import</span> org.springframework.ui.Model;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.<span class="hljs-keyword">annotation</span>.RequestMapping;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> ControllerTest2</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/2 15:17</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Controller</span> <span class="hljs-comment">// 代表被Spring托管</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ControllerTest2</span> </span>&#123;
+
+    <span class="hljs-meta">@RequestMapping(<span class="hljs-meta-string">&quot;/t2&quot;</span>)</span>
+    <span class="hljs-keyword">public</span> String test(Model model)&#123;
+        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;ControllerTest2&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;test&quot;</span>;
+    &#125;
+&#125;
+</code></pre>
+
+<h1 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="RequestMapping"></a>RequestMapping</h1><p>注解应用于映射url到控制器或一个特定的处理程序方法。可用于类或者方法上，用于类上表示类中的所有响应请求的方法都是以该地址为父路径。</p>
+<h1 id="RestFul风格"><a href="#RestFul风格" class="headerlink" title="RestFul风格"></a>RestFul风格</h1><p>Restful就是一个资源定位及资源操作的风格，不是标准也不是协议，只是一种风格，基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存等机制。</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;
+<span class="hljs-keyword">import</span> org.springframework.ui.Model;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> RestController</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/2 19:58</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RestController</span> </span>&#123;
+    <span class="hljs-meta">@RequestMapping(&quot;/add&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b, Model model)</span></span>&#123;
+        <span class="hljs-keyword">int</span> result = a+b;
+        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;结果为&quot;</span>+result);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;test&quot;</span>;
+    &#125;
+&#125;
+</code></pre>
+<p>我们输入url<code>http://localhost:8080/springmvc_04_controller_war_exploded/add/?a=1&amp;b=2</code> 才能得到结果</p>
+<h2 id="路径变量"><a href="#路径变量" class="headerlink" title="路径变量"></a>路径变量</h2><p>因为如果这样，还需要在url写？后面加上在变量，但是这样不是纯真的restful风格。</p>
+<p>可以使用<code>@PathVariable</code>注解，让方法参数的值对应绑定到一个URL模板变量上。</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;
+<span class="hljs-keyword">import</span> org.springframework.ui.Model;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.PathVariable;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> RestController</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/2 19:58</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RestController</span> </span>&#123;
+    <span class="hljs-meta">@RequestMapping(&quot;/add/&#123;a&#125;/&#123;b&#125;&quot;)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> <span class="hljs-keyword">int</span> a,<span class="hljs-meta">@PathVariable</span> <span class="hljs-keyword">int</span> b, Model model)</span></span>&#123;
+        <span class="hljs-keyword">int</span> result = a+b;
+        model.addAttribute(<span class="hljs-string">&quot;msg&quot;</span>,<span class="hljs-string">&quot;结果为&quot;</span>+result);
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;test&quot;</span>;
+    &#125;
+&#125;
+</code></pre>
+
+<p>url输入为</p>
+<pre><code class="hljs awk">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/springmvc_04_controller_war_exploded/</span>add<span class="hljs-regexp">/1/</span><span class="hljs-number">12</span></code></pre>
+
+<p>结果为<br><img src="https://img-blog.csdnimg.cn/20210303005939426.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="可以控制传递方法"><a href="#可以控制传递方法" class="headerlink" title="可以控制传递方法"></a>可以控制传递方法</h2><p>在requestMapping下面的RequestMethod[] method()</p>
+<pre><code class="hljs crystal">
+public <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">RequestMethod</span> &#123;</span>
+    GET,
+    HEAD,
+    POST,
+    PUT,
+    PATCH,
+    DELETE,
+    OPTIONS,
+    TRACE;
+
+    <span class="hljs-keyword">private</span> RequestMethod() &#123;
+    &#125;
+&#125;
+</code></pre>
+<p>可以控制几种方法</p>
+<pre><code class="hljs pgsql">@RequestMapping(<span class="hljs-keyword">value</span> = &quot;/add/&#123;a&#125;/&#123;b&#125;&quot;,<span class="hljs-keyword">method</span> = RequestMethod.<span class="hljs-keyword">DELETE</span>)</code></pre>
+<p>就是用delete方式的请求</p>
+<p>也可以直接用<code>/*@GetMapping*/</code>这种注解来直接标记为get方法</p>
+<h1 id="提交的域名名称和处理方法的参数不一样"><a href="#提交的域名名称和处理方法的参数不一样" class="headerlink" title="提交的域名名称和处理方法的参数不一样"></a>提交的域名名称和处理方法的参数不一样</h1><p>就比如在url传递的参数 ?username=mmz<br>但是我用String name接受这个参数，需要用这个注解@RequestParam来实现</p>
+<pre><code class="hljs autoit"><span class="hljs-symbol">@RequestParam</span>（“username”） <span class="hljs-built_in">String</span> name<span class="hljs-comment">;</span></code></pre>
+
+<p> 接受前端用户传递的参数，判断参数的名字，假设名字直接在方法上，可以直接使用<br> 假设传递的是一个对象User，匹配User对象中的字段名。如果名字一致直接匹配，如果不是匹配不到</p>
+<h1 id="前端返回类型"><a href="#前端返回类型" class="headerlink" title="前端返回类型"></a>前端返回类型</h1><p>返回类型其实有三个，model， modelmap , modelandview</p>
+<p>model：只有寥寥几个方法只适用于储存数据，简化了新手对Model对象的操作和理解。<br>modelmap: 继承了LinkedMap，除了实现了资深的一些方法，同样继承了LinkedMap的方法和特性<br>modelandview：可以在存储数据的同时，可以进行设置返回的逻辑视图，进行控制展示层的跳转。</p>
+<h1 id="配置SpringMVC的乱码过滤器"><a href="#配置SpringMVC的乱码过滤器" class="headerlink" title="配置SpringMVC的乱码过滤器"></a>配置SpringMVC的乱码过滤器</h1><p>使用过滤器</p>
+<pre><code class="hljs pgsql">&lt;<span class="hljs-keyword">filter</span>&gt;
+        &lt;<span class="hljs-keyword">filter</span>-<span class="hljs-type">name</span>&gt;<span class="hljs-keyword">encoding</span>&lt;/<span class="hljs-keyword">filter</span>-<span class="hljs-type">name</span>&gt;
+        &lt;<span class="hljs-keyword">filter</span>-<span class="hljs-keyword">class</span>&gt;org.springframework.web.<span class="hljs-keyword">filter</span>.CharacterEncodingFilter&lt;/<span class="hljs-keyword">filter</span>-<span class="hljs-keyword">class</span>&gt;
+        &lt;init-param&gt;
+            &lt;param-<span class="hljs-type">name</span>&gt;<span class="hljs-keyword">encoding</span>&lt;/param-<span class="hljs-type">name</span>&gt;
+            &lt;param-<span class="hljs-keyword">value</span>&gt;utf<span class="hljs-number">-8</span>&lt;/param-<span class="hljs-keyword">value</span>&gt;
+        &lt;/init-param&gt;
+    &lt;/<span class="hljs-keyword">filter</span>&gt;
+    &lt;<span class="hljs-keyword">filter</span>-<span class="hljs-keyword">mapping</span>&gt;
+        &lt;<span class="hljs-keyword">filter</span>-<span class="hljs-type">name</span>&gt;<span class="hljs-keyword">encoding</span>&lt;/<span class="hljs-keyword">filter</span>-<span class="hljs-type">name</span>&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/<span class="hljs-keyword">filter</span>-<span class="hljs-keyword">mapping</span>&gt;</code></pre>
+
+
+
+<h1 id="Controller返回json数据"><a href="#Controller返回json数据" class="headerlink" title="Controller返回json数据"></a>Controller返回json数据</h1><pre><code class="hljs kotlin"><span class="hljs-keyword">package</span> com.mmz.controller;
+
+<span class="hljs-keyword">import</span> com.fasterxml.jackson.core.JsonProcessingException;
+<span class="hljs-keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;
+<span class="hljs-keyword">import</span> com.mmz.pojo.User;
+<span class="hljs-keyword">import</span> org.springframework.stereotype.Controller;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.<span class="hljs-keyword">annotation</span>.RequestMapping;
+<span class="hljs-keyword">import</span> org.springframework.web.bind.<span class="hljs-keyword">annotation</span>.ResponseBody;
+
+<span class="hljs-comment">/**</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Classname</span> UserController</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Description</span> TODO</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Date</span> 2021/3/3 20:46</span>
+<span class="hljs-comment"> * <span class="hljs-doctag">@Created</span> by mmz</span>
+<span class="hljs-comment"> */</span>
+<span class="hljs-meta">@Controller</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span> </span>&#123;
+
+    <span class="hljs-comment">// 不会走视图解析器，会直接返回一个字符串</span>
+    <span class="hljs-meta">@RequestMapping(value = <span class="hljs-meta-string">&quot;/j1&quot;</span>,produces = <span class="hljs-meta-string">&quot;application/json;charset=utf-8&quot;</span>)</span>
+    <span class="hljs-meta">@ResponseBody</span>
+    <span class="hljs-keyword">public</span> String json1() throws JsonProcessingException &#123;
+        <span class="hljs-comment">// jackson , objectMapper</span>
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        <span class="hljs-comment">// 创建一个对象</span>
+        User user = new User(<span class="hljs-string">&quot;mmz&quot;</span>,<span class="hljs-number">18</span>,<span class="hljs-string">&quot;男&quot;</span>);
+
+        String string =  objectMapper.writeValueAsString(user);
+
+        <span class="hljs-keyword">return</span> string;
+    &#125;
+&#125;
+</code></pre>
+
+
+<h2 id="解决json乱码问题"><a href="#解决json乱码问题" class="headerlink" title="解决json乱码问题"></a>解决json乱码问题</h2><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">mvc:message-converters</span> <span class="hljs-attr">register-defaults</span>=<span class="hljs-string">&quot;true&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.http.converter.StringHttpMessageConverter&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;objectMapper&quot;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean&quot;</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;failOnEmptyBeans&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;false&quot;</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:message-converters</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:annotation-driven</span>&gt;</span></code></pre>
+
+<h2 id="RestController"><a href="#RestController" class="headerlink" title="RestController"></a>RestController</h2><p>这个注解在类上注解，表示返回的都是json格式的字符串，不用在每个方法上面都注解@ResponseBody</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/SpringMVC/">SpringMVC</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/java/">java</a>
+                    
+                      <a class="hover-with-bg" href="/tags/SpringMVC/">SpringMVC</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/02/pom-xml%E4%B8%AD%E7%9A%84%E8%B5%84%E6%BA%90%E8%BF%87%E6%BB%A4/">
+                        <span class="hidden-mobile">pom.xml中的资源过滤</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SpringMVC&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

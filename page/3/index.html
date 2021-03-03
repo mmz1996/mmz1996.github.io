@@ -188,6 +188,121 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/12/01/%E5%BC%82%E5%B8%B8/">Java中的异常</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/01/%E5%BC%82%E5%B8%B8/">
+          
+          
+            
+          
+          什么是异常在软件运行的过程中，非常可能遇到异常的情况，英文为exception
+比如：文件找不到，网络连接失败，非法参数
+当然与之对应的成为error，是一种错误，要与异常区分开来，一般不是程序员造成的。
+异常的体系结构java把异常作为一个对象来处理，并定义了一个基类java.lang.Throwable作为所有异常的超类。
+在java中的api已经定义了许多异常类，这些异常分为两大类，就是上面
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-01 20:49" pubdate>
+              2020-12-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/java/">java</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/%E5%BC%82%E5%B8%B8/">异常</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/11/23/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%8D%95%E7%8B%AC%E5%9B%BE%E6%A0%87%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/">数据可视化ECharts-单独图标组件开发</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/23/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%8D%95%E7%8B%AC%E5%9B%BE%E6%A0%87%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91/">
+          
+          
+            
+          
+          停车场商家销售统计（横向柱状图）组件结构seller.vue
+&lt;template&gt;
+  &lt;div&gt;
+    seller组件
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &#x27;Seller&#x27;
+&#125;
+&lt;/script&gt;
+
+&lt
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-23 14:23" pubdate>
+              2020-11-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+            
+              <a href="/tags/ECharts/">ECharts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/11/23/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA%E5%87%86%E5%A4%87/">数据可视化ECharts-前端项目创建准备</a>
       </h1>
 
@@ -612,117 +727,6 @@ grid: &#123; // 坐标轴容器
           </div>
         
         
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%95%A3%E7%82%B9%E5%9B%BE/">数据可视化ECharts-散点图</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%95%A3%E7%82%B9%E5%9B%BE/">
-          
-          
-            
-          
-          散点图散点图可以帮助我们推断出变量之间的相关性
-比如身高和体重的关系
-实现步骤ECharts最基本的代码结构：引入js，dom容器，初始化echarts对象，设置option
-x轴和y轴的二维数组：数组:[{身高，体重}]
-图标类型：scatter
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-18 10:28" pubdate>
-              2020-11-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-              <a href="/tags/ECharts/">ECharts</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%8A%98%E7%BA%BF%E5%9B%BE/">数据可视化ECharts-折线图</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%8A%98%E7%BA%BF%E5%9B%BE/">
-          
-          
-            
-          
-          折线图&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Title&lt;/title&gt;
-    &lt;script src=&quot;lib/echarts.min.js&quot;
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-11-18 10:27" pubdate>
-              2020-11-18
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
-            
-              <a href="/tags/ECharts/">ECharts</a>
-            
-          </div>
         
       </div>
     </article>
