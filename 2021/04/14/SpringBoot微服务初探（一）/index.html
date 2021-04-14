@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/touxiang.png">
+  <link rel="icon" type="image/png" href="/img/touxiang.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Hello,here is mmz&#39;s blog">
+  <meta name="author" content="马铭泽">
+  <meta name="keywords" content="">
+  <title>SpringBoot微服务初探（一） - 马铭泽的个人博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+    
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_pf9vaxs7x7b.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>mmz</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/bg/8.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      马铭泽
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-14 22:49" pubdate>
+        2021年4月14日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      14
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">SpringBoot微服务初探（一）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2 分钟前
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="微服务阶段"><a href="#微服务阶段" class="headerlink" title="微服务阶段"></a>微服务阶段</h1><p>javaee：oop<br>mysql：持久化<br>前端：视图<br>javaweb：独立开发三层网站<br>smm：框架简化了我们的开发流程，配置较为复杂<br>之前都是打war包，在tomcat中运行</p>
+<p>spring简化：springboot，微服务架构 可以打jar包，内嵌tomcat<br>服务越来越多，springcloud</p>
+<h1 id="微服务简介"><a href="#微服务简介" class="headerlink" title="微服务简介"></a>微服务简介</h1><p><img src="https://img-blog.csdnimg.cn/20210414121051631.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="什么是微服务"><a href="#什么是微服务" class="headerlink" title="什么是微服务"></a>什么是微服务</h2><p>就是一种架构风格，开发一个应用的过程中，这个应用必须构建一系列小服务的组合，可以通过http方式进行交互，要说微服务框架，先得说说之前的单应用框架</p>
+<h2 id="单应用框架"><a href="#单应用框架" class="headerlink" title="单应用框架"></a>单应用框架</h2><p>所谓单应用框架，我们将一个应用中的所有应用服务都封装在一个应用里面</p>
+<h1 id="第一个微服务应用"><a href="#第一个微服务应用" class="headerlink" title="第一个微服务应用"></a>第一个微服务应用</h1><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><p><img src="https://img-blog.csdnimg.cn/20210414122218434.png" srcset="/img/loading.gif" alt="new project -&gt; spring init"></p>
+<h2 id="建立项目结构"><a href="#建立项目结构" class="headerlink" title="建立项目结构"></a>建立项目结构</h2><p><img src="https://img-blog.csdnimg.cn/20210414123230132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p><img src="https://img-blog.csdnimg.cn/20210414123239438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>发现第一个我们的mmzapplication是启动类，但是点到最后发现他是一个@component修饰的。<br>说明这个启动类是一个Spring的组件</p>
+<p>pom.xml里面，该项目有一个父项目，就是</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span> <span class="hljs-comment">&lt;!-- lookup parent from repository --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span></code></pre>
+
+
+<p>而且下面的依赖当中，每个依赖都是</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+
+<p>starter+xxx这种模式</p>
+<h1 id="原理初探"><a href="#原理初探" class="headerlink" title="原理初探"></a>原理初探</h1><h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.4<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span> <span class="hljs-comment">&lt;!-- lookup parent from repository --&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span></code></pre>
+<p>这个starter-parent点进去，里面还有一个parent<br><img src="https://img-blog.csdnimg.cn/20210414214916623.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>这个里面包含了很多的jar包</p>
+<p><img src="https://img-blog.csdnimg.cn/20210414214936859.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>pom.xml存放了核心依赖，在父工程中</p>
+<p>我们在引入一些springboot依赖的时候，不需要指定版本，就是因为有这些版本仓库</p>
+<h2 id="启动器-starter"><a href="#启动器-starter" class="headerlink" title="启动器 starter"></a>启动器 starter</h2><p>启动器：说白了就是SpringBoot的启动场景<br>比如：</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
+<p>自动导入了web的依赖<br>SpringBoot会将所有的场景，都变成一个个的启动器<br>如果我们要使用什么功能，只需要找到对应的启动器就可以了</p>
+<h2 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h2><pre><code class="hljs arduino">package com.mmz;
+
+<span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;
+<span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Springboot01HelloworldApplication</span> &#123;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">String</span>[] args)</span> </span>&#123;
+        SpringApplication.<span class="hljs-built_in">run</span>(Springboot01HelloworldApplication.class, args);
+    &#125;
+
+&#125;
+</code></pre>
+
+<p>注解标注了这个类是SpringBoot的应用<br>run方法，将SpringBoot应用启动</p>
+<h3 id="SpringBootApplication"><a href="#SpringBootApplication" class="headerlink" title="@SpringBootApplication"></a>@SpringBootApplication</h3><p><img src="https://img-blog.csdnimg.cn/20210414220253196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="SpringBootConfiguration"><a href="#SpringBootConfiguration" class="headerlink" title="@SpringBootConfiguration"></a>@SpringBootConfiguration</h3><p>springboot的配置<br><img src="https://img-blog.csdnimg.cn/20210414220345956.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>这是一个配置类，是一个组件</p>
+<h3 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h3><p>自动配置<br><img src="https://img-blog.csdnimg.cn/20210414220432286.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="AutoConfigurationPackage"><a href="#AutoConfigurationPackage" class="headerlink" title="@AutoConfigurationPackage"></a>@AutoConfigurationPackage</h3><p>自动配置包<br><img src="https://img-blog.csdnimg.cn/20210414220524838.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>@Import({Registrar.class})<br>导入了选择器</p>
+<h3 id="Register"><a href="#Register" class="headerlink" title="Register"></a>Register</h3><p><img src="https://img-blog.csdnimg.cn/20210414220719372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="AutoConfigurationImportSelector"><a href="#AutoConfigurationImportSelector" class="headerlink" title="AutoConfigurationImportSelector"></a>AutoConfigurationImportSelector</h3><p>自动导入选择</p>
+<pre><code class="hljs dart"><span class="hljs-built_in">List</span>&lt;<span class="hljs-built_in">String</span>&gt; configurations = <span class="hljs-keyword">this</span>.getCandidateConfigurations(annotationMetadata, attributes);</code></pre>
+<p>获取候选配置</p>
+<p>get方法</p>
+<pre><code class="hljs reasonml">protected List&lt;String&gt; get<span class="hljs-constructor">CandidateConfigurations(AnnotationMetadata <span class="hljs-params">metadata</span>, AnnotationAttributes <span class="hljs-params">attributes</span>)</span> &#123;
+        List&lt;String&gt; configurations = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SpringFactoriesLoader</span>.</span></span>load<span class="hljs-constructor">FactoryNames(<span class="hljs-params">this</span>.<span class="hljs-params">getSpringFactoriesLoaderFactoryClass</span>()</span>, this.get<span class="hljs-constructor">BeanClassLoader()</span>);
+        <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Assert</span>.</span></span>not<span class="hljs-constructor">Empty(<span class="hljs-params">configurations</span>, <span class="hljs-string">&quot;No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.&quot;</span>)</span>;
+        return configurations;
+    &#125;</code></pre>
+
+<pre><code class="hljs stata"><span class="hljs-keyword">META</span>-<span class="hljs-keyword">INF</span>/spring.factories.</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/20210414221313987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>其实核心就在springframework下面的spring-boot-autoconfiguer这个包下面的META-INF下面的这个spring-factories这个文件，然后里面有很多的配置。</p>
+<p>但是也不是所有在里面的配置就会生效，你需要导入相应的starter才会有作用</p>
+<p>自动配置类中有一个注解@ConditionOnClass<br><img src="https://img-blog.csdnimg.cn/20210414222317107.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>1)SpringBoot在启动的时候，从类路径下面的META-INF/spring.factories获取指定的值<br>2)将这些自动装配的类导入容器，自动配置就会生效，帮我们进行配置<br>3)以前我们需要自动配置的东西，现在SpringBoot就可以帮我们做了<br>4)整合JavaEE，解决方案和配置的东西都在spring-boot-autoconfigure 这个包下面<br>5)它会把所有需要导入的组件，以类名的方式返回，这些组件就会添加到容器中<br>6)容器中存在很多XXXAutoConfiguration的文件，就是这些给类容器导入了这个场景需要的所有组件，并且配置了@Configuration<br>7)有了自动配置类，免去了我们手动编写配置文件的工作</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jdfk423/article/details/82940924">关于Starter</a></p>
+<h2 id="SpringApplication"><a href="#SpringApplication" class="headerlink" title="SpringApplication"></a>SpringApplication</h2><p>1）推断当前的l类型是普通项目还是web项目<br>2）查找并且加载可用初始化器，设置到initializers属性中<br>3）找出所有的应用程序监听器，设置到listeners属性中<br>4）推断并且设置main方法的定义类，找到运行的主类</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/SpringBoot/">SpringBoot</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SpringBoot/">SpringBoot</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/13/SSM%E6%95%B4%E5%90%88/">
+                        <span class="hidden-mobile">SSM整合</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">京ICP证123456号</a>
+    
+      <a
+        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=12345678"
+        rel="nofollow noopener"
+        class="beian-police"
+        target="_blank"
+      >
+        <span class="beian-police-sep">&nbsp;|&nbsp;</span>
+        
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" alt="police-icon" />
+        
+        <span>京公网安备12345678号</span>
+      </a>
+     
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SpringBoot微服务初探（一）&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 50,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
