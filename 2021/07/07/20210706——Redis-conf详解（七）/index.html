@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>数据可视化ECharts-直角坐标轴配置 - 马铭泽的个人博客</title>
+  <title>20210706——Redis.conf详解（七） - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-18 10:45" pubdate>
-        2020年11月18日 上午
+      <time datetime="2021-07-07 01:45" pubdate>
+        2021年7月7日 凌晨
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      558 字
+      419 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      4
        分钟
     </span>
   
@@ -246,100 +246,55 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">数据可视化ECharts-直角坐标轴配置</h1>
+            <h1 style="display: none">20210706——Redis.conf详解（七）</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 个月前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="直角坐标轴的配置"><a href="#直角坐标轴的配置" class="headerlink" title="直角坐标轴的配置"></a>直角坐标轴的配置</h1><p>涉及到上面我们学习完的，柱状图，折线图，散点图</p>
-<p>配置1：gird 网格</p>
-<p>配置2：坐标轴axis</p>
-<p>配置3：缩放区域dataZoom</p>
-<h2 id="配置1-gird网格"><a href="#配置1-gird网格" class="headerlink" title="配置1 gird网格"></a>配置1 gird网格</h2><p>gird是用来控制直角坐标系的布局和大小</p>
-<p>x轴和y轴就是在gird的基础上绘制出来的</p>
-<pre><code class="hljs less"><span class="hljs-attribute">grid</span>: &#123; <span class="hljs-comment">// 坐标轴容器</span>
-    <span class="hljs-attribute">show</span>: true, <span class="hljs-comment">// 是否可见</span>
-    <span class="hljs-attribute">borderWidth</span>: <span class="hljs-number">10</span>, <span class="hljs-comment">// 边框的宽度</span>
-    <span class="hljs-attribute">borderColor</span>: <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-comment">// 边框的颜色</span>
-    <span class="hljs-attribute">left</span>: <span class="hljs-number">120</span>, <span class="hljs-comment">// 边框的位置</span>
-    <span class="hljs-attribute">top</span>: <span class="hljs-number">120</span>,
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">// 边框的大小</span>
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">150</span>
-&#125;,</code></pre>
-
-<p><img src="image-20201118103816738.png" srcset="/img/loading.gif" alt="image-20201118103816738"></p>
-<p>显示gird show</p>
-<p>gird的边框 borderWidth borderColor</p>
-<p>gird的位置和大小 left top</p>
-<h2 id="配置2-坐标轴axis"><a href="#配置2-坐标轴axis" class="headerlink" title="配置2 坐标轴axis"></a>配置2 坐标轴axis</h2><p>坐标轴分为x轴和y轴</p>
-<h3 id="坐标类型-type"><a href="#坐标类型-type" class="headerlink" title="坐标类型 type"></a>坐标类型 type</h3><p>value：数值轴，自动会从目标数据中读取数据</p>
-<p>category：类目轴，该类型必须通过data设置类目数据</p>
-<pre><code class="hljs less"><span class="hljs-attribute">xAxis</span>: &#123;
-    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;category&#x27;</span>,
-    <span class="hljs-attribute">data</span>: xDataArr,
-    <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;top&#x27;</span> <span class="hljs-comment">// 控制坐标轴的位置</span>
-&#125;,
-<span class="hljs-attribute">yAxis</span>: &#123;
-    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;value&#x27;</span>,
-    <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;right&#x27;</span> <span class="hljs-comment">// 控制坐标轴的位置</span>
-&#125;,
-<span class="hljs-attribute">series</span>: [
-    &#123;
-        <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;语文&#x27;</span>,
-        <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
-        <span class="hljs-attribute">markPoint</span>: &#123;
-            <span class="hljs-attribute">data</span>: [
-                &#123;
-                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;max&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;最大值&#x27;</span>
-                &#125;,&#123;
-                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;min&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;最小值&#x27;</span>
-                &#125;
-            ]
-        &#125;,
-        <span class="hljs-attribute">markLine</span>: &#123;
-            <span class="hljs-attribute">data</span>: [
-                &#123;
-                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;average&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;平均值&#x27;</span>
-                &#125;
-            ]
-        &#125;,
-        <span class="hljs-attribute">label</span>: &#123;
-            <span class="hljs-attribute">show</span>: true,
-            <span class="hljs-attribute">rotate</span>: <span class="hljs-number">60</span>,
-            <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;top&#x27;</span>
-        &#125;,
-        <span class="hljs-attribute">barWidth</span>: <span class="hljs-string">&#x27;30%&#x27;</span>,
-        <span class="hljs-attribute">data</span>: yDataArr
-    &#125;
-]</code></pre>
-
-<h3 id="显示位置-position"><a href="#显示位置-position" class="headerlink" title="显示位置 position"></a>显示位置 position</h3><p>xAxis：可取值为top或者bottom</p>
-<p>yAxis：可取值为left或者right</p>
-<p><img src="image-20201118105324128.png" srcset="/img/loading.gif" alt="image-20201118105324128"></p>
-<h2 id="配置3-区域缩放dataZoom"><a href="#配置3-区域缩放dataZoom" class="headerlink" title="配置3 区域缩放dataZoom"></a>配置3 区域缩放dataZoom</h2><p>dataZoom 用于区域缩放，对数据范围过滤，x轴和y轴都可以拥有</p>
-<p>dataZoom是一个数组，意味着可以配置多个区域缩放器</p>
-<h3 id="类型-type"><a href="#类型-type" class="headerlink" title="类型 type"></a>类型 type</h3><p>slider：滑块</p>
-<p>inside：内置，依靠鼠标滚轮或者双指缩放</p>
-<h3 id="指明产生作用的轴"><a href="#指明产生作用的轴" class="headerlink" title="指明产生作用的轴"></a>指明产生作用的轴</h3><p>xAxisIndex：设置缩放组件控制的是哪个x轴，一般写0即可。</p>
-<p>yAxisIndex：设置缩放组件控制的是哪个y轴，一般写0即可。</p>
-<h3 id="指明初始状态缩放的情况"><a href="#指明初始状态缩放的情况" class="headerlink" title="指明初始状态缩放的情况"></a>指明初始状态缩放的情况</h3><p>start：数据窗口范围的初始百分比</p>
-<p>end：数据窗口范围的结束百分比</p>
-<h1 id="小结-直角坐标系"><a href="#小结-直角坐标系" class="headerlink" title="小结 直角坐标系"></a>小结 直角坐标系</h1><h2 id="直角坐标系的图表"><a href="#直角坐标系的图表" class="headerlink" title="直角坐标系的图表"></a>直角坐标系的图表</h2><p>柱状图，散点图，折线图</p>
-<h3 id="网格grid"><a href="#网格grid" class="headerlink" title="网格grid"></a>网格grid</h3><p>x轴和y轴的依附</p>
-<h3 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h3><p>xAxis和yAxis</p>
-<p>取值类型 value 和 category</p>
-<h3 id="区域缩放-dataZoom"><a href="#区域缩放-dataZoom" class="headerlink" title="区域缩放 dataZoom"></a>区域缩放 dataZoom</h3><p>x轴和y轴都可以设置</p>
-<p>inside和slider</p>
+              <p>启动的时候，我们就是通过配置文件启动redis</p>
+<h1 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h1><p><img src="https://img-blog.csdnimg.cn/20210706184006760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>配置文件，unit单位对大小写不敏感</p>
+<h1 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h1><p><img src="https://img-blog.csdnimg.cn/20210706184037452.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>类似于Spring一样，可以导入其他的配置文件</p>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><p><img src="https://img-blog.csdnimg.cn/20210706184705403.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>常用的绑定ip<br><img src="https://img-blog.csdnimg.cn/20210706184716248.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>端口号<br><img src="https://img-blog.csdnimg.cn/20210706184749302.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>开启保护模式</p>
+<h1 id="通用"><a href="#通用" class="headerlink" title="通用"></a>通用</h1><p>默认是no，改成yest，改成了后台运行模式<br><img src="https://img-blog.csdnimg.cn/20210706185407722.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>如果以后台方式运行，我们就需要指定一个pid文件<br><img src="https://img-blog.csdnimg.cn/20210706192608650.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>日志 debug用于测试和开发<br>notice 通知，部分重要日志，生产环境<br>warning<br><img src="https://img-blog.csdnimg.cn/20210706192651407.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>日志的文件位置</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706192733245.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>默认数据库数量<br><img src="https://img-blog.csdnimg.cn/20210706192800546.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>是否显示logo<br><img src="https://img-blog.csdnimg.cn/20210706192819114.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="快照"><a href="#快照" class="headerlink" title="快照"></a>快照</h1><p>持久化，在规定的时间内执行了多少次会持久化到文件中 .rdb .aof<br>默认规则 redis是内存数据库，如果没有持久化，断电即失去<br><img src="https://img-blog.csdnimg.cn/20210706192906656.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>如果900s内，如果至少有一个key进行修改，就进行持久化操作<br>如果300s内，如果至少有10个key进行修改，就进行持久化操作<br>如果在60s内，如果有1W个key进行改变，就进行持久化操作</p>
+<p>持久化错误，是否继续进行工作</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706193050520.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>是否压缩rdb文件，消耗cpu资源</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706205026686.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>是否校验rdb文件</p>
+<p><img src="https://img-blog.csdnimg.cn/20210706205105856.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>持久化生成的目录，当前目录下面<br><img src="https://img-blog.csdnimg.cn/20210706235321448.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="复制，主从复制使用"><a href="#复制，主从复制使用" class="headerlink" title="复制，主从复制使用"></a>复制，主从复制使用</h1><h1 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h1><p>登录需要密码<br><img src="https://img-blog.csdnimg.cn/20210706235555179.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="客户端限制"><a href="#客户端限制" class="headerlink" title="客户端限制"></a>客户端限制</h1><p>默认1W最大客户端连接的数量<br><img src="https://img-blog.csdnimg.cn/20210707013001907.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>最大内存限制<br><img src="https://img-blog.csdnimg.cn/20210707013024189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>内存到达上限的具体策略：6种</p>
+<p><img src="https://img-blog.csdnimg.cn/20210707013104319.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210707013238881.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="AOF设置"><a href="#AOF设置" class="headerlink" title="AOF设置"></a>AOF设置</h1><p>默认不开启aof模式，持久化rdb方式，在大部分所有的情况下，rdb够用<br><img src="https://img-blog.csdnimg.cn/20210707013329899.png" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>持久化的名字<br><img src="https://img-blog.csdnimg.cn/20210707013947315.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>每秒执行一次，可能丢失1S的数据<br><img src="https://img-blog.csdnimg.cn/20210707014005302.png" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Redis/">Redis</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  </div>
                 
               </div>
               
@@ -350,18 +305,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E9%A5%BC%E5%9B%BE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据可视化ECharts-饼图</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%95%A3%E7%82%B9%E5%9B%BE/">
-                        <span class="hidden-mobile">数据可视化ECharts-散点图</span>
+                      <a href="/2021/07/07/20210705%E2%80%94%E2%80%94Redis%E4%B9%8BJedis%E4%B8%8ESpringBoot%E6%95%B4%E5%90%88%EF%BC%88%E5%85%AD%EF%BC%89/">
+                        <span class="hidden-mobile">20210705——Redis之Jedis与SpringBoot整合（六）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -550,7 +499,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "数据可视化ECharts-直角坐标轴配置&nbsp;",
+        "20210706——Redis.conf详解（七）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,

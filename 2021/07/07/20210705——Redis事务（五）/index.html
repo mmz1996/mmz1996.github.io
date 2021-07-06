@@ -17,7 +17,7 @@
   <meta name="description" content="Hello,here is mmz&#39;s blog">
   <meta name="author" content="马铭泽">
   <meta name="keywords" content="">
-  <title>数据可视化ECharts-直角坐标轴配置 - 马铭泽的个人博客</title>
+  <title>20210705——Redis事务（五） - 马铭泽的个人博客</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -182,8 +182,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-11-18 10:45" pubdate>
-        2020年11月18日 上午
+      <time datetime="2021-07-07 01:44" pubdate>
+        2021年7月7日 凌晨
       </time>
     </span>
   
@@ -194,7 +194,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      558 字
+      277 字
     </span>
   
 
@@ -204,7 +204,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      2
        分钟
     </span>
   
@@ -246,100 +246,46 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">数据可视化ECharts-直角坐标轴配置</h1>
+            <h1 style="display: none">20210705——Redis事务（五）</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 个月前
+                  本文最后更新于：2 分钟前
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="直角坐标轴的配置"><a href="#直角坐标轴的配置" class="headerlink" title="直角坐标轴的配置"></a>直角坐标轴的配置</h1><p>涉及到上面我们学习完的，柱状图，折线图，散点图</p>
-<p>配置1：gird 网格</p>
-<p>配置2：坐标轴axis</p>
-<p>配置3：缩放区域dataZoom</p>
-<h2 id="配置1-gird网格"><a href="#配置1-gird网格" class="headerlink" title="配置1 gird网格"></a>配置1 gird网格</h2><p>gird是用来控制直角坐标系的布局和大小</p>
-<p>x轴和y轴就是在gird的基础上绘制出来的</p>
-<pre><code class="hljs less"><span class="hljs-attribute">grid</span>: &#123; <span class="hljs-comment">// 坐标轴容器</span>
-    <span class="hljs-attribute">show</span>: true, <span class="hljs-comment">// 是否可见</span>
-    <span class="hljs-attribute">borderWidth</span>: <span class="hljs-number">10</span>, <span class="hljs-comment">// 边框的宽度</span>
-    <span class="hljs-attribute">borderColor</span>: <span class="hljs-string">&#x27;red&#x27;</span>, <span class="hljs-comment">// 边框的颜色</span>
-    <span class="hljs-attribute">left</span>: <span class="hljs-number">120</span>, <span class="hljs-comment">// 边框的位置</span>
-    <span class="hljs-attribute">top</span>: <span class="hljs-number">120</span>,
-    <span class="hljs-attribute">width</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">// 边框的大小</span>
-    <span class="hljs-attribute">height</span>: <span class="hljs-number">150</span>
-&#125;,</code></pre>
-
-<p><img src="image-20201118103816738.png" srcset="/img/loading.gif" alt="image-20201118103816738"></p>
-<p>显示gird show</p>
-<p>gird的边框 borderWidth borderColor</p>
-<p>gird的位置和大小 left top</p>
-<h2 id="配置2-坐标轴axis"><a href="#配置2-坐标轴axis" class="headerlink" title="配置2 坐标轴axis"></a>配置2 坐标轴axis</h2><p>坐标轴分为x轴和y轴</p>
-<h3 id="坐标类型-type"><a href="#坐标类型-type" class="headerlink" title="坐标类型 type"></a>坐标类型 type</h3><p>value：数值轴，自动会从目标数据中读取数据</p>
-<p>category：类目轴，该类型必须通过data设置类目数据</p>
-<pre><code class="hljs less"><span class="hljs-attribute">xAxis</span>: &#123;
-    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;category&#x27;</span>,
-    <span class="hljs-attribute">data</span>: xDataArr,
-    <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;top&#x27;</span> <span class="hljs-comment">// 控制坐标轴的位置</span>
-&#125;,
-<span class="hljs-attribute">yAxis</span>: &#123;
-    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;value&#x27;</span>,
-    <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;right&#x27;</span> <span class="hljs-comment">// 控制坐标轴的位置</span>
-&#125;,
-<span class="hljs-attribute">series</span>: [
-    &#123;
-        <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;语文&#x27;</span>,
-        <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;bar&#x27;</span>,
-        <span class="hljs-attribute">markPoint</span>: &#123;
-            <span class="hljs-attribute">data</span>: [
-                &#123;
-                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;max&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;最大值&#x27;</span>
-                &#125;,&#123;
-                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;min&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;最小值&#x27;</span>
-                &#125;
-            ]
-        &#125;,
-        <span class="hljs-attribute">markLine</span>: &#123;
-            <span class="hljs-attribute">data</span>: [
-                &#123;
-                    <span class="hljs-attribute">type</span>: <span class="hljs-string">&#x27;average&#x27;</span>, <span class="hljs-attribute">name</span>: <span class="hljs-string">&#x27;平均值&#x27;</span>
-                &#125;
-            ]
-        &#125;,
-        <span class="hljs-attribute">label</span>: &#123;
-            <span class="hljs-attribute">show</span>: true,
-            <span class="hljs-attribute">rotate</span>: <span class="hljs-number">60</span>,
-            <span class="hljs-attribute">position</span>: <span class="hljs-string">&#x27;top&#x27;</span>
-        &#125;,
-        <span class="hljs-attribute">barWidth</span>: <span class="hljs-string">&#x27;30%&#x27;</span>,
-        <span class="hljs-attribute">data</span>: yDataArr
-    &#125;
-]</code></pre>
-
-<h3 id="显示位置-position"><a href="#显示位置-position" class="headerlink" title="显示位置 position"></a>显示位置 position</h3><p>xAxis：可取值为top或者bottom</p>
-<p>yAxis：可取值为left或者right</p>
-<p><img src="image-20201118105324128.png" srcset="/img/loading.gif" alt="image-20201118105324128"></p>
-<h2 id="配置3-区域缩放dataZoom"><a href="#配置3-区域缩放dataZoom" class="headerlink" title="配置3 区域缩放dataZoom"></a>配置3 区域缩放dataZoom</h2><p>dataZoom 用于区域缩放，对数据范围过滤，x轴和y轴都可以拥有</p>
-<p>dataZoom是一个数组，意味着可以配置多个区域缩放器</p>
-<h3 id="类型-type"><a href="#类型-type" class="headerlink" title="类型 type"></a>类型 type</h3><p>slider：滑块</p>
-<p>inside：内置，依靠鼠标滚轮或者双指缩放</p>
-<h3 id="指明产生作用的轴"><a href="#指明产生作用的轴" class="headerlink" title="指明产生作用的轴"></a>指明产生作用的轴</h3><p>xAxisIndex：设置缩放组件控制的是哪个x轴，一般写0即可。</p>
-<p>yAxisIndex：设置缩放组件控制的是哪个y轴，一般写0即可。</p>
-<h3 id="指明初始状态缩放的情况"><a href="#指明初始状态缩放的情况" class="headerlink" title="指明初始状态缩放的情况"></a>指明初始状态缩放的情况</h3><p>start：数据窗口范围的初始百分比</p>
-<p>end：数据窗口范围的结束百分比</p>
-<h1 id="小结-直角坐标系"><a href="#小结-直角坐标系" class="headerlink" title="小结 直角坐标系"></a>小结 直角坐标系</h1><h2 id="直角坐标系的图表"><a href="#直角坐标系的图表" class="headerlink" title="直角坐标系的图表"></a>直角坐标系的图表</h2><p>柱状图，散点图，折线图</p>
-<h3 id="网格grid"><a href="#网格grid" class="headerlink" title="网格grid"></a>网格grid</h3><p>x轴和y轴的依附</p>
-<h3 id="坐标轴"><a href="#坐标轴" class="headerlink" title="坐标轴"></a>坐标轴</h3><p>xAxis和yAxis</p>
-<p>取值类型 value 和 category</p>
-<h3 id="区域缩放-dataZoom"><a href="#区域缩放-dataZoom" class="headerlink" title="区域缩放 dataZoom"></a>区域缩放 dataZoom</h3><p>x轴和y轴都可以设置</p>
-<p>inside和slider</p>
+              <p>redis单条命令不保证原子性<br>redis的事务本事：一组命令的集合<br>redis的事务没有隔离级别的概念，所有的命令在事务中，并没有直接执行，只有发起执行命令的时候才会执行</p>
+<h1 id="事务的执行"><a href="#事务的执行" class="headerlink" title="事务的执行"></a>事务的执行</h1><p>redis的事务：开启事务（multi），事务入队，执行事务（exec）</p>
+<p>锁：redis还可以实现乐观锁</p>
+<p><img src="https://img-blog.csdnimg.cn/20210705161656711.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="放弃事务"><a href="#放弃事务" class="headerlink" title="放弃事务"></a>放弃事务</h1><p><img src="https://img-blog.csdnimg.cn/20210705164036942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="编译异常，事务所有的命令都不会执行"><a href="#编译异常，事务所有的命令都不会执行" class="headerlink" title="编译异常，事务所有的命令都不会执行"></a>编译异常，事务所有的命令都不会执行</h1><p><img src="https://img-blog.csdnimg.cn/20210705164258662.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="运行时异常，如果事务队列出现语法错误，那么执行命令，其他命令可以执行"><a href="#运行时异常，如果事务队列出现语法错误，那么执行命令，其他命令可以执行" class="headerlink" title="运行时异常，如果事务队列出现语法错误，那么执行命令，其他命令可以执行"></a>运行时异常，如果事务队列出现语法错误，那么执行命令，其他命令可以执行</h1><p><img src="https://img-blog.csdnimg.cn/20210705164325989.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<h1 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h1><h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>不管做什么都会加锁，影响性能</p>
+<h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>很乐观，认为什么时候都不会出现问题，所以不会上说，更新数据的时候可以去判断一下，在此期间是否有人修改这个数据</p>
+<h2 id="监管程序"><a href="#监管程序" class="headerlink" title="监管程序"></a>监管程序</h2><p>正常执行成功<br><img src="https://img-blog.csdnimg.cn/2021070516471382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
+<p>修改失败，测试多线程修改值，使用watch可以当做redis的乐观锁<br><img src="https://img-blog.csdnimg.cn/20210705164823243.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"><br>如果事务执行失败，我们就需要解锁，然后再次获取锁<br><img src="https://img-blog.csdnimg.cn/20210705164956847.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" srcset="/img/loading.gif" alt="在这里插入图片描述"></p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Redis/">Redis</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  </div>
                 
               </div>
               
@@ -350,9 +296,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E9%A5%BC%E5%9B%BE/">
+                      <a href="/2021/07/07/20210705%E2%80%94%E2%80%94Redis%E4%B9%8BJedis%E4%B8%8ESpringBoot%E6%95%B4%E5%90%88%EF%BC%88%E5%85%AD%EF%BC%89/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据可视化ECharts-饼图</span>
+                        <span class="hidden-mobile">20210705——Redis之Jedis与SpringBoot整合（六）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -360,8 +306,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/11/18/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96ECharts-%E6%95%A3%E7%82%B9%E5%9B%BE/">
-                        <span class="hidden-mobile">数据可视化ECharts-散点图</span>
+                      <a href="/2021/07/07/20210703%E2%80%94%E2%80%94Redis%E4%B8%89%E7%A7%8D%E7%89%B9%E6%AE%8A%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%9B%9B%EF%BC%89/">
+                        <span class="hidden-mobile">20210703——Redis三种特殊数据类型（四）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -550,7 +496,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "数据可视化ECharts-直角坐标轴配置&nbsp;",
+        "20210705——Redis事务（五）&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 50,
