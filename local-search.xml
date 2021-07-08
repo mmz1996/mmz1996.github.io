@@ -4,6 +4,106 @@
   
   
   <entry>
+    <title>20210708——Redis缓存穿透和雪崩（十一）</title>
+    <link href="/2021/07/08/20210708%E2%80%94%E2%80%94Redis%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E5%92%8C%E9%9B%AA%E5%B4%A9%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/"/>
+    <url>/2021/07/08/20210708%E2%80%94%E2%80%94Redis%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E5%92%8C%E9%9B%AA%E5%B4%A9%EF%BC%88%E5%8D%81%E4%B8%80%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>用户查询一个数据，redis没有，就是缓存无命中，于是向持久层数据库请求查询，发现也没有，查询失败。当很多用户一起查询的时候，持久层数据库压力很大，可能导致崩溃，就是缓存穿透。</p><h2 id="解决方案：布隆过滤器"><a href="#解决方案：布隆过滤器" class="headerlink" title="解决方案：布隆过滤器"></a>解决方案：布隆过滤器</h2><p>对所有可能查询的数据以hash形式存储，先进行校验，不符合直接丢弃。</p><h2 id="解决方案：缓存空对象"><a href="#解决方案：缓存空对象" class="headerlink" title="解决方案：缓存空对象"></a>解决方案：缓存空对象</h2><p>当存储层不命中之后，缓存一个空对象，设置一个过期时间，之后在访问这个数据从缓存中获取，保护了后端数据源</p><p>但是空对象缓存，占用了资源<br>对于保持一致性的业务可能会有影响</p><h1 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h1><p>击穿是指一个key非常热点，高并发集中对一个点进行访问，在某个瞬间可能key失效了，导致高并发访问数据库。</p><h2 id="解决方案：设置热点数据不过期"><a href="#解决方案：设置热点数据不过期" class="headerlink" title="解决方案：设置热点数据不过期"></a>解决方案：设置热点数据不过期</h2><h2 id="解决方案：加互斥锁"><a href="#解决方案：加互斥锁" class="headerlink" title="解决方案：加互斥锁"></a>解决方案：加互斥锁</h2><p>使用分布式锁，使每一个key同时只有一个线程可以访问后端服务，其他线程没有获取分布式锁的权限，因此只需要等待即可，这种方式将高并发的压力转移到了分布式锁。</p><h1 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h1><p>某一个时间段，缓存集中过期，或者服务器宕机/断网</p><p>比如双十二，618把数据放入缓存，那么到了半夜1点，商品的缓存很可能都过期了。那么查询就回到了数据库中，导致崩溃。</p><h2 id="解决方案：redis集群高可用"><a href="#解决方案：redis集群高可用" class="headerlink" title="解决方案：redis集群高可用"></a>解决方案：redis集群高可用</h2><h2 id="解决方案：限流降级"><a href="#解决方案：限流降级" class="headerlink" title="解决方案：限流降级"></a>解决方案：限流降级</h2><p>缓存失效后，还是加锁和队列来控制数据库写缓存的线程数量</p><h2 id="解决方案：数据预热"><a href="#解决方案：数据预热" class="headerlink" title="解决方案：数据预热"></a>解决方案：数据预热</h2><p>在正式部署之前，把可能出现的数据先预先访问一遍，这样部分大量访问的商品数据就会加载到缓存中，在将发生大并发前手动触发加载缓存不同的key,设置不同的过期时间，让缓存失效的时间点尽量均匀。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Redis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>20210707——Redis发布与订阅（九）</title>
+    <link href="/2021/07/08/20210707%E2%80%94%E2%80%94Redis%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85%EF%BC%88%E4%B9%9D%EF%BC%89/"/>
+    <url>/2021/07/08/20210707%E2%80%94%E2%80%94Redis%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85%EF%BC%88%E4%B9%9D%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p>Redis发布订阅是一种消息通信模式 发送者发送消息，订阅者接受消息<br>Redis客户端可以订阅任意数量的频道。</p><p><img src="https://img-blog.csdnimg.cn/20210707235920836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210707235951284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h1 id="订阅命令"><a href="#订阅命令" class="headerlink" title="订阅命令"></a>订阅命令</h1><p><img src="https://img-blog.csdnimg.cn/20210708000003471.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h1 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h1><h2 id="发布者"><a href="#发布者" class="headerlink" title="发布者"></a>发布者</h2><p><img src="https://img-blog.csdnimg.cn/20210708000609639.png" alt="在这里插入图片描述"></p><h2 id="接受者"><a href="#接受者" class="headerlink" title="接受者"></a>接受者</h2><p><img src="https://img-blog.csdnimg.cn/20210708000551835.png" alt="在这里插入图片描述"></p><h1 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h1><p>Redis是通过C语言实现的，通过分析Redis的源码里的pubsub.c文件，了解发布和订阅机制的底层实现，加深对redis的理解。</p><p>Redis是通过publish，subsribe, psubsribe等命令实现发布和订阅功能<br>通过Subscribe命令订阅某个频道之后，redis-server里面维护了一个字典，字典的键就是一个个channel频道，而字典的值则是一个链表，链表中保存了所有订阅这个channel的客户端。subscribe命令的关键，就是将客户端添加到指定channel的订阅链中。<br>通过Publish命令向订阅者发送消息，redis-server会使用频道作为键，在它所维护的channel字典中查找记录了订阅这个频道的所有客户端的链表，遍历这个链表，将消息发布给所有订阅者。</p><h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>实时消息系统<br>实时聊天（频道作为聊天室）<br>订阅，关注系统</p><h1 id="稍微复杂场景"><a href="#稍微复杂场景" class="headerlink" title="稍微复杂场景"></a>稍微复杂场景</h1><p>我们会使用消息队列来做</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Redis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>20210707——Redis持久化（八）</title>
+    <link href="/2021/07/08/20210707%E2%80%94%E2%80%94Redis%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%88%E5%85%AB%EF%BC%89/"/>
+    <url>/2021/07/08/20210707%E2%80%94%E2%80%94Redis%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%88%E5%85%AB%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<p>Redis 是内存数据库，如果不将内存中的数据落入磁盘，那么服务器一旦异常崩溃，数据库中的状态也会消失。</p><h1 id="RDB-redis-database"><a href="#RDB-redis-database" class="headerlink" title="RDB redis database"></a>RDB redis database</h1><p><img src="https://img-blog.csdnimg.cn/20210707140944561.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在指定的时间间隔内将内存中的数据集快照写入磁盘，也就是Snapshot快照，他恢复时将快照文件直接读到内存中。</p><p>Redis会创建（fork）一个子进程来进行持久化，会将数据临时写入一个文件，待持久化过程结束了，在用这个临时文件替换上次持久好的文件，整个过程中，主进程是不进行任何IO操作的，这就确保了极高的性能，如果需要大规模的数据恢复，且对于数据恢复的完整性不是非常敏感，rdb方式比aof方式更加高效，rdb的缺点是持久化最后一次的数据可能丢失。默认是rdb，一般情况下不需要修改配置。</p><p>rdb保存的文件，dump.rdb</p><h2 id="触发机制"><a href="#触发机制" class="headerlink" title="触发机制"></a>触发机制</h2><p>save规则满足的情况下，会自动触发规则<br>执行flushall命令，也会触发我们的rdb的规则<br>退出redis，也会产生rdb文件</p><p>备份会生成一个rdb文件</p><h2 id="恢复rdb文件"><a href="#恢复rdb文件" class="headerlink" title="恢复rdb文件"></a>恢复rdb文件</h2><p>只需要rdb文件，放在redis的启动目录下，<br>redis启动的时候会自动检查文件，恢复数据</p><p>优点：适合大规模的数据，如果对数据完整性要求不高<br>缺点：需要设置一定的时间间隔进行修改，如果redis意外宕机，那么最后一次修改的数据就没了。fork进程的时候会占据一些内存空间。</p><h1 id="AOF-append-only-file"><a href="#AOF-append-only-file" class="headerlink" title="AOF  append only file"></a>AOF  append only file</h1><p>将我们的所有命令都记录下来，如果恢复的时候，就按照这个文件在恢复一遍</p><p><img src="https://img-blog.csdnimg.cn/20210707184313257.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>以日志的形式来记录每个操作，将Redis执行过的所有指令都记录下来（读操作不记录），只许追加文件但不可以改写文件，redis启动之初会读取文件重新构建数据，换言之，redis重启的话就根据日志文件的内容将指令从前到后执行一次，以完成数据的恢复工作</p><p>默认不开启，手动配置，开启yes<br><img src="https://img-blog.csdnimg.cn/20210707184952354.png" alt="在这里插入图片描述"></p><p>超过64mb，太大了，fork一个子进程对文件进行重写<br><img src="https://img-blog.csdnimg.cn/20210707185033993.png" alt="在这里插入图片描述"></p><p>如果aof文件有错位，这时候redis是启动不起来的，我们需要修复配置文件aof<br>redis给我提供了工具，redis-check-aof –fix</p><p>优点：每一次修改都同步，文件的完整会更好，每秒同步一次，可能会丢失一秒的数据，从不同步，效率最高</p><p>缺点：相对于数据文件来说，aof远远大于rdb，修复的速度也慢。aof运行效率比rdb慢，我们默认的配置就是rdb，而不是aof<br>‘’</p><p>aof默认就是文件无限的追加，文件会越来越大，</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Redis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>20210708——Redis主从复制（十）</title>
+    <link href="/2021/07/08/20210708%E2%80%94%E2%80%94Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%EF%BC%88%E5%8D%81%EF%BC%89/"/>
+    <url>/2021/07/08/20210708%E2%80%94%E2%80%94Redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%EF%BC%88%E5%8D%81%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>主从复制，是指一台Redis服务器的数据，复制到其他Redis的服务器，前者称为主服务器节点，后者称为从节点。数据的复制是单向的，只能从主节点到从节点，Master以写为主，Slave以读为主。</p><h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>1）数据冗余：主从复制实现了数据的热备份，是持久化之外的一种数据冗余方式<br>2）故障恢复：当主节点出现问题，可以由从节点提供服务，实现快速的故障恢复<br>3）负载均衡：实现读写分离，主节点负责写，从节点负责读，分担服务器负载<br>4）高可用：主从复制还是哨兵和集群能够实施的基础</p><h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p>只配置从库，不用配置主库<br>info replication 查看当前主库的信息<br><img src="https://img-blog.csdnimg.cn/20210708002741780.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>新建三个配置文件，修改其中的端口<br><img src="https://img-blog.csdnimg.cn/20210708003210555.png" alt="在这里插入图片描述"><br>1.端口 port<br>2.pid名字<br>3.log文件<br>4.备份文件dumprdb</p><p>开启了三个服务<br><img src="https://img-blog.csdnimg.cn/20210708004159650.png" alt="在这里插入图片描述"></p><h1 id="一主二从"><a href="#一主二从" class="headerlink" title="一主二从"></a>一主二从</h1><p>只需要配置从机<br>79主 8081从</p><p><img src="https://img-blog.csdnimg.cn/20210708004711370.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p><img src="https://img-blog.csdnimg.cn/20210708004756798.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p><img src="https://img-blog.csdnimg.cn/20210708004847364.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>这样的配置只能是暂时，如果想要永久配置，还需要从配置文件入手<br><img src="https://img-blog.csdnimg.cn/2021070800500863.png" alt="在这里插入图片描述"><br>如果从机断开连接，再重启，他就会变成主机了</p><h1 id="复制原理"><a href="#复制原理" class="headerlink" title="复制原理"></a>复制原理</h1><p>Slave启动成功连接到master 会发送一个sync命令<br>master接收到命令之后，启动后台的存盘进程，同时收集所有接收到用于修改数据集的命令，在后台进行执行完毕，master将传送整个数据文件到slave，并完成一次同步</p><p>全量复制：slave服务在接收到数据库文件之后，将其存盘并加载到内存中<br>增量复制：master继续将所有收集到的修改命令发送给slave，完成同步<br>只要slave重新连接master，一次完全同步（全量复制）将会被自动执行</p><h1 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h1><p>主从切换的方法，需要人工手动的进行切换，需要人工干预，费时费力，还会造成一段时间内服务不可用。哨兵模式，可以解决这个问题</p><p>哨兵模式是一种特殊的模式，首先redis提供了哨兵的命令，哨兵是一个独立的进程，作为进程，它会独立运行，监控多个redis实例</p><h2 id="单哨兵"><a href="#单哨兵" class="headerlink" title="单哨兵"></a>单哨兵</h2><p><img src="https://img-blog.csdnimg.cn/20210708165400169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>通过发送命令，让redis服务器返回监控运行其状态，包括主服务器和从服务器<br>当哨兵检测到master宕机了，告知一个slave让其成为master，然后通过发布/订阅通知其他的从服务器，修改配置文件，让它们形成了多哨兵模式。</p><h2 id="多哨兵"><a href="#多哨兵" class="headerlink" title="多哨兵"></a>多哨兵</h2><p><img src="https://img-blog.csdnimg.cn/2021070816545122.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>各个哨兵互相监控，假设主服务器宕机，哨兵1先检测这个结果，系统并不会马上进行failover过程，仅仅是哨兵1主观认为的主服务器不可用，这个现象成为<strong>主观下线</strong>，当后面的哨兵的检测到主服务器不可用，并且数量达到一定数值。那么哨兵之间会就会进行一次投票，投票的结果由一个哨兵发起，进行failover故障转移操作，切换成功后，就会通过发布订阅模式，让各个哨兵把自己监控的从服务器切换为主机，这个称为<strong>客观下线</strong></p><p>如果Master断开连接了，这时候就会从从机中根据算法选取一个服务器</p><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>哨兵集群，基于主从复制模式，所有的主从复制配置优点，他都有<br>主从可以切换，故障可以转移，系统的可用性会更好<br>哨兵模式就是主从复制的升级，从手动变成自动</p><h2 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h2><p>redis不好在线扩容，集群容量一旦达到上限，在线扩容就十分麻烦<br>实现哨兵模式的配置其实很麻烦的</p><h2 id="哨兵模式的配置文件"><a href="#哨兵模式的配置文件" class="headerlink" title="哨兵模式的配置文件"></a>哨兵模式的配置文件</h2><p><img src="https://img-blog.csdnimg.cn/20210708171712239.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2021070817173468.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210708171801442.png" alt="在这里插入图片描述"></p><p>默认30S<br><img src="https://img-blog.csdnimg.cn/20210708171807736.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210708171822166.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2021070817183343.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210708171849469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2MzQ0Nzcx,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Redis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数据库</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>20210706——Redis.conf详解（七）</title>
     <link href="/2021/07/07/20210706%E2%80%94%E2%80%94Redis-conf%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%83%EF%BC%89/"/>
     <url>/2021/07/07/20210706%E2%80%94%E2%80%94Redis-conf%E8%AF%A6%E8%A7%A3%EF%BC%88%E4%B8%83%EF%BC%89/</url>

@@ -188,6 +188,227 @@
     
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
+        <a href="/2020/12/17/Filter-Listener/">Filter/Listener</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/17/Filter-Listener/">
+          
+          
+            
+          
+          Filter的应用场景在我们接受请求的时候，可能有一些请求不应该是Servlet去做的，比如中文乱码的问题，登录验证等等，应该在servlet外面有一层去过滤这段数据，这一层就是Filter
+
+Filter开发步骤1.导包2.编写过滤器 javax.servlet.*
+package com.mmz.filter;
+
+import javax.servlet.*;
+import java.io.I
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-17 19:29" pubdate>
+              2020-12-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/filter/">filter</a>
+            
+              <a href="/categories/filter/listener/">listener</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/filter/">filter</a>
+            
+              <a href="/tags/listener/">listener</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/12/17/Cookie-Session/">Cookie/Session</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/17/Cookie-Session/">
+          
+          
+            
+          
+          会话会话：用户打开了一个浏览器，点击了很多超链接，访问多个web资源，关闭浏览器，这个过程称之为会话
+有状态会话：你能证明你是你自己/一个网站怎么证明你来过
+那么服务器怎么知道你这个客户端上次来过？1.服务器给客户端一个信件，客户端下次访问服务器带上信件就可以了：cookie
+2.服务器登记你来过了，下次你再来的时候匹配你 session
+保存会话的两种技术cookie客户端技术（通过http请求
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-17 14:15" pubdate>
+              2020-12-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/cookie/">cookie</a>
+            
+              <a href="/categories/cookie/session/">session</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/cookie/">cookie</a>
+            
+              <a href="/tags/session/">session</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/12/16/javaweb%E4%B8%ADservlet%E7%9A%84%E5%8E%9F%E7%90%86%E6%B7%B1%E5%85%A5/">javaweb中servlet的原理深入</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/16/javaweb%E4%B8%ADservlet%E7%9A%84%E5%8E%9F%E7%90%86%E6%B7%B1%E5%85%A5/">
+          
+          
+            
+          
+          Servlet原理servlet是由web服务器调用，web服务器在收到浏览器请求之后
+Mapping问题一个servlet可以指定一个/多个/通用请求路径前缀和后缀都可以但是*前面不能加项目映射的路径
+优先级问题指定了mapper（固有的）映射路径，优先级最高。如果找不到就会找默认的处理请求，
+ServletContextweb容器在启动的时候，它会为每一个web程序都创建一个对象的Servle
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-16 21:21" pubdate>
+              2020-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/javaweb/">javaweb</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/javaweb/">javaweb</a>
+            
+              <a href="/tags/servlet/">servlet</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        <a href="/2020/12/16/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E5%A7%8Bjavaweb%E9%A1%B9%E7%9B%AE/">新建一个原始javaweb项目</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/16/%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8E%9F%E5%A7%8Bjavaweb%E9%A1%B9%E7%9B%AE/">
+          
+          
+            
+          
+          创建一个空的maven项目构建一个普通的maven项目，删除里面的src目录，以后的学习就在这个项目里面创建moudel，这个空的工程就是maven的主工程。
+我们尽量把所有的依赖都导入这个主工程里面，避免重复导入
+
+导入依赖maven仓库的网址在上面搜索你想要的依赖包然后添加到我们的dependencies的标签下面即可
+HelloServlet构建一个普通的Maven项目，删掉里面的src目录
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-16 15:10" pubdate>
+              2020-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/javaweb/">javaweb</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/java/">java</a>
+            
+              <a href="/tags/maven/">maven</a>
+            
+              <a href="/tags/web/">web</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
         <a href="/2020/12/10/java%E5%86%85%E5%AD%98%E5%88%86%E6%9E%90%E4%B8%8E%E5%8F%8D%E5%B0%84/">java内存分析与反射</a>
       </h1>
 
@@ -498,222 +719,11 @@ package state;
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/12/08/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/">java多线程之线程创建</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/08/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%88%9B%E5%BB%BA/">
-          
-          
-            
-          
-          线程创建的方式继承Thread类/**
- * @Classname TestNewThread1
- * @Description TODO
- * @Date 2020/12/3 17:06
- * @Created by mmz
- */
-    // 创建线程方式一：继承Thread类，重写run方法，调用start开启线程
-    // 线程开启不一定立即执行
-public class TestN
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-08 09:58" pubdate>
-              2020-12-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/12/07/%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">静态代理模式</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/07/%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/">
-          
-          
-            
-          
-          关于静态代理模式真实对象和代理对象都要实现同一个接口
-代理对象需要一个真实对象的一个对象，在代理对象的实现的方法中，需要真实对象的方法
-代理对象可以做很多真实对象做不了的事情，而真实对象可以专注于做自己的事情。
-/**
- * @Classname StaticProxy
- * @Description TODO
- * @Date 2020/12/7 18:30
- * @Created by mmz
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-07 18:43" pubdate>
-              2020-12-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/12/07/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">lambda表达式</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/07/lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
-          
-          
-            
-          
-          lambda表达式简介希腊字母表中排序第十一位的字母，称为lambda避免内部类定义过多其实实质属于函数式编程
-为什么使用lambda表达式避免内部类定义过多可以让你的代码看起来很简洁去掉了一堆没有意义的代码，只留下核心的逻辑
-理解函数式接口函数式接口：任何接口，如果只包含唯一一个抽象方法，那么它就是一个函数式接口
-比如在我们学习的多线程中的Runnable类，就可以看做成为一个函数式接口，因为他
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-07 18:25" pubdate>
-              2020-12-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        <a href="/2020/12/02/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2020/12/02/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-          
-          
-            
-          
-          概述古代两个人想要进行远处沟通的话是用邮件，那么邮件就包含对方的邮编，对方的地址，对方的姓名，自己的地址
-计算机网络将地理位置不同，将具有独立功能的多台计算机设备，通过通信进行连接起来。在网络操作系统，网络管理软件以及网络通信协议的管理和协商下，实现资源共享和信息传递的计算机系统。
-网络编程的目的传播信息，共享资源
-想要达到效果需要做什么1）精准确定一个网络上面的主机 ip：端口，定位到计算机上的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2020-12-02 17:53" pubdate>
-              2020-12-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/java/">java</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/java/">java</a>
-            
-              <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
   
